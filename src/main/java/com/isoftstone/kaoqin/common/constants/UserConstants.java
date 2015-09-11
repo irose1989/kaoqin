@@ -18,3 +18,4 @@ public class UserConstants {
     public static Integer pwdError=5;
 
 }
+
