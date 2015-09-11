@@ -10,7 +10,8 @@ public class BasicAttendance<T> {
 
     private String msg;
     private int code;//0:不存在；1；存在用户
-    private Object object;
+    private T data;
+
 
     public String getMsg() {
         return msg;
@@ -28,26 +29,11 @@ public class BasicAttendance<T> {
         this.code = code;
     }
 
-    public Object getObject() {
-        return object;
+    public T getData() {
+        return data;
     }
 
-    public void setObject(Object object) {
-        this.object = object;
-    }
-
-    public void setObject(User user) {
-        this.object = user;
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "BasicAttendance{" +
-                "msg='" + msg + '\'' +
-                ", code=" + code +
-                ", object=" + object +
-                '}';
+    public void setData(T data) {
+        this.data = data;
     }
 }

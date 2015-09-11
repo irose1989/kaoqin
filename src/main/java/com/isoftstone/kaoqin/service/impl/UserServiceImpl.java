@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
             return  basicAttendance;
         }
         basicAttendance = checkUserExist(userName);
-        User user = (User)basicAttendance.getObject();
+        User user = (User)basicAttendance.getData();
         /**如果用户名不为空，但匹配不到用户名*/
         if(StringUtils.isEmpty(user)){
             return basicAttendance;
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
      * 检查用户存不存在
      * */
     public BasicAttendance checkUserExist(String userName){
-        BasicAttendance basicAttendance = new BasicAttendance();
+        BasicAttendance<User> basicAttendance = new BasicAttendance<User>();
         /**没有匹配到用户名；*/
         User user = dao.findByName(userName);
         if(StringUtils.isEmpty(user)){
@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
         /**根据用户名返回该用户的信息；*/
         basicAttendance.setCode(UserConstants.userExisted);
         basicAttendance.setMsg(UserConstants.userExistedMsg);
-        basicAttendance.setObject(user);
+        basicAttendance.setData(user);
         return basicAttendance;
     }
 

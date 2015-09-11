@@ -1,8 +1,11 @@
 package com.isoftstone.kaoqin.bean;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 /**
  * Created by wb-chenchaobin on 2015/9/8.
  */
+@JsonIgnoreProperties
 public class Dept {
     private int dept_no;
     private String dept_name;

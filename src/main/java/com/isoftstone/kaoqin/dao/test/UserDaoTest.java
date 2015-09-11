@@ -27,8 +27,8 @@ public class UserDaoTest {
     public void test1(){
         String username = "admin";
         User user = dao.findByName(username);
-        BasicAttendance kq = new BasicAttendance();
-        kq.setObject((Object)user);
+        BasicAttendance<User> kq = new BasicAttendance<User>();
+        kq.setData(user);
         System.out.print(kq);
     }
     /**
