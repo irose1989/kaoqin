@@ -21,4 +21,18 @@
         where username = #{name,jdbcType=VARCHAR}
     </select>
 
+    <!--注册生成的用户-->
+    <insert id="registUser"
+            parameterType="com.isoftstone.kaoqin.bean.User">
+        INSERT INTO  emp_user
+        (username,password,sex,deptno)
+        VALUES
+        (
+         #{name,jdbcType=VARCHAR},
+         #{password,jdbcType=VARCHAR},
+         #{sex,jdbcType=VARCHAR},
+         #{dept_no,jdbcType=INTEGER}
+        )
+    </insert>
+
 </mapper>
