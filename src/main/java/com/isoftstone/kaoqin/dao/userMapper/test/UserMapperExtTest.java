@@ -26,7 +26,7 @@ public class UserMapperExtTest {
         List<User> list = new ArrayList<User>();
         for(int i = 0 ; i<3;i++){
             User user = new User();
-            user.setIsoftNo("2"+i+"0");
+            user.setIsoftNo("3"+i+"0");
             user.setRoleid(1);
             list.add(user);
         }
