@@ -47,7 +47,7 @@
     <!-- spring与mybatis整合配置，扫描所有Mapper接口 -->
     <!-- 指定Mapper接口文件所在的基包，在这个基包或其所有子包下面的Mapper接口都将被搜索到 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com/isoftstone/kaoqin/dao" />
+        <property name="basePackage" value="com/isoftstone/kaoqin/dao/userMapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 

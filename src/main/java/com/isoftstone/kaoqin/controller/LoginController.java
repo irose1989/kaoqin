@@ -1,7 +1,7 @@
 package com.isoftstone.kaoqin.controller;
 
-import com.isoftstone.kaoqin.bean.TestForm;
 import com.isoftstone.kaoqin.common.BasicAttendance;
+import com.isoftstone.kaoqin.controller.vo.UserVo;
 import com.isoftstone.kaoqin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,16 +21,23 @@ public class LoginController {
     private UserService userService;
 
 
-    @RequestMapping("/login.do")
+    //@RequestMapping("/login.do")
     public BasicAttendance toLogin(String username,String password){
 
         return null;
     }
 
-    @RequestMapping(value = "/checkUserExist.do",method = RequestMethod.POST)
+    /**
+     * 用户登入检查(默认员工号登入)
+     * */
+    @RequestMapping(value = "/toLogin.do",method = RequestMethod.POST)
     @ResponseBody
-    public BasicAttendance checkUserExist(@RequestBody TestForm form){
-        BasicAttendance kq = userService.toLogin(form.getUserName(),form.getPassword());
-        return kq;
+    public BasicAttendance toLogin(@RequestBody UserVo userVo){
+        BasicAttendance basicAttendance = userService.toLogin(userVo.getIsoftNo(),userVo.getPassword());
+        return basicAttendance;
     }
+
+    /**
+     * 用户注册
+     * */
 }

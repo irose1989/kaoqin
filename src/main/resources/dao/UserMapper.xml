@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.kaoqin.dao.userMapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.kaoqin.bean.user.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="job_state" property="jobState" jdbcType="INTEGER" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="roleId" property="roleid" jdbcType="INTEGER" />
+    <result column="job" property="job" jdbcType="INTEGER" />
+    <result column="professional_skill" property="professionalSkill" jdbcType="INTEGER" />
+    <result column="skill_lever" property="skillLever" jdbcType="INTEGER" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="on_the_job" property="onTheJob" jdbcType="VARCHAR" />
+    <result column="hiredate" property="hiredate" jdbcType="DATE" />
+    <result column="departure_date" property="departureDate" jdbcType="DATE" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="wangwang_num" property="wangwangNum" jdbcType="VARCHAR" />
+    <result column="isoft_no" property="isoftNo" jdbcType="VARCHAR" />
+    <result column="wb_no" property="wbNo" jdbcType="VARCHAR" />
+    <result column="isoft_email" property="isoftEmail" jdbcType="VARCHAR" />
+    <result column="wb_email" property="wbEmail" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.isoftstone.kaoqin.bean.user.User" extends="BaseResultMap" >
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, username, job_state, real_name, telephone, password, roleId, job, professional_skill, 
+    skill_lever, location, on_the_job, hiredate, departure_date, project_id, wangwang_num, 
+    isoft_no, wb_no, isoft_email, wb_email
+  </sql>
+  <sql id="Blob_Column_List" >
+    description
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.isoftstone.kaoqin.bean.user.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from emp_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.isoftstone.kaoqin.bean.user.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from emp_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from emp_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from emp_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.isoftstone.kaoqin.bean.user.UserExample" >
+    delete from emp_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.isoftstone.kaoqin.bean.user.User" >
+    insert into emp_user (id, username, job_state, 
+      real_name, telephone, password, 
+      roleId, job, professional_skill, 
+      skill_lever, location, on_the_job, 
+      hiredate, departure_date, project_id, 
+      wangwang_num, isoft_no, wb_no, 
+      isoft_email, wb_email, description
+      )
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{jobState,jdbcType=INTEGER}, 
+      #{realName,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{roleid,jdbcType=INTEGER}, #{job,jdbcType=INTEGER}, #{professionalSkill,jdbcType=INTEGER}, 
+      #{skillLever,jdbcType=INTEGER}, #{location,jdbcType=VARCHAR}, #{onTheJob,jdbcType=VARCHAR}, 
+      #{hiredate,jdbcType=DATE}, #{departureDate,jdbcType=DATE}, #{projectId,jdbcType=INTEGER}, 
+      #{wangwangNum,jdbcType=VARCHAR}, #{isoftNo,jdbcType=VARCHAR}, #{wbNo,jdbcType=VARCHAR}, 
+      #{isoftEmail,jdbcType=VARCHAR}, #{wbEmail,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.isoftstone.kaoqin.bean.user.User" >
+    insert into emp_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="jobState != null" >
+        job_state,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="roleid != null" >
+        roleId,
+      </if>
+      <if test="job != null" >
+        job,
+      </if>
+      <if test="professionalSkill != null" >
+        professional_skill,
+      </if>
+      <if test="skillLever != null" >
+        skill_lever,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+      <if test="onTheJob != null" >
+        on_the_job,
+      </if>
+      <if test="hiredate != null" >
+        hiredate,
+      </if>
+      <if test="departureDate != null" >
+        departure_date,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="wangwangNum != null" >
+        wangwang_num,
+      </if>
+      <if test="isoftNo != null" >
+        isoft_no,
+      </if>
+      <if test="wbNo != null" >
+        wb_no,
+      </if>
+      <if test="isoftEmail != null" >
+        isoft_email,
+      </if>
+      <if test="wbEmail != null" >
+        wb_email,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="jobState != null" >
+        #{jobState,jdbcType=INTEGER},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="job != null" >
+        #{job,jdbcType=INTEGER},
+      </if>
+      <if test="professionalSkill != null" >
+        #{professionalSkill,jdbcType=INTEGER},
+      </if>
+      <if test="skillLever != null" >
+        #{skillLever,jdbcType=INTEGER},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="onTheJob != null" >
+        #{onTheJob,jdbcType=VARCHAR},
+      </if>
+      <if test="hiredate != null" >
+        #{hiredate,jdbcType=DATE},
+      </if>
+      <if test="departureDate != null" >
+        #{departureDate,jdbcType=DATE},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="wangwangNum != null" >
+        #{wangwangNum,jdbcType=VARCHAR},
+      </if>
+      <if test="isoftNo != null" >
+        #{isoftNo,jdbcType=VARCHAR},
+      </if>
+      <if test="wbNo != null" >
+        #{wbNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isoftEmail != null" >
+        #{isoftEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="wbEmail != null" >
+        #{wbEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.isoftstone.kaoqin.bean.user.UserExample" resultType="java.lang.Integer" >
+    select count(*) from emp_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update emp_user
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.username != null" >
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobState != null" >
+        job_state = #{record.jobState,jdbcType=INTEGER},
+      </if>
+      <if test="record.realName != null" >
+        real_name = #{record.realName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        telephone = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleid != null" >
+        roleId = #{record.roleid,jdbcType=INTEGER},
+      </if>
+      <if test="record.job != null" >
+        job = #{record.job,jdbcType=INTEGER},
+      </if>
+      <if test="record.professionalSkill != null" >
+        professional_skill = #{record.professionalSkill,jdbcType=INTEGER},
+      </if>
+      <if test="record.skillLever != null" >
+        skill_lever = #{record.skillLever,jdbcType=INTEGER},
+      </if>
+      <if test="record.location != null" >
+        location = #{record.location,jdbcType=VARCHAR},
+      </if>
+      <if test="record.onTheJob != null" >
+        on_the_job = #{record.onTheJob,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hiredate != null" >
+        hiredate = #{record.hiredate,jdbcType=DATE},
+      </if>
+      <if test="record.departureDate != null" >
+        departure_date = #{record.departureDate,jdbcType=DATE},
+      </if>
+      <if test="record.projectId != null" >
+        project_id = #{record.projectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.wangwangNum != null" >
+        wangwang_num = #{record.wangwangNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isoftNo != null" >
+        isoft_no = #{record.isoftNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wbNo != null" >
+        wb_no = #{record.wbNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isoftEmail != null" >
+        isoft_email = #{record.isoftEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wbEmail != null" >
+        wb_email = #{record.wbEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update emp_user
+    set id = #{record.id,jdbcType=INTEGER},
+      username = #{record.username,jdbcType=VARCHAR},
+      job_state = #{record.jobState,jdbcType=INTEGER},
+      real_name = #{record.realName,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      roleId = #{record.roleid,jdbcType=INTEGER},
+      job = #{record.job,jdbcType=INTEGER},
+      professional_skill = #{record.professionalSkill,jdbcType=INTEGER},
+      skill_lever = #{record.skillLever,jdbcType=INTEGER},
+      location = #{record.location,jdbcType=VARCHAR},
+      on_the_job = #{record.onTheJob,jdbcType=VARCHAR},
+      hiredate = #{record.hiredate,jdbcType=DATE},
+      departure_date = #{record.departureDate,jdbcType=DATE},
+      project_id = #{record.projectId,jdbcType=INTEGER},
+      wangwang_num = #{record.wangwangNum,jdbcType=VARCHAR},
+      isoft_no = #{record.isoftNo,jdbcType=VARCHAR},
+      wb_no = #{record.wbNo,jdbcType=VARCHAR},
+      isoft_email = #{record.isoftEmail,jdbcType=VARCHAR},
+      wb_email = #{record.wbEmail,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update emp_user
+    set id = #{record.id,jdbcType=INTEGER},
+      username = #{record.username,jdbcType=VARCHAR},
+      job_state = #{record.jobState,jdbcType=INTEGER},
+      real_name = #{record.realName,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      roleId = #{record.roleid,jdbcType=INTEGER},
+      job = #{record.job,jdbcType=INTEGER},
+      professional_skill = #{record.professionalSkill,jdbcType=INTEGER},
+      skill_lever = #{record.skillLever,jdbcType=INTEGER},
+      location = #{record.location,jdbcType=VARCHAR},
+      on_the_job = #{record.onTheJob,jdbcType=VARCHAR},
+      hiredate = #{record.hiredate,jdbcType=DATE},
+      departure_date = #{record.departureDate,jdbcType=DATE},
+      project_id = #{record.projectId,jdbcType=INTEGER},
+      wangwang_num = #{record.wangwangNum,jdbcType=VARCHAR},
+      isoft_no = #{record.isoftNo,jdbcType=VARCHAR},
+      wb_no = #{record.wbNo,jdbcType=VARCHAR},
+      isoft_email = #{record.isoftEmail,jdbcType=VARCHAR},
+      wb_email = #{record.wbEmail,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.isoftstone.kaoqin.bean.user.User" >
+    update emp_user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="jobState != null" >
+        job_state = #{jobState,jdbcType=INTEGER},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        roleId = #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="job != null" >
+        job = #{job,jdbcType=INTEGER},
+      </if>
+      <if test="professionalSkill != null" >
+        professional_skill = #{professionalSkill,jdbcType=INTEGER},
+      </if>
+      <if test="skillLever != null" >
+        skill_lever = #{skillLever,jdbcType=INTEGER},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="onTheJob != null" >
+        on_the_job = #{onTheJob,jdbcType=VARCHAR},
+      </if>
+      <if test="hiredate != null" >
+        hiredate = #{hiredate,jdbcType=DATE},
+      </if>
+      <if test="departureDate != null" >
+        departure_date = #{departureDate,jdbcType=DATE},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="wangwangNum != null" >
+        wangwang_num = #{wangwangNum,jdbcType=VARCHAR},
+      </if>
+      <if test="isoftNo != null" >
+        isoft_no = #{isoftNo,jdbcType=VARCHAR},
+      </if>
+      <if test="wbNo != null" >
+        wb_no = #{wbNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isoftEmail != null" >
+        isoft_email = #{isoftEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="wbEmail != null" >
+        wb_email = #{wbEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.isoftstone.kaoqin.bean.user.User" >
+    update emp_user
+    set username = #{username,jdbcType=VARCHAR},
+      job_state = #{jobState,jdbcType=INTEGER},
+      real_name = #{realName,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      roleId = #{roleid,jdbcType=INTEGER},
+      job = #{job,jdbcType=INTEGER},
+      professional_skill = #{professionalSkill,jdbcType=INTEGER},
+      skill_lever = #{skillLever,jdbcType=INTEGER},
+      location = #{location,jdbcType=VARCHAR},
+      on_the_job = #{onTheJob,jdbcType=VARCHAR},
+      hiredate = #{hiredate,jdbcType=DATE},
+      departure_date = #{departureDate,jdbcType=DATE},
+      project_id = #{projectId,jdbcType=INTEGER},
+      wangwang_num = #{wangwangNum,jdbcType=VARCHAR},
+      isoft_no = #{isoftNo,jdbcType=VARCHAR},
+      wb_no = #{wbNo,jdbcType=VARCHAR},
+      isoft_email = #{isoftEmail,jdbcType=VARCHAR},
+      wb_email = #{wbEmail,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.isoftstone.kaoqin.bean.user.User" >
+    update emp_user
+    set username = #{username,jdbcType=VARCHAR},
+      job_state = #{jobState,jdbcType=INTEGER},
+      real_name = #{realName,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      roleId = #{roleid,jdbcType=INTEGER},
+      job = #{job,jdbcType=INTEGER},
+      professional_skill = #{professionalSkill,jdbcType=INTEGER},
+      skill_lever = #{skillLever,jdbcType=INTEGER},
+      location = #{location,jdbcType=VARCHAR},
+      on_the_job = #{onTheJob,jdbcType=VARCHAR},
+      hiredate = #{hiredate,jdbcType=DATE},
+      departure_date = #{departureDate,jdbcType=DATE},
+      project_id = #{projectId,jdbcType=INTEGER},
+      wangwang_num = #{wangwangNum,jdbcType=VARCHAR},
+      isoft_no = #{isoftNo,jdbcType=VARCHAR},
+      wb_no = #{wbNo,jdbcType=VARCHAR},
+      isoft_email = #{isoftEmail,jdbcType=VARCHAR},
+      wb_email = #{wbEmail,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring_mybatis.xml" })
 public class UserServiceTest {
-    @Autowired
+    @Autowired(required = true)
     private UserService userService;
 
     /**
@@ -23,7 +23,7 @@ public class UserServiceTest {
      * */
     @Test
     public void test1(){
-        BasicAttendance basicAttendance = userService.toLogin("admin","123");
+        BasicAttendance basicAttendance = userService.toLogin("admin","");
         System.out.println(basicAttendance);
     }
 }

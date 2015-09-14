@@ -1,7 +1,5 @@
 package com.isoftstone.kaoqin.common;
 
-import com.isoftstone.kaoqin.bean.User;
-
 /**
  * Created by wb-chenchaobin on 2015/9/8.
  */
@@ -35,5 +33,14 @@ public class BasicAttendance<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "BasicAttendance{" +
+                "msg='" + msg + '\'' +
+                ", code=" + code +
+                ", data=" + data +
+                '}';
     }
 }
