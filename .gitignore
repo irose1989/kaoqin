@@ -6,6 +6,7 @@ target/
 *.iml
 .idea
 .DS_Store
+.idea/workspace.xml
 RuntimeInfo
 hsf.lock
 *.log
