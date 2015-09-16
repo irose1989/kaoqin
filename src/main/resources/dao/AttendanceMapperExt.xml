@@ -49,8 +49,8 @@
     description
   </sql>
   <select id="selectAll" resultMap="BaseResultMap"  parameterType="Map" >
-   select * from attendance a right join emp_user b on a.user_id = b.id
-  join project c on b.project_id = c.id group by c.id
+   select * from attendance a LEFT join emp_user b on a.user_id = b.id
+  LEFT join project c on b.project_id = c.id ORDER by c.id
   <if test="limit > -1">
   limit #{limit},#{size};
   </if>

@@ -21,7 +21,7 @@ import java.util.Map;
 public class AttendanceServiceImpl implements AttendanceService {
 
     @Autowired
-    private AttendanceMapperExt admExt;
+    private  AttendanceMapperExt admExt;
     /**分页查询考勤记录*/
     public BasicAttendance<List<AttendanceVo>> findAll(int currentPage) {
         int page = currentPage-1;

@@ -16,3 +16,8 @@ mybatis_resultMap 多个表封装到一个对象（可以新建一个对象，�
 9-16
 问题： get set 里重复return 值  json返回 会报 600 not Accept 错误
 只是从前端返回 一个数字的时候 （json） 怎么向服务端传数据
+
+!!!
+<mvc:default-servlet-handler />
+一般所有的url 都会过滤掉，所以加载 静态的资源 加载不到（样式加载不到）
+配置上面这段 ，加载静态的时候 会调用默认的 handler  就不会过滤掉了
