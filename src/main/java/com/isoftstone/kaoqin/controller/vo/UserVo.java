@@ -1,12 +1,13 @@
 package com.isoftstone.kaoqin.controller.vo;
 
+import com.isoftstone.kaoqin.bean.user.User;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  * Created by wb-chenchaobin on 2015/9/14.
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class UserVo {
+
+public class UserVo{
     private String userName;
     private String isoftNo;//员工号
     private String telephone;//手机号

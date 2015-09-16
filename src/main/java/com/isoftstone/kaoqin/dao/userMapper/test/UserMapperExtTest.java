@@ -1,6 +1,7 @@
 package com.isoftstone.kaoqin.dao.userMapper.test;
 
 import com.isoftstone.kaoqin.bean.user.User;
+import com.isoftstone.kaoqin.controller.vo.PasswordModify;
 import com.isoftstone.kaoqin.dao.userMapper.UserMapperExt;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +18,6 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring_mybatis.xml" })
 public class UserMapperExtTest {
-
     @Autowired
     private UserMapperExt ext;
     @Test
@@ -26,7 +26,7 @@ public class UserMapperExtTest {
         List<User> list = new ArrayList<User>();
         for(int i = 0 ; i<3;i++){
             User user = new User();
-            user.setIsoftNo("3"+i+"0");
+            user.setIsoftNo("4"+i+"0");
             user.setRoleid(1);
             list.add(user);
         }
@@ -36,5 +36,6 @@ public class UserMapperExtTest {
         int code = ext.batchOpenAccount(list);
             System.out.println(code);
     }
+
 
 }

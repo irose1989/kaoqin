@@ -142,52 +142,52 @@ public class AttendanceExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
+        public Criteria andIdEqualTo(Long value) {
             addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
+        public Criteria andIdNotEqualTo(Long value) {
             addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
+        public Criteria andIdGreaterThan(Long value) {
             addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
             addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
+        public Criteria andIdLessThan(Long value) {
             addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
+        public Criteria andIdLessThanOrEqualTo(Long value) {
             addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
+        public Criteria andIdIn(List<Long> values) {
             addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        public Criteria andIdNotIn(List<Long> values) {
             addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
+        public Criteria andIdBetween(Long value1, Long value2) {
             addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -382,52 +382,52 @@ public class AttendanceExample {
             return (Criteria) this;
         }
 
-        public Criteria andOverhourEqualTo(Integer value) {
+        public Criteria andOverhourEqualTo(Double value) {
             addCriterion("overhour =", value, "overhour");
             return (Criteria) this;
         }
 
-        public Criteria andOverhourNotEqualTo(Integer value) {
+        public Criteria andOverhourNotEqualTo(Double value) {
             addCriterion("overhour <>", value, "overhour");
             return (Criteria) this;
         }
 
-        public Criteria andOverhourGreaterThan(Integer value) {
+        public Criteria andOverhourGreaterThan(Double value) {
             addCriterion("overhour >", value, "overhour");
             return (Criteria) this;
         }
 
-        public Criteria andOverhourGreaterThanOrEqualTo(Integer value) {
+        public Criteria andOverhourGreaterThanOrEqualTo(Double value) {
             addCriterion("overhour >=", value, "overhour");
             return (Criteria) this;
         }
 
-        public Criteria andOverhourLessThan(Integer value) {
+        public Criteria andOverhourLessThan(Double value) {
             addCriterion("overhour <", value, "overhour");
             return (Criteria) this;
         }
 
-        public Criteria andOverhourLessThanOrEqualTo(Integer value) {
+        public Criteria andOverhourLessThanOrEqualTo(Double value) {
             addCriterion("overhour <=", value, "overhour");
             return (Criteria) this;
         }
 
-        public Criteria andOverhourIn(List<Integer> values) {
+        public Criteria andOverhourIn(List<Double> values) {
             addCriterion("overhour in", values, "overhour");
             return (Criteria) this;
         }
 
-        public Criteria andOverhourNotIn(List<Integer> values) {
+        public Criteria andOverhourNotIn(List<Double> values) {
             addCriterion("overhour not in", values, "overhour");
             return (Criteria) this;
         }
 
-        public Criteria andOverhourBetween(Integer value1, Integer value2) {
+        public Criteria andOverhourBetween(Double value1, Double value2) {
             addCriterion("overhour between", value1, value2, "overhour");
             return (Criteria) this;
         }
 
-        public Criteria andOverhourNotBetween(Integer value1, Integer value2) {
+        public Criteria andOverhourNotBetween(Double value1, Double value2) {
             addCriterion("overhour not between", value1, value2, "overhour");
             return (Criteria) this;
         }
@@ -683,52 +683,52 @@ public class AttendanceExample {
         }
 
         public Criteria andOnDutyEqualTo(Date value) {
-            addCriterionForJDBCDate("on_duty =", value, "onDuty");
+            addCriterion("on_duty =", value, "onDuty");
             return (Criteria) this;
         }
 
         public Criteria andOnDutyNotEqualTo(Date value) {
-            addCriterionForJDBCDate("on_duty <>", value, "onDuty");
+            addCriterion("on_duty <>", value, "onDuty");
             return (Criteria) this;
         }
 
         public Criteria andOnDutyGreaterThan(Date value) {
-            addCriterionForJDBCDate("on_duty >", value, "onDuty");
+            addCriterion("on_duty >", value, "onDuty");
             return (Criteria) this;
         }
 
         public Criteria andOnDutyGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("on_duty >=", value, "onDuty");
+            addCriterion("on_duty >=", value, "onDuty");
             return (Criteria) this;
         }
 
         public Criteria andOnDutyLessThan(Date value) {
-            addCriterionForJDBCDate("on_duty <", value, "onDuty");
+            addCriterion("on_duty <", value, "onDuty");
             return (Criteria) this;
         }
 
         public Criteria andOnDutyLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("on_duty <=", value, "onDuty");
+            addCriterion("on_duty <=", value, "onDuty");
             return (Criteria) this;
         }
 
         public Criteria andOnDutyIn(List<Date> values) {
-            addCriterionForJDBCDate("on_duty in", values, "onDuty");
+            addCriterion("on_duty in", values, "onDuty");
             return (Criteria) this;
         }
 
         public Criteria andOnDutyNotIn(List<Date> values) {
-            addCriterionForJDBCDate("on_duty not in", values, "onDuty");
+            addCriterion("on_duty not in", values, "onDuty");
             return (Criteria) this;
         }
 
         public Criteria andOnDutyBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("on_duty between", value1, value2, "onDuty");
+            addCriterion("on_duty between", value1, value2, "onDuty");
             return (Criteria) this;
         }
 
         public Criteria andOnDutyNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("on_duty not between", value1, value2, "onDuty");
+            addCriterion("on_duty not between", value1, value2, "onDuty");
             return (Criteria) this;
         }
 
@@ -743,52 +743,122 @@ public class AttendanceExample {
         }
 
         public Criteria andOffDutyEqualTo(Date value) {
-            addCriterionForJDBCDate("off_duty =", value, "offDuty");
+            addCriterion("off_duty =", value, "offDuty");
             return (Criteria) this;
         }
 
         public Criteria andOffDutyNotEqualTo(Date value) {
-            addCriterionForJDBCDate("off_duty <>", value, "offDuty");
+            addCriterion("off_duty <>", value, "offDuty");
             return (Criteria) this;
         }
 
         public Criteria andOffDutyGreaterThan(Date value) {
-            addCriterionForJDBCDate("off_duty >", value, "offDuty");
+            addCriterion("off_duty >", value, "offDuty");
             return (Criteria) this;
         }
 
         public Criteria andOffDutyGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("off_duty >=", value, "offDuty");
+            addCriterion("off_duty >=", value, "offDuty");
             return (Criteria) this;
         }
 
         public Criteria andOffDutyLessThan(Date value) {
-            addCriterionForJDBCDate("off_duty <", value, "offDuty");
+            addCriterion("off_duty <", value, "offDuty");
             return (Criteria) this;
         }
 
         public Criteria andOffDutyLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("off_duty <=", value, "offDuty");
+            addCriterion("off_duty <=", value, "offDuty");
             return (Criteria) this;
         }
 
         public Criteria andOffDutyIn(List<Date> values) {
-            addCriterionForJDBCDate("off_duty in", values, "offDuty");
+            addCriterion("off_duty in", values, "offDuty");
             return (Criteria) this;
         }
 
         public Criteria andOffDutyNotIn(List<Date> values) {
-            addCriterionForJDBCDate("off_duty not in", values, "offDuty");
+            addCriterion("off_duty not in", values, "offDuty");
             return (Criteria) this;
         }
 
         public Criteria andOffDutyBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("off_duty between", value1, value2, "offDuty");
+            addCriterion("off_duty between", value1, value2, "offDuty");
             return (Criteria) this;
         }
 
         public Criteria andOffDutyNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("off_duty not between", value1, value2, "offDuty");
+            addCriterion("off_duty not between", value1, value2, "offDuty");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionIsNull() {
+            addCriterion("description is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionIsNotNull() {
+            addCriterion("description is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionEqualTo(String value) {
+            addCriterion("description =", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionNotEqualTo(String value) {
+            addCriterion("description <>", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionGreaterThan(String value) {
+            addCriterion("description >", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionGreaterThanOrEqualTo(String value) {
+            addCriterion("description >=", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionLessThan(String value) {
+            addCriterion("description <", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionLessThanOrEqualTo(String value) {
+            addCriterion("description <=", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionLike(String value) {
+            addCriterion("description like", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionNotLike(String value) {
+            addCriterion("description not like", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionIn(List<String> values) {
+            addCriterion("description in", values, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionNotIn(List<String> values) {
+            addCriterion("description not in", values, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionBetween(String value1, String value2) {
+            addCriterion("description between", value1, value2, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionNotBetween(String value1, String value2) {
+            addCriterion("description not between", value1, value2, "description");
             return (Criteria) this;
         }
     }

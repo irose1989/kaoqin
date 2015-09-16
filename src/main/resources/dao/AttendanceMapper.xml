@@ -2,17 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.isoftstone.kaoqin.dao.attendanceMapper.AttendanceMapper" >
   <resultMap id="BaseResultMap" type="com.isoftstone.kaoqin.bean.attendance.Attendance" >
-    <id column="id" property="id" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="BIGINT" />
     <result column="date" property="date" jdbcType="DATE" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="workhours" property="workhours" jdbcType="INTEGER" />
-    <result column="overhour" property="overhour" jdbcType="INTEGER" />
+    <result column="overhour" property="overhour" jdbcType="DOUBLE" />
     <result column="work_off" property="workOff" jdbcType="INTEGER" />
     <result column="late" property="late" jdbcType="INTEGER" />
     <result column="early" property="early" jdbcType="INTEGER" />
     <result column="absent" property="absent" jdbcType="INTEGER" />
-    <result column="on_duty" property="onDuty" jdbcType="DATE" />
-    <result column="off_duty" property="offDuty" jdbcType="DATE" />
+    <result column="on_duty" property="onDuty" jdbcType="TIMESTAMP" />
+    <result column="off_duty" property="offDuty" jdbcType="TIMESTAMP" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,7 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, date, user_id, workhours, overhour, work_off, late, early, absent, on_duty, off_duty
+    id, date, user_id, workhours, overhour, work_off, late, early, absent, on_duty, off_duty, 
+    description
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.isoftstone.kaoqin.bean.attendance.AttendanceExample" >
     select
@@ -89,15 +91,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from attendance
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from attendance
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.isoftstone.kaoqin.bean.attendance.AttendanceExample" >
     delete from attendance
@@ -109,11 +111,13 @@
     insert into attendance (id, date, user_id, 
       workhours, overhour, work_off, 
       late, early, absent, 
-      on_duty, off_duty)
-    values (#{id,jdbcType=INTEGER}, #{date,jdbcType=DATE}, #{userId,jdbcType=INTEGER}, 
-      #{workhours,jdbcType=INTEGER}, #{overhour,jdbcType=INTEGER}, #{workOff,jdbcType=INTEGER}, 
+      on_duty, off_duty, description
+      )
+    values (#{id,jdbcType=BIGINT}, #{date,jdbcType=DATE}, #{userId,jdbcType=INTEGER}, 
+      #{workhours,jdbcType=INTEGER}, #{overhour,jdbcType=DOUBLE}, #{workOff,jdbcType=INTEGER}, 
       #{late,jdbcType=INTEGER}, #{early,jdbcType=INTEGER}, #{absent,jdbcType=INTEGER}, 
-      #{onDuty,jdbcType=DATE}, #{offDuty,jdbcType=DATE})
+      #{onDuty,jdbcType=TIMESTAMP}, #{offDuty,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.isoftstone.kaoqin.bean.attendance.Attendance" >
     insert into attendance
@@ -151,10 +155,13 @@
       <if test="offDuty != null" >
         off_duty,
       </if>
+      <if test="description != null" >
+        description,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="date != null" >
         #{date,jdbcType=DATE},
@@ -166,7 +173,7 @@
         #{workhours,jdbcType=INTEGER},
       </if>
       <if test="overhour != null" >
-        #{overhour,jdbcType=INTEGER},
+        #{overhour,jdbcType=DOUBLE},
       </if>
       <if test="workOff != null" >
         #{workOff,jdbcType=INTEGER},
@@ -181,10 +188,13 @@
         #{absent,jdbcType=INTEGER},
       </if>
       <if test="onDuty != null" >
-        #{onDuty,jdbcType=DATE},
+        #{onDuty,jdbcType=TIMESTAMP},
       </if>
       <if test="offDuty != null" >
-        #{offDuty,jdbcType=DATE},
+        #{offDuty,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -198,7 +208,7 @@
     update attendance
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.date != null" >
         date = #{record.date,jdbcType=DATE},
@@ -210,7 +220,7 @@
         workhours = #{record.workhours,jdbcType=INTEGER},
       </if>
       <if test="record.overhour != null" >
-        overhour = #{record.overhour,jdbcType=INTEGER},
+        overhour = #{record.overhour,jdbcType=DOUBLE},
       </if>
       <if test="record.workOff != null" >
         work_off = #{record.workOff,jdbcType=INTEGER},
@@ -225,10 +235,13 @@
         absent = #{record.absent,jdbcType=INTEGER},
       </if>
       <if test="record.onDuty != null" >
-        on_duty = #{record.onDuty,jdbcType=DATE},
+        on_duty = #{record.onDuty,jdbcType=TIMESTAMP},
       </if>
       <if test="record.offDuty != null" >
-        off_duty = #{record.offDuty,jdbcType=DATE},
+        off_duty = #{record.offDuty,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -237,17 +250,18 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update attendance
-    set id = #{record.id,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
       date = #{record.date,jdbcType=DATE},
       user_id = #{record.userId,jdbcType=INTEGER},
       workhours = #{record.workhours,jdbcType=INTEGER},
-      overhour = #{record.overhour,jdbcType=INTEGER},
+      overhour = #{record.overhour,jdbcType=DOUBLE},
       work_off = #{record.workOff,jdbcType=INTEGER},
       late = #{record.late,jdbcType=INTEGER},
       early = #{record.early,jdbcType=INTEGER},
       absent = #{record.absent,jdbcType=INTEGER},
-      on_duty = #{record.onDuty,jdbcType=DATE},
-      off_duty = #{record.offDuty,jdbcType=DATE}
+      on_duty = #{record.onDuty,jdbcType=TIMESTAMP},
+      off_duty = #{record.offDuty,jdbcType=TIMESTAMP},
+      description = #{record.description,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -265,7 +279,7 @@
         workhours = #{workhours,jdbcType=INTEGER},
       </if>
       <if test="overhour != null" >
-        overhour = #{overhour,jdbcType=INTEGER},
+        overhour = #{overhour,jdbcType=DOUBLE},
       </if>
       <if test="workOff != null" >
         work_off = #{workOff,jdbcType=INTEGER},
@@ -280,26 +294,30 @@
         absent = #{absent,jdbcType=INTEGER},
       </if>
       <if test="onDuty != null" >
-        on_duty = #{onDuty,jdbcType=DATE},
+        on_duty = #{onDuty,jdbcType=TIMESTAMP},
       </if>
       <if test="offDuty != null" >
-        off_duty = #{offDuty,jdbcType=DATE},
+        off_duty = #{offDuty,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.isoftstone.kaoqin.bean.attendance.Attendance" >
     update attendance
     set date = #{date,jdbcType=DATE},
       user_id = #{userId,jdbcType=INTEGER},
       workhours = #{workhours,jdbcType=INTEGER},
-      overhour = #{overhour,jdbcType=INTEGER},
+      overhour = #{overhour,jdbcType=DOUBLE},
       work_off = #{workOff,jdbcType=INTEGER},
       late = #{late,jdbcType=INTEGER},
       early = #{early,jdbcType=INTEGER},
       absent = #{absent,jdbcType=INTEGER},
-      on_duty = #{onDuty,jdbcType=DATE},
-      off_duty = #{offDuty,jdbcType=DATE}
-    where id = #{id,jdbcType=INTEGER}
+      on_duty = #{onDuty,jdbcType=TIMESTAMP},
+      off_duty = #{offDuty,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -1,6 +1,7 @@
-package com.isoftstone.kaoqin.service.UserServiceTest;
+package com.isoftstone.kaoqin.service.test;
 
 import com.isoftstone.kaoqin.common.BasicAttendance;
+import com.isoftstone.kaoqin.controller.vo.PasswordModify;
 import com.isoftstone.kaoqin.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,5 +26,16 @@ public class UserServiceTest {
     public void test1(){
         BasicAttendance basicAttendance = userService.toLogin("admin","");
         System.out.println(basicAttendance);
+    }
+
+    /**更改密码测试*/
+    @Test
+    public void test2(){
+        PasswordModify pm = new PasswordModify();
+        pm.setIsoftNo("78611");
+        pm.setNewPwd("12312");
+        pm.setPostPwd("123456");
+        BasicAttendance b = userService.modfifyPwd(pm);
+        System.out.println(b);
     }
 }

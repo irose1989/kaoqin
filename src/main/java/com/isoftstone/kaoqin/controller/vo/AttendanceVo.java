@@ -1,8 +1,17 @@
-package com.isoftstone.kaoqin.bean.attendance;
+package com.isoftstone.kaoqin.controller.vo;
+
+import com.isoftstone.kaoqin.bean.project.Project;
+import com.isoftstone.kaoqin.bean.user.User;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.util.Date;
 
-public class Attendance {
+/**
+ * Created by wb-chenchaobin on 2015/9/15.
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class AttendanceVo {
+
     private Long id;
 
     private Date date;
@@ -26,6 +35,10 @@ public class Attendance {
     private Date offDuty;
 
     private String description;
+
+    private Project project;
+
+    private User user ;
 
     public Long getId() {
         return id;
@@ -120,6 +133,42 @@ public class Attendance {
     }
 
     public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+        this.description = description;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "AttendanceVo{" +
+                "id=" + id +
+                ", date=" + date +
+                ", userId=" + userId +
+                ", workhours=" + workhours +
+                ", overhour=" + overhour +
+                ", workOff=" + workOff +
+                ", late=" + late +
+                ", early=" + early +
+                ", absent=" + absent +
+                ", onDuty=" + onDuty +
+                ", offDuty=" + offDuty +
+                ", description='" + description + '\'' +
+                ", project=" + project +
+                ", user=" + user +
+                '}';
     }
 }

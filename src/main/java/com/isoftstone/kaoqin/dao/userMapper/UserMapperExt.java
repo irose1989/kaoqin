@@ -6,6 +6,6 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface UserMapperExt {
+public interface UserMapperExt extends UserMapper{
     int batchOpenAccount(List<User> userList);
 }

@@ -8,7 +8,10 @@
 </head>
 <body>
 <h1>欢迎你！！！</h1>
-<a href="test/toPage.do">To Page1</a>
+<form action="admin/findAttendance.do" method="get">
+    <input name="currentPage" >
+    <input type="submit" value="go 考勤">
+</form>
 </body>
 </html>
 

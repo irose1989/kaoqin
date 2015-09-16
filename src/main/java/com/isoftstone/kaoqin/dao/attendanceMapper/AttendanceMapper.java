@@ -10,7 +10,7 @@ public interface AttendanceMapper {
 
     int deleteByExample(AttendanceExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Attendance record);
 
@@ -18,7 +18,7 @@ public interface AttendanceMapper {
 
     List<Attendance> selectByExample(AttendanceExample example);
 
-    Attendance selectByPrimaryKey(Integer id);
+    Attendance selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") Attendance record, @Param("example") AttendanceExample example);
 

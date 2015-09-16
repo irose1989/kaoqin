@@ -1,1 +1,18 @@
-9-14  mybatis 批量添加的语法 注意点
+9-14  mybatis 批量添加的语法(foreach) 注意点
+9-15  jason传数据组（格式）
+{
+ "userVoList":[
+  	{"isoftNo":"133457"},
+	{"isoftNo":"144458"},
+	{"isoftNo":"123459"},
+	{"isoftNo":"155450"}
+  ]
+}
+mvc 写个 list<uservo> userVoList 实体类 自动注入(web端向服务端 json数组)
+continue 跳过当前 不跳出循环
+break 直接跳出循环
+mybatis_resultMap 多个表封装到一个对象（可以新建一个对象，属性包含所需的的字段）
+
+9-16
+问题： get set 里重复return 值  json返回 会报 600 not Accept 错误
+只是从前端返回 一个数字的时候 （json） 怎么向服务端传数据
