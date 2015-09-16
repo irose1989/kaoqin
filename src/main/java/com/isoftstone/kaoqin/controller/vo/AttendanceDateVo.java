@@ -3,7 +3,7 @@ package com.isoftstone.kaoqin.controller.vo;
 /**
  * Created by wb-chenchaobin on 2015/9/16.
  */
-public class AttendanceDate {
+public class AttendanceDateVo {
     private int month;
     private int year;
 
