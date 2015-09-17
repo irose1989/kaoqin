@@ -1,5 +1,8 @@
 package com.isoftstone.kaoqin.common.utils;
 
+import com.isoftstone.kaoqin.bean.attendance.Attendance;
+import org.junit.Test;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -24,5 +27,11 @@ public class DateTest {
         for(String da:list){
             System.out.println(da.toString());
         }
+    }
+    @Test
+    public void test2(){
+        Date date = new Date();
+        String d = "2015-09-15";
+        Attendance attendance = new Attendance();
     }
 }

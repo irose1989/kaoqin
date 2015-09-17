@@ -27,3 +27,9 @@ ajax请求 ，一个数据用 get 直接request取参数
 post 还没成功，怎么把多个参数用配POST直接封装到controller的参数对象里（用json形式）----？？
 
 jetty 不能保存静态文件，修改之后一定要重启？？？？？？？？？？
+---修改 jetty的 webdefault.xml 如果加载不到，pom文件设置resource；
+
+jquery:
+获取点击的那个节点：event.target
+text（）,元素间的内容
+val()输入框的内容

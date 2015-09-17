@@ -8,8 +8,7 @@ import java.util.List;
 public class AttendanceDateVo {
     private int month;
     private int year;
-    private List<String> upDateList;
-    private List<String> downDateList;
+    private List<String> dateList;
     private int upOrDown;
 
     public int getUpOrDown() {
@@ -36,20 +35,13 @@ public class AttendanceDateVo {
         this.year = year;
     }
 
-    public List<String> getUpDateList() {
-        return upDateList;
+
+    public List<String> getDateList() {
+        return dateList;
     }
 
-    public void setUpDateList(List<String> upDateList) {
-        this.upDateList = upDateList;
-    }
-
-    public List<String> getDownDateList() {
-        return downDateList;
-    }
-
-    public void setDownDateList(List<String> downDateList) {
-        this.downDateList = downDateList;
+    public void setDateList(List<String> dateList) {
+        this.dateList = dateList;
     }
 
     @Override
@@ -57,8 +49,7 @@ public class AttendanceDateVo {
         return "AttendanceDateVo{" +
                 "month=" + month +
                 ", year=" + year +
-                ", upDateList=" + upDateList +
-                ", downDateList=" + downDateList +
+                ", dateList=" + dateList +
                 ", upOrDown=" + upOrDown +
                 '}';
     }

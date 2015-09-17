@@ -1,5 +1,6 @@
 package com.isoftstone.kaoqin.controller;
 
+import antlr.StringUtils;
 import com.isoftstone.kaoqin.bean.attendance.Attendance;
 import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.common.utils.DateFormat;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -53,7 +56,7 @@ public class AdminController {
                 =attendanceService.findAll(1);
         request.setAttribute("list",basicAttendance.getData());
 
-        AttendanceDateVo dateVo = DateFormat.getDateList();
+        AttendanceDateVo dateVo = DateFormat.getDateList(0);
         request.setAttribute("month",dateVo);
         return "attendence";
     }
@@ -65,19 +68,41 @@ public class AdminController {
         /*测试pageVo.getCurrentPage()*/
         BasicAttendance<List<AttendanceVo>> basicAttendance
                 =attendanceService.findAll(currentPage);
-        request.setAttribute("list",basicAttendance.getData());
 
-        AttendanceDateVo dateVo = DateFormat.getDateList();
+
+
+
+
+        /**测试时间*/
+        List<AttendanceVo> listVo = basicAttendance.getData();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String test = "2015-09-16";
+        for(AttendanceVo vo :listVo){
+            Date date =vo.getDate();
+            String s =format.format(date);
+            if(com.alibaba.druid.util.StringUtils.equals(s,test)){
+                System.out.println(1);
+            }
+        }
+
+
+
+
+        request.setAttribute("list",basicAttendance.getData());
+        AttendanceDateVo dateVo = DateFormat.getDateList(0);
         request.setAttribute("month",dateVo);
         return "attendence";
     }
-    /**考勤页面上下页*/
+
+    /**考勤页面上下旬*/
     @RequestMapping(value = "/changeDay",method = RequestMethod.GET)
-
-    public String changeDay(HttpServletRequest request){
-        int n= Integer.parseInt(request.getParameter("upOrDown"));
-        return "attendence";
-
+    @ResponseBody
+    public BasicAttendance changeDay(HttpServletRequest request){
+        BasicAttendance basicAttendance = new BasicAttendance();
+        int upOrDown = Integer.parseInt(request.getParameter("upOrDown"));
+        AttendanceDateVo dateVo = DateFormat.getDateList(upOrDown);
+        basicAttendance.setData(dateVo);
+            return basicAttendance;
     }
 
     /**登记考勤*/

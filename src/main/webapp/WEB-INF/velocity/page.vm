@@ -9,7 +9,7 @@
         <script type="text/javascript"
                 src="../resource/js/bootstrap.js"></script>
     <script type="text/javascript"
-            src="../resource/js/test.js"></script>
+            src="../resource/js/attendance.js"></script>
 </head>
 $!screen_content
 </html>
