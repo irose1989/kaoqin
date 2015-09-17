@@ -3,10 +3,7 @@ package com.isoftstone.kaoqin.controller;
 import com.isoftstone.kaoqin.bean.attendance.Attendance;
 import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.common.utils.DateFormat;
-import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
-import com.isoftstone.kaoqin.controller.vo.PageVo;
-import com.isoftstone.kaoqin.controller.vo.UserVo;
-import com.isoftstone.kaoqin.controller.vo.UserVoList;
+import com.isoftstone.kaoqin.controller.vo.*;
 import com.isoftstone.kaoqin.service.AttendanceService;
 import com.isoftstone.kaoqin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,8 +53,8 @@ public class AdminController {
                 =attendanceService.findAll(1);
         request.setAttribute("list",basicAttendance.getData());
 
-        List<String>month = DateFormat.getDateList();
-        request.setAttribute("month",month);
+        AttendanceDateVo dateVo = DateFormat.getDateList();
+        request.setAttribute("month",dateVo);
         return "attendence";
     }
 
@@ -70,9 +67,18 @@ public class AdminController {
                 =attendanceService.findAll(currentPage);
         request.setAttribute("list",basicAttendance.getData());
 
-        List<String>month = DateFormat.getDateList();
-        request.setAttribute("month",month);
+        AttendanceDateVo dateVo = DateFormat.getDateList();
+        request.setAttribute("month",dateVo);
         return "attendence";
     }
+    /**考勤页面上下页*/
+    @RequestMapping(value = "/changeDay",method = RequestMethod.GET)
+
+    public String changeDay(HttpServletRequest request){
+        int n= Integer.parseInt(request.getParameter("upOrDown"));
+        return "attendence";
+
+    }
+
     /**登记考勤*/
 }

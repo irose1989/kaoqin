@@ -21,3 +21,9 @@ mybatis_resultMap 多个表封装到一个对象（可以新建一个对象，�
 <mvc:default-servlet-handler />
 一般所有的url 都会过滤掉，所以加载 静态的资源 加载不到（样式加载不到）
 配置上面这段 ，加载静态的时候 会调用默认的 handler  就不会过滤掉了
+
+9-17
+ajax请求 ，一个数据用 get 直接request取参数
+post 还没成功，怎么把多个参数用配POST直接封装到controller的参数对象里（用json形式）----？？
+
+jetty 不能保存静态文件，修改之后一定要重启？？？？？？？？？？

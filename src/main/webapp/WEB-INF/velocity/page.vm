@@ -1,18 +1,15 @@
 <html>
 <head>
-    #*<script type="text/javascript"
-            src="http://www.francescomalagrino.com/BootstrapPageGenerator/3/js/jquery-2.0.0.min.js"></script>
+        <link rel="stylesheet" type="text/css"
+              href="../resource/css/bootstrap.min.css" />
+        <script type="text/javascript"
+                src="../resource/js/jquery-2.1.4.js"></script>
+        <script type="text/javascript"
+                src="../resource/js/bootstrap.min.js"></script>
+        <script type="text/javascript"
+                src="../resource/js/bootstrap.js"></script>
     <script type="text/javascript"
-            src="http://www.francescomalagrino.com/BootstrapPageGenerator/3/js/jquery-ui"></script>
-
-    <script type="text/javascript"
-    src="http://www.francescomalagrino.com/BootstrapPageGenerator/3/js/bootstrap.min.js"></script>*#
-
-    #*<link href="http://www.francescomalagrino.com/BootstrapPageGenerator/3/css/bootstrap-combined.min.css"
-          rel="stylesheet" media="screen">*#
-    <link rel="stylesheet" type="text/css" href="../resource/css/boo.css" />
-        <link rel="stylesheet" type="text/css" href="../resource/css/bootstrap.css" />
-
+            src="../resource/js/test.js"></script>
 </head>
 $!screen_content
 </html>
