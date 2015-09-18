@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -65,13 +67,14 @@ public class AdminController {
     @RequestMapping(value = "/findAttendance.do",method = RequestMethod.GET)
     public String findAttendance2(HttpServletRequest request){
         /**默认登录 上下旬根据系统时间判断*/
-        int upAndDown =DateFormat.getDateList();
+        int upOrDown =DateFormat.getDateList();
         /**根据上下旬封装 考勤时间段，考勤时间集*/
-        AttendanceDateVo dateVo = DateFormat.getDateList(1);
+        AttendanceDateVo dateVo = DateFormat.getDateList(upOrDown);
         /**默认第一页*/
         BasicAttendance<List<AttendanceVo>> basicAttendance
                 =attendanceService.findAll(BasicConstants.DEFAULT_CURRENT_PAGE, dateVo);
-
+        /**给date转换只有天数的格式*/
+        basicAttendance = DateFormat.getDateToDay(basicAttendance);
         request.setAttribute("list",basicAttendance.getData());
         request.setAttribute("month",dateVo);
         return "attendence";
@@ -81,11 +84,25 @@ public class AdminController {
     @RequestMapping(value = "/changeDay",method = RequestMethod.GET)
     @ResponseBody
     public BasicAttendance changeDay(HttpServletRequest request){
-        BasicAttendance basicAttendance = new BasicAttendance();
+       /* BasicAttendance basicAttendance = new BasicAttendance();*/
+
+        /*AttendanceDateVo dateVo = DateFormat.getDateList(upOrDown);
+        basicAttendance.setData(dateVo);
+            return basicAttendance;*/
         int upOrDown = Integer.parseInt(request.getParameter("upOrDown"));
         AttendanceDateVo dateVo = DateFormat.getDateList(upOrDown);
-        basicAttendance.setData(dateVo);
-            return basicAttendance;
+        /**默认第一页 List<AttendanceVo>*/
+        BasicAttendance basicAttendance
+                =attendanceService.findAll(BasicConstants.DEFAULT_CURRENT_PAGE, dateVo);
+        /**给date转换只有天数的格式*/
+        basicAttendance = DateFormat.getDateToDay(basicAttendance);
+    /*    request.setAttribute("list",basicAttendance.getData());
+        request.setAttribute("month",dateVo);*/
+        Map<String, Object> map = new HashMap<String,Object>();
+        map.put("month",dateVo);
+        map.put("listAttend",basicAttendance.getData());
+        basicAttendance.setData(map);
+        return basicAttendance;
     }
     /**登记考勤*/
 }

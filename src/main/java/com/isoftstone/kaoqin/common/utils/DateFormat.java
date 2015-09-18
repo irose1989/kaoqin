@@ -102,10 +102,16 @@ public class DateFormat {
     }
 
     /**根据数据库的date 转换成 只有天数*/
-    public static BasicAttendance<List<AttendanceVo>> getDayNum(BasicAttendance<List<AttendanceVo>> basicAttendance){
+    public static BasicAttendance<List<AttendanceVo>> getDateToDay(BasicAttendance<List<AttendanceVo>> basicAttendance){
         List<AttendanceVo> list = basicAttendance.getData();
-        AttendanceVo vo = list.get(0);
-        return  null;
+        SimpleDateFormat format = new SimpleDateFormat("dd");
+        for(AttendanceVo vo:list){
+            Date date = vo.getDate();
+            String day = format.format(date);
+            vo.setDay(day);
+        }
+        basicAttendance.setData(list);
+        return  basicAttendance;
     }
 
 

@@ -21,40 +21,6 @@ public class BasicAttendance<T> {
     private boolean flag;
     private T data;
     private PageConf pageConf;
-    private List<String> dateList;
-    private AttendanceDateVo dateVo;
-
-    public boolean isFlag() {
-        return flag;
-    }
-
-    public List<String> getDateList() {
-        return dateList;
-    }
-
-    public void setDateList(List<String> dateList) {
-        this.dateList = dateList;
-    }
-
-    public PageConf getPageConf() {
-        return pageConf;
-    }
-
-    public void setPageConf(PageConf pageConf) {
-        this.pageConf = pageConf;
-    }
-
-/*    public boolean isFlag() {
-        return flag;
-    }*/
-
-    public boolean getFlag() {
-        return flag;
-    }
-
-    public void setFlag(boolean flag) {
-        this.flag = flag;
-    }
 
     public String getMsg() {
         return msg;
@@ -72,12 +38,28 @@ public class BasicAttendance<T> {
         this.code = code;
     }
 
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
     public T getData() {
         return data;
     }
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public PageConf getPageConf() {
+        return pageConf;
+    }
+
+    public void setPageConf(PageConf pageConf) {
+        this.pageConf = pageConf;
     }
 
     public void clear(){
@@ -122,7 +104,6 @@ public class BasicAttendance<T> {
                 ", flag=" + flag +
                 ", data=" + data +
                 ", pageConf=" + pageConf +
-                ", dateList=" + dateList +
                 '}';
     }
 }

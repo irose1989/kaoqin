@@ -16,7 +16,7 @@ public class AttendanceVo {
 
     private Date date;
 
-    private Integer day;
+    private String day;
 
     private Integer userId;
 
@@ -42,11 +42,11 @@ public class AttendanceVo {
 
     private User user ;
 
-    public Integer getDay() {
+    public String getDay() {
         return day;
     }
 
-    public void setDay(Integer day) {
+    public void setDay(String day) {
         this.day = day;
     }
 

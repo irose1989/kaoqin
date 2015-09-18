@@ -188,7 +188,7 @@ public class UserServiceImpl implements UserService {
             }
             /**当集合中的账号有已经注册的*/
             basicAttendance = checkUserExist(isoftNo);
-            if(basicAttendance.getFlag()){
+            if(basicAttendance.isFlag()){
                 /*basicAttendance.setCode(UserConstants.userExisted);
                 basicAttendance.setMsg(UserConstants.userExistedMsg);
                 return basicAttendance ;*/

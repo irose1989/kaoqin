@@ -29,13 +29,17 @@
                 <tbody>
 
                 #foreach($!attend in $!list)
+                #set($t=$!velocityCount)
                 <tr>
-                    <td>$!velocityCount</td>
+                    <td>$t</td>
                     <td>$!attend.user.realName</td>
                     <td>$!attend.project.projectName</td>
                     #foreach($item in $!month.dateList)
-
-                        <th >$!attend.workhours</th>
+                        #if($!item == $!attend.day)
+                            <th class="attend$!velocityCount$!t">$!attend.workhours</th>
+                            #else
+                                <th class="attend$!velocityCount$!t"></th>
+                        #end
                     #end
                     <th></th>
                 </tr>
@@ -45,63 +49,7 @@
 
 
             #foreach($item in $!month.dateList)
-                <div class="row show-grid">
-                    <br>
-                    <div class="col-lg-1">
-                        <div class="col-lg-6" ><input type="text" style="width: 36px"></div>
-                        <div class="col-lg-6"><input type="text" style="width: 36px"></div>
-                    </div>
-                    <div class="col-lg-1">
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                    </div>
-                    <div class="col-lg-1">
-                        <div class="col-lg-6" ><input type="text" style="width: 60px"></div>
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                    </div>
-                    <div class="col-lg-1">
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                    </div>
-                    <div class="col-lg-1">
-                        <div class="col-lg-6" ><input type="text" style="width: 60px"></div>
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                    </div>
-                    <div class="col-lg-1">
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                    </div>
-                    <div class="col-lg-1">
-                        <div class="col-lg-6" ><input type="text" style="width: 60px"></div>
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                    </div>
-                    <div class="col-lg-1">
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                    </div>
-                    <div class="col-lg-1">
-                        <div class="col-lg-6" ><input type="text" style="width: 60px"></div>
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                    </div>
-                    <div class="col-lg-1">
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                    </div>
-                    <div class="col-lg-1">
-                        <div class="col-lg-6" ><input type="text" style="width: 60px"></div>
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                    </div>
-                    <div class="col-lg-1">
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                        <div class="col-lg-6"><input type="text" style="width: 60px"></div>
-                    </div>
 
-
-
-
-
-
-                </div>
             #end
 
 
