@@ -50,7 +50,10 @@
   </sql>
   <select id="selectAll" resultMap="BaseResultMap"  parameterType="Map" >
    select * from attendance a LEFT join emp_user b on a.user_id = b.id
-  LEFT join project c on b.project_id = c.id ORDER by c.id
+  LEFT join project c on b.project_id = c.id
+
+  WHERE a.date >= #{from} and #{to} >=a.date
+  ORDER by c.id
   <if test="limit > -1">
   limit #{limit},#{size};
   </if>

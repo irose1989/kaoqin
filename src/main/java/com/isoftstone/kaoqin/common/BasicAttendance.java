@@ -3,10 +3,12 @@ package com.isoftstone.kaoqin.common;
 import com.alibaba.druid.util.StringUtils;
 import com.isoftstone.kaoqin.common.constants.UserConstants;
 import com.isoftstone.kaoqin.common.utils.PageConf;
+import com.isoftstone.kaoqin.controller.vo.AttendanceDateVo;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by wb-chenchaobin on 2015/9/8.
@@ -19,6 +21,20 @@ public class BasicAttendance<T> {
     private boolean flag;
     private T data;
     private PageConf pageConf;
+    private List<String> dateList;
+    private AttendanceDateVo dateVo;
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public List<String> getDateList() {
+        return dateList;
+    }
+
+    public void setDateList(List<String> dateList) {
+        this.dateList = dateList;
+    }
 
     public PageConf getPageConf() {
         return pageConf;
@@ -106,6 +122,7 @@ public class BasicAttendance<T> {
                 ", flag=" + flag +
                 ", data=" + data +
                 ", pageConf=" + pageConf +
+                ", dateList=" + dateList +
                 '}';
     }
 }

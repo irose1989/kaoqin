@@ -10,6 +10,66 @@
                 src="../resource/js/bootstrap.js"></script>
     <script type="text/javascript"
             src="../resource/js/attendance.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../resource/css/style.css" />
+    <script type="text/javascript" src="../resource/js/index.js"></script>
 </head>
-$!screen_content
+<body>
+<div class="nav-top">
+    <span>后台考勤管理系统</span>
+    <div class="nav-topright">
+        <p>上次登陆时间：2015-04-15 22:33:50   登陆IP：192.168.1.1</p>
+        <span>您好：管理员</span><span>注销</span>
+    </div>
+</div>
+<div class="nav-down">
+    <div class="leftmenu1">
+        <div class="menu-oc"><img src="images/menu-all.png" /></div>
+        <ul>
+            <li>
+                <a class="a_list a_list2">权限管理</a>
+                <div class="menu_list">
+                    <a href="#">基本权限</a>
+                    <a href="#">分配权限</a>
+                    <a href="#">权限管理</a>
+                    <a href="#">成员管理</a>
+                </div>
+            </li>
+            <li>
+                <a class="a_list a_list3">考勤管理</a>
+                <div class="menu_list">
+                    <a href="#">考勤</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="leftmenu2">
+        <div class="menu-oc1"><img src="images/menu-all.png" /></div>
+        <ul>
+            <li>
+                <a class="j_a_list j_a_list2"></a>
+                <div class="j_menu_list">
+                    <span class="sp2"><i></i>权限管理</span>
+                    <a href="#">基本权限</a>
+                    <a href="#">分配权限</a>
+                    <a href="#">权限管理</a>
+                    <a href="#">成员管理</a>
+                </div>
+            </li>
+            <li>
+                <a class="j_a_list j_a_list3"></a>
+                <div class="j_menu_list">
+                    <span class="sp3"><i></i>考勤管理</span>
+                    <a href="#">考勤</a>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    <div class="rightcon">
+        $!screen_content
+    </div>
+</div>
+</body>
+
 </html>

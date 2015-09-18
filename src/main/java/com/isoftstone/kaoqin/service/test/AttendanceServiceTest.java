@@ -24,7 +24,7 @@ public class AttendanceServiceTest {
     @Test
     public void test1(){
         int cur =2 ;
-        BasicAttendance<List<AttendanceVo>> basicAttendance = attendanceService.findAll(cur);
+        BasicAttendance<List<AttendanceVo>> basicAttendance = attendanceService.findAll(cur,null);
         List<AttendanceVo> list = basicAttendance.getData();
         for(AttendanceVo vo:list){
             System.out.println(vo);

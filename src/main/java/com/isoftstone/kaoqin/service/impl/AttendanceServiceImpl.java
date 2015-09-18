@@ -3,6 +3,7 @@ package com.isoftstone.kaoqin.service.impl;
 import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.common.constants.BasicConstants;
 import com.isoftstone.kaoqin.common.utils.PageUtil;
+import com.isoftstone.kaoqin.controller.vo.AttendanceDateVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
 import com.isoftstone.kaoqin.dao.attendanceMapper.AttendanceMapperExt;
 import com.isoftstone.kaoqin.service.AttendanceService;
@@ -23,12 +24,19 @@ public class AttendanceServiceImpl implements AttendanceService {
     @Autowired
     private  AttendanceMapperExt admExt;
     /**分页查询考勤记录*/
-    public BasicAttendance<List<AttendanceVo>> findAll(int currentPage) {
+    public BasicAttendance<List<AttendanceVo>>findAll(int currentPage ,AttendanceDateVo dateVo) {
+        /**考勤时间段条件*/
+        String from = dateVo.getFrom();
+        String to = dateVo.getTo();
+        /**分页查询条件*/
         int page = currentPage-1;
         int size = BasicConstants.PAGESIZE;
-        Map<String,Integer> map = new HashMap<String, Integer>();
-        map.put("limit",page);
+        Map<String,Object> map = new HashMap<String, Object>();
+        map.put("limit",page*size);
         map.put("size", size);
+        map.put("from",from);
+        map.put("to",to);
+
         List<AttendanceVo>voList = admExt.selectAll(map);
         int totalResults=getCounts();
         return PageUtil.getPage(voList,totalResults,page);

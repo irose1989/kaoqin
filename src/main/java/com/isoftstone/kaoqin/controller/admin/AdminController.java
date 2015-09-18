@@ -1,8 +1,9 @@
-package com.isoftstone.kaoqin.controller;
+package com.isoftstone.kaoqin.controller.admin;
 
 import antlr.StringUtils;
 import com.isoftstone.kaoqin.bean.attendance.Attendance;
 import com.isoftstone.kaoqin.common.BasicAttendance;
+import com.isoftstone.kaoqin.common.constants.BasicConstants;
 import com.isoftstone.kaoqin.common.utils.DateFormat;
 import com.isoftstone.kaoqin.controller.vo.*;
 import com.isoftstone.kaoqin.service.AttendanceService;
@@ -48,12 +49,11 @@ public class AdminController {
 
     /**查找所有考勤记录*/
     @RequestMapping(value = "/findAttendance2.do",method = RequestMethod.POST)
-    //@ResponseBody
     public String findAttendance
     (@RequestBody PageVo pageVo,HttpServletRequest request){
         /*测试pageVo.getCurrentPage()*/
         BasicAttendance<List<AttendanceVo>> basicAttendance
-                =attendanceService.findAll(1);
+                =attendanceService.findAll(1,null);
         request.setAttribute("list",basicAttendance.getData());
 
         AttendanceDateVo dateVo = DateFormat.getDateList(0);
@@ -61,35 +61,18 @@ public class AdminController {
         return "attendence";
     }
 
-    /**测试查找所有考勤记录*/
+    /**登录默认展现页面 或者点击考勤查询*/
     @RequestMapping(value = "/findAttendance.do",method = RequestMethod.GET)
-    public String findAttendance2
-    ( int currentPage,HttpServletRequest request){
-        /*测试pageVo.getCurrentPage()*/
+    public String findAttendance2(HttpServletRequest request){
+        /**默认登录 上下旬根据系统时间判断*/
+        int upAndDown =DateFormat.getDateList();
+        /**根据上下旬封装 考勤时间段，考勤时间集*/
+        AttendanceDateVo dateVo = DateFormat.getDateList(1);
+        /**默认第一页*/
         BasicAttendance<List<AttendanceVo>> basicAttendance
-                =attendanceService.findAll(currentPage);
-
-
-
-
-
-        /**测试时间*/
-        List<AttendanceVo> listVo = basicAttendance.getData();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String test = "2015-09-16";
-        for(AttendanceVo vo :listVo){
-            Date date =vo.getDate();
-            String s =format.format(date);
-            if(com.alibaba.druid.util.StringUtils.equals(s,test)){
-                System.out.println(1);
-            }
-        }
-
-
-
+                =attendanceService.findAll(BasicConstants.DEFAULT_CURRENT_PAGE, dateVo);
 
         request.setAttribute("list",basicAttendance.getData());
-        AttendanceDateVo dateVo = DateFormat.getDateList(0);
         request.setAttribute("month",dateVo);
         return "attendence";
     }
@@ -104,6 +87,5 @@ public class AdminController {
         basicAttendance.setData(dateVo);
             return basicAttendance;
     }
-
     /**登记考勤*/
 }

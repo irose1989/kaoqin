@@ -1,6 +1,6 @@
 $(function() {
     $(".upOrDown_month").click(function () {
-        /**Í¨¹ıÊÂ¼şÔ´*/
+        /**é€šè¿‡äº‹ä»¶æº*/
         var t = $(event.target).val();
         $.ajax({
             type: "GET",
@@ -9,19 +9,13 @@ $(function() {
             contentType: 'application/json',
             data: {upOrDown: t},
             success: function (data) {
-                /**·µ»ØÌìÊı*/
+                /**è¿”å›å¤©æ•°*/
                 var list = data.data.dateList;
                 var len = list.length;
                 for(var i=0;i<len;i++){
-                    var cla ;
                     var index =i+1;
-                    if(i<9){
-                        cla = ".date0"+index;
-                    }else(
-                        cla = ".date"+index
-                    )
-                    /*alert(cla);
-                    alert(list[i])*/
+                    var cla  = ".date"+index;
+                    /**åˆ‡æ¢ä¸Šä¸‹æœˆ*/
                     $(cla).text(list[i]);
                 }
             }

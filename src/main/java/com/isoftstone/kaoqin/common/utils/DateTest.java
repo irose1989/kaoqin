@@ -13,8 +13,23 @@ public class DateTest {
     public static void main(String args[]) {
         List<String> list = new ArrayList<String>();
         Date d = new Date();
+        long now = d.getTime();
         Calendar c = Calendar.getInstance();
+
         c.setTime(d);
+        c.set(Calendar.DAY_OF_MONTH, 16);
+        //将小时至0
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        //将分钟至0
+        c.set(Calendar.MINUTE, 0);
+        //将秒至0
+        c.set(Calendar.SECOND,0);
+        //将毫秒至0
+        c.set(Calendar.MILLISECOND, 0);
+        long mid = c.getTime().getTime();
+        if(mid-now<0){
+            System.out.print(now);
+        }
         SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd");
         int totalDays = c.getActualMaximum(Calendar.DAY_OF_MONTH);
         for (int i = 1; i <= totalDays; i++) {

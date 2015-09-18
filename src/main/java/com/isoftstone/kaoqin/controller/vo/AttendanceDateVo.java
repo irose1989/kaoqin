@@ -9,9 +9,29 @@ public class AttendanceDateVo {
     private int month;
     private int year;
     private List<String> dateList;
-    private int upOrDown;
+    private Integer upOrDown;
 
-    public int getUpOrDown() {
+    /**上下旬时间区间的String 类型*/
+    private String from;
+    private String to;
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public Integer getUpOrDown() {
         return upOrDown;
     }
 
@@ -51,6 +71,8 @@ public class AttendanceDateVo {
                 ", year=" + year +
                 ", dateList=" + dateList +
                 ", upOrDown=" + upOrDown +
+                ", from='" + from + '\'' +
+                ", to='" + to + '\'' +
                 '}';
     }
 }

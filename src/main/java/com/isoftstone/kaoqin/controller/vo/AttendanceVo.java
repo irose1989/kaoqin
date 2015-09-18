@@ -16,6 +16,8 @@ public class AttendanceVo {
 
     private Date date;
 
+    private Integer day;
+
     private Integer userId;
 
     private Integer workhours;
@@ -39,6 +41,14 @@ public class AttendanceVo {
     private Project project;
 
     private User user ;
+
+    public Integer getDay() {
+        return day;
+    }
+
+    public void setDay(Integer day) {
+        this.day = day;
+    }
 
     public Long getId() {
         return id;
@@ -157,6 +167,7 @@ public class AttendanceVo {
         return "AttendanceVo{" +
                 "id=" + id +
                 ", date=" + date +
+                ", day=" + day +
                 ", userId=" + userId +
                 ", workhours=" + workhours +
                 ", overhour=" + overhour +

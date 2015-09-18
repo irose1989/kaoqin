@@ -24,10 +24,13 @@ public class AttendanceMapperExtTest {
 
     @Test
     public void test1(){
-        System.out.print(ext.getClass().getName());
-        Map<String,Integer> map = new HashMap<String,Integer>();
+        Map<String,Object> map = new HashMap<String,Object>();
         map.put("limit",0);
-        map.put("size", 2);
+        map.put("size", 10);
+        String to = "2015-09-16";
+        String from = "2015-09-13";
+        map.put("from",from);
+        map.put("to",to);
         List<AttendanceVo>list =  ext.selectAll(map);
         for(AttendanceVo vo :list){
             System.out.println(vo);
