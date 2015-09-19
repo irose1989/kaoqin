@@ -49,13 +49,20 @@
     description
   </sql>
   <select id="selectAll" resultMap="BaseResultMap"  parameterType="Map" >
-   select * from attendance a LEFT join emp_user b on a.user_id = b.id
-  LEFT join project c on b.project_id = c.id
+   select * from emp_user a LEFT join attendance b on a.id = b.user_id
+   join project c on a.project_id = c.id
 
-  WHERE a.date >= #{from} and #{to} >=a.date
+    WHERE b.date >= #{from} and #{to} >=b.date
+  <if test="projectId !=null">
+      AND c.id = #{projectId}
+  </if>
+  <if test="userId !=null">
+    AND a.id = #{userId}
+  </if>
+
   ORDER by c.id
   <if test="limit > -1">
-  limit #{limit},#{size};
+    limit #{limit},#{size};
   </if>
   </select>
 </mapper>

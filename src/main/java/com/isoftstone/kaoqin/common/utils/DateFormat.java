@@ -16,8 +16,8 @@ import java.util.List;
  */
 public class DateFormat {
 
-    /**根据上下月份获取 考勤日期表*/
-    public static AttendanceDateVo getDateList(int upOrDown){
+    /**根据获取整个 考勤日期表*/
+    public static AttendanceDateVo getDateList(){
         AttendanceDateVo vo = new AttendanceDateVo();
         List<String> list = new ArrayList<String>();
         /**自动获取登入的当天时间*/
@@ -27,14 +27,32 @@ public class DateFormat {
         SimpleDateFormat format = new SimpleDateFormat("dd");
         SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
         int totalDays = c.getActualMaximum(Calendar.DAY_OF_MONTH);
-        if(upOrDown == AttendanceConstants.UPMONTH){
+        for (int i = 1; i <= totalDays; i++) {
+            c.set(Calendar.DAY_OF_MONTH, i);
+            Date date = c.getTime();
+            String s = format.format(date);
+            list.add(s);
+
+            /**设置整个月 考勤区间*/
+            if(i==1){
+                String from = format2.format(getFirstDay(c)) ;
+                vo.setFrom(from);
+            }
+            if(i==totalDays){
+                String to = format2.format(getLastDay(c)) ;
+                vo.setTo(to);
+            }
+        }
+        vo.setDateList(list);
+        return vo;
+        /*if(upOrDown == AttendanceConstants.UPMONTH){
             for (int i = 1; i <= 15; i++) {
                 c.set(Calendar.DAY_OF_MONTH, i);
                 Date date = c.getTime();
                 String s = format.format(date);
                 list.add(s);
 
-                /**设置上旬的区间*/
+                *//**设置上旬的区间*//*
                 if(i==1){
                     String from = format2.format(date) ;
                     vo.setFrom(from);
@@ -53,7 +71,7 @@ public class DateFormat {
                 String s = format.format(date);
                 list.add(s);
 
-                /**设置下旬的区间*/
+                *//**设置下旬的区间*//*
                 if(i==16){
                     String from = format2.format(date) ;
                     vo.setFrom(from);
@@ -64,43 +82,37 @@ public class DateFormat {
                 }
             }
             vo.setDateList(list);
-        }
-        return vo;
+        }*/
+
     }
 
 
-    /**刚进 员工考勤页面 根据系统时间区分上下旬*/
-    public static int getDateList(){
-        List<String> list = new ArrayList<String>();
-        /**获取登入的当天时间点*/
-        Date d = new Date();
-        long now = d.getTime();
-        /**获取16号 0时0分的时间点*/
-        Calendar c = Calendar.getInstance();
-        c.setTime(d);
-        c.set(Calendar.DAY_OF_MONTH, 16);
+    /**设置月初时间 0时0分0秒*/
+    public static Date getFirstDay(Calendar c){
+        /**获取1号 0时0分的时间点*/
         //将小时至0
         c.set(Calendar.HOUR_OF_DAY, 0);
         //将分钟至0
         c.set(Calendar.MINUTE, 0);
         //将秒至0
-        c.set(Calendar.SECOND,0);
+        c.set(Calendar.SECOND, 0);
         //将毫秒至0
         c.set(Calendar.MILLISECOND, 0);
-        long mid = c.getTime().getTime();
-
-        int upAndDown =0;
-        /**上旬*/
-        if(now-mid<0){
-            upAndDown =1;
-        }
-        /**下旬*/
-        if(now-mid>=0){
-            upAndDown = 2;
-        }
-        return upAndDown;
+        return c.getTime();
     }
-
+    /**设置月末时间 23时59分59秒*/
+    public static Date getLastDay(Calendar c){
+        /**获取1号 0时0分的时间点*/
+        //将小时至0
+        c.set(Calendar.HOUR_OF_DAY, 23);
+        //将分钟至0
+        c.set(Calendar.MINUTE, 59);
+        //将秒至0
+        c.set(Calendar.SECOND,59);
+        //将毫秒至0
+       // c.set(Calendar.MILLISECOND, 0);
+        return c.getTime();
+    }
     /**根据数据库的date 转换成 只有天数*/
     public static BasicAttendance<List<AttendanceVo>> getDateToDay(BasicAttendance<List<AttendanceVo>> basicAttendance){
         List<AttendanceVo> list = basicAttendance.getData();

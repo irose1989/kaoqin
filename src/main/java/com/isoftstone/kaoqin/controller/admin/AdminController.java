@@ -58,18 +58,16 @@ public class AdminController {
                 =attendanceService.findAll(1,null);
         request.setAttribute("list",basicAttendance.getData());
 
-        AttendanceDateVo dateVo = DateFormat.getDateList(0);
+        AttendanceDateVo dateVo = DateFormat.getDateList();
         request.setAttribute("month",dateVo);
         return "attendence";
     }
 
-    /**登录默认展现页面 或者点击考勤查询*/
+    /**登录默认展现页面 或者点击考勤查询 默认当前一整个月*/
     @RequestMapping(value = "/findAttendance.do",method = RequestMethod.GET)
     public String findAttendance2(HttpServletRequest request){
-        /**默认登录 上下旬根据系统时间判断*/
-        int upOrDown =DateFormat.getDateList();
-        /**根据上下旬封装 考勤时间段，考勤时间集*/
-        AttendanceDateVo dateVo = DateFormat.getDateList(upOrDown);
+        /**封装整个月考勤时间段，考勤时间集*/
+        AttendanceDateVo dateVo = DateFormat.getDateList();
         /**默认第一页*/
         BasicAttendance<List<AttendanceVo>> basicAttendance
                 =attendanceService.findAll(BasicConstants.DEFAULT_CURRENT_PAGE, dateVo);
@@ -80,7 +78,7 @@ public class AdminController {
         return "attendence";
     }
 
-    /**考勤页面上下旬*/
+    /*考勤页面上下旬---现在默认一个月*/
     @RequestMapping(value = "/changeDay",method = RequestMethod.GET)
     @ResponseBody
     public BasicAttendance changeDay(HttpServletRequest request){
@@ -90,7 +88,7 @@ public class AdminController {
         basicAttendance.setData(dateVo);
             return basicAttendance;*/
         int upOrDown = Integer.parseInt(request.getParameter("upOrDown"));
-        AttendanceDateVo dateVo = DateFormat.getDateList(upOrDown);
+        AttendanceDateVo dateVo = DateFormat.getDateList();
         /**默认第一页 List<AttendanceVo>*/
         BasicAttendance basicAttendance
                 =attendanceService.findAll(BasicConstants.DEFAULT_CURRENT_PAGE, dateVo);

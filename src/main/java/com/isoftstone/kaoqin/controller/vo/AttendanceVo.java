@@ -24,6 +24,8 @@ public class AttendanceVo {
 
     private Double overhour;
 
+    private Double allOverhours;
+
     private Integer workOff;
 
     private Integer late;
@@ -41,6 +43,14 @@ public class AttendanceVo {
     private Project project;
 
     private User user ;
+
+    public Double getAllOverhours() {
+        return allOverhours;
+    }
+
+    public void setAllOverhours(Double allOverhours) {
+        this.allOverhours = allOverhours;
+    }
 
     public String getDay() {
         return day;
@@ -167,10 +177,11 @@ public class AttendanceVo {
         return "AttendanceVo{" +
                 "id=" + id +
                 ", date=" + date +
-                ", day=" + day +
+                ", day='" + day + '\'' +
                 ", userId=" + userId +
                 ", workhours=" + workhours +
                 ", overhour=" + overhour +
+                ", allOverhours=" + allOverhours +
                 ", workOff=" + workOff +
                 ", late=" + late +
                 ", early=" + early +
