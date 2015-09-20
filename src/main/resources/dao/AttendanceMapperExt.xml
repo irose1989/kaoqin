@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.isoftstone.kaoqin.dao.attendanceMapper.AttendanceMapperExt" >
-  <resultMap id="BaseResultMap" type="com.isoftstone.kaoqin.controller.vo.AttendanceVo" >
-    <id column="id" property="id" jdbcType="BIGINT" />
+  <resultMap id="BaseResultMap" type="com.isoftstone.kaoqin.controller.vo.AttendanceVo2" >
+    <result column="real_name" property="realName" jdbcType="VARCHAR"/>
+    <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
+    <collection property="attendanceList" ofType="com.isoftstone.kaoqin.bean.attendance.Attendance" resultMap="attend"/>
+  </resultMap>
+  <resultMap id="attend" type="com.isoftstone.kaoqin.bean.attendance.Attendance">
+    <id column="attend_id" property="id" jdbcType="BIGINT" />
     <result column="date" property="date" jdbcType="DATE" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="workhours" property="workhours" jdbcType="INTEGER" />
@@ -14,55 +19,29 @@
     <result column="on_duty" property="onDuty" jdbcType="TIMESTAMP" />
     <result column="off_duty" property="offDuty" jdbcType="TIMESTAMP" />
     <result column="description" property="description" jdbcType="VARCHAR" />
-    <association property="project" javaType="com.isoftstone.kaoqin.bean.project.Project">
-      <id column="id" jdbcType="INTEGER" property="id" />
-      <result column="project_name" jdbcType="VARCHAR" property="projectName" />
-      <result column="project_type" jdbcType="VARCHAR" property="projectType" />
-      <result column="project_state" jdbcType="INTEGER" property="projectState" />
-    </association>
-    <association property="user" javaType="com.isoftstone.kaoqin.bean.user.User">
-      <id column="id" property="id" jdbcType="INTEGER" />
-      <result column="username" property="username" jdbcType="VARCHAR" />
-      <result column="job_state" property="jobState" jdbcType="INTEGER" />
-      <result column="real_name" property="realName" jdbcType="VARCHAR" />
-      <result column="telephone" property="telephone" jdbcType="VARCHAR" />
-      <result column="password" property="password" jdbcType="VARCHAR" />
-      <result column="roleId" property="roleid" jdbcType="INTEGER" />
-      <result column="job" property="job" jdbcType="INTEGER" />
-      <result column="professional_skill" property="professionalSkill" jdbcType="INTEGER" />
-      <result column="skill_lever" property="skillLever" jdbcType="INTEGER" />
-      <result column="location" property="location" jdbcType="VARCHAR" />
-      <result column="on_the_job" property="onTheJob" jdbcType="VARCHAR" />
-      <result column="hiredate" property="hiredate" jdbcType="DATE" />
-      <result column="departure_date" property="departureDate" jdbcType="DATE" />
-      <result column="project_id" property="projectId" jdbcType="INTEGER" />
-      <result column="wangwang_num" property="wangwangNum" jdbcType="VARCHAR" />
-      <result column="isoft_no" property="isoftNo" jdbcType="VARCHAR" />
-      <result column="wb_no" property="wbNo" jdbcType="VARCHAR" />
-      <result column="isoft_email" property="isoftEmail" jdbcType="VARCHAR" />
-      <result column="wb_email" property="wbEmail" jdbcType="VARCHAR" />
-
-    </association>
   </resultMap>
-  <sql id="Base_Column_List" >
-    id, date, user_id, workhours, overhour, work_off, late, early, absent, on_duty, off_duty, 
-    description
-  </sql>
-  <select id="selectAll" resultMap="BaseResultMap"  parameterType="Map" >
-   select * from emp_user a LEFT join attendance b on a.id = b.user_id
-   join project c on a.project_id = c.id
 
-    WHERE b.date >= #{from} and #{to} >=b.date
+  <select id="select" resultMap="BaseResultMap"  parameterType="Map" >
+   select a.real_name,c.project_name,b.date from attendance b , emp_user a ,project c WHERE
+   a.project_id = c.project_id and a.user_id = b.user_id
+    and b.date >= #{from} and #{to} >=b.date
   <if test="projectId !=null">
       AND c.id = #{projectId}
   </if>
   <if test="userId !=null">
     AND a.id = #{userId}
   </if>
-
-  ORDER by c.id
+  GROUP BY b.user_id,b.date
+  ORDER by c.project_id
   <if test="limit > -1">
     limit #{limit},#{size};
   </if>
   </select>
+
+  <!--<select id="attend" resultMap="attend" >
+    select * from attendance b
+    WHERE b.date >= #{from} and #{to} >=b.date
+    GROUP BY b.user_id,b.date
+  </select>-->
+
 </mapper>

@@ -27,6 +27,16 @@ public class Attendance {
 
     private String description;
 
+    private boolean readonly;
+
+    public boolean isReadonly() {
+        return readonly;
+    }
+
+    public void setReadonly(boolean readonly) {
+        this.readonly = readonly;
+    }
+
     public Long getId() {
         return id;
     }
@@ -121,5 +131,24 @@ public class Attendance {
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Attendance{" +
+                "id=" + id +
+                ", date=" + date +
+                ", userId=" + userId +
+                ", workhours=" + workhours +
+                ", overhour=" + overhour +
+                ", workOff=" + workOff +
+                ", late=" + late +
+                ", early=" + early +
+                ", absent=" + absent +
+                ", onDuty=" + onDuty +
+                ", offDuty=" + offDuty +
+                ", description='" + description + '\'' +
+                ", readonly=" + readonly +
+                '}';
     }
 }

@@ -46,7 +46,7 @@ public class DateTest {
     @Test
     public void test2(){
         Date date = new Date();
-        String d = "2015-09-15";
-        Attendance attendance = new Attendance();
+        long l =date.getTime();
+        System.out.print(l);
     }
 }

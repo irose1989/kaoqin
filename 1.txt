@@ -33,3 +33,10 @@ jquery:
 获取点击的那个节点：event.target
 text（）,元素间的内容
 val()输入框的内容
+
+9-20！！！！！！！！！！！！！！！
+数据库返回集合（集合参数也有集合）
+注意collection 用法 http://blog.csdn.net/rootsuper/article/details/8542236
+另外数据库id 名字一样的话，返回的结果集会不一样（变少）； -----------
+http://www.cnblogs.com/zemliu/archive/2013/08/16/3263053.html
+http://www.oschina.net/question/154489_141658

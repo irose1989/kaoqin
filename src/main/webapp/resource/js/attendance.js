@@ -1,4 +1,7 @@
 $(function() {
+    var mydate = new Date();
+    var fromDay = new Date(mydate-7*24*3600*1000);
+    var today = mydate.getDate();
     $(".upOrDown_month").click(function () {
 
         /**清空*/

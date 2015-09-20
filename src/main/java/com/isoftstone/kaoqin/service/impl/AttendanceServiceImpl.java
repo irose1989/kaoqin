@@ -2,6 +2,7 @@ package com.isoftstone.kaoqin.service.impl;
 
 import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.common.constants.BasicConstants;
+import com.isoftstone.kaoqin.common.utils.DateFormat;
 import com.isoftstone.kaoqin.common.utils.PageUtil;
 import com.isoftstone.kaoqin.controller.vo.AttendanceDateVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
@@ -38,6 +39,9 @@ public class AttendanceServiceImpl implements AttendanceService {
         map.put("to",to);
 
         List<AttendanceVo>voList = admExt.selectAll(map);
+        /**最近一周才能修改*/
+        voList = DateFormat.getReadOnly(voList);
+
         int totalResults=getCounts();
         return PageUtil.getPage(voList,totalResults,page);
     }

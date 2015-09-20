@@ -16,7 +16,7 @@
 </div>
 
 <div style="width:100%; height:80%; overflow:auto; border:1px solid #000000;padding: 0px;">
-      <form method="post">
+      <form method="post" action="">
           <table class="formdata  table table-bordered ">
               <caption>考勤系统</caption>
               <thead>
@@ -39,16 +39,21 @@
                           <td><input type="text" class="attend$!velocityCount$!t" value="$!attend.project.projectName" style="width: 120px" readonly/></td>
                           #foreach($item in $!month.dateList)
                               #if($!item == $!attend.day)
-                                  <td ><input type="text" class="attend$!velocityCount$!t" value="$!attend.workhours" readonly/></td>
+                                  <td ><input type="text" class="attend$!velocityCount$!t " value="$!attend.workhours" readonly=$!attend.readonly /></td>
                               #else
-                                  <td><input type="text" class="attend$!velocityCount$!t" /></td>
+                                  <td><input type="text" class="attend$!velocityCount$!t" readonly=$!attend.readonly /></td>
                               #end
                           #end
                           <td><input type="text" class="attend$!velocityCount$!t" value="$!attend.allOverhours" readonly/></td>
                       </tr>
+
                   #end
               </tbody>
+
           </table>
+          <div class="pull-right">
+              <button class="btn btn-info" value="">确认提交</button>
+          </div>
       </form>
 
         </div>

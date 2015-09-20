@@ -44,6 +44,16 @@ public class AttendanceVo {
 
     private User user ;
 
+    private Boolean readonly;
+
+    public Boolean getReadonly() {
+        return readonly;
+    }
+
+    public void setReadonly(Boolean readonly) {
+        this.readonly = readonly;
+    }
+
     public Double getAllOverhours() {
         return allOverhours;
     }

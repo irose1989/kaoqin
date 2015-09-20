@@ -22,6 +22,7 @@ public class DateFormat {
         List<String> list = new ArrayList<String>();
         /**自动获取登入的当天时间*/
         Date d = new Date();
+        int today = d.getDate();
         Calendar c = Calendar.getInstance();
         c.setTime(d);
         SimpleDateFormat format = new SimpleDateFormat("dd");
@@ -86,6 +87,20 @@ public class DateFormat {
 
     }
 
+    /**获取readonly*/
+    public static List<AttendanceVo> getReadOnly(List<AttendanceVo> voList){
+        Date d = new Date();
+        long today = d.getTime();
+        for(AttendanceVo vo:voList){
+            long day = vo.getDate().getTime();
+            if(today-day>=0 && today-day<=AttendanceConstants.WEEK){
+                vo.setReadonly(false);
+            }else{
+                vo.setReadonly(true);
+            }
+        }
+        return voList;
+    }
 
     /**设置月初时间 0时0分0秒*/
     public static Date getFirstDay(Calendar c){
