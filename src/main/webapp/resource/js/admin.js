@@ -45,9 +45,21 @@ $(function(){
 
 $(function(){
     $("#bitch_openAccount").click(function(){
-        /**遍历还有没提示消息*/
+        /**遍历 有无提示消息                return 跳出一个方法？？？？？？？？？？？？？*/
+        $('#create_msg').text("")
+        $('#create_account input').each(function(){
+            alert(1);
+            var input = $(this).val();
+            if(!input){
+                alert(2)
+                $(this).parent('div').find('span').text("账号不能为空");
+                return;
+            }
+        });
+        alert(3);
         $('#create_account span').each(function(index,element){
             var msg = $(this).text();
+           /* alert(msg);*/
             if(msg){
                 $('#create_msg').text("请按提示填写");
                 return;
@@ -61,9 +73,7 @@ $(function(){
         });
         var index =json.lastIndexOf(",");
         json =json.substring(0,index)+"]}";
-        alert(json)
         var ttt ='{"userVoList":[{"isoftNo":"123"},{"isoftNo":"1234"}]}'
-        alert(ttt);
 
         $.ajax({
             type:'POST',
