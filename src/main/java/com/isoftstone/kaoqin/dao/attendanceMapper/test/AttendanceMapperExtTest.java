@@ -1,7 +1,6 @@
 package com.isoftstone.kaoqin.dao.attendanceMapper.test;
 
-import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
-import com.isoftstone.kaoqin.controller.vo.AttendanceVo2;
+import com.isoftstone.kaoqin.controller.vo.AttendVo;
 import com.isoftstone.kaoqin.dao.attendanceMapper.AttendanceMapperExt;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,15 +26,15 @@ public class AttendanceMapperExtTest {
     @Test
     public void test1(){
         Map<String,Object> map = new HashMap<String,Object>();
-        map.put("limit",-1);
+        map.put("limit",0);
         map.put("size", 10);
         String to = "2015-09-30";
         String from = "2015-09-1";
         map.put("from",from);
         map.put("to",to);
-        List<AttendanceVo2>list =  ext.select(map);
+        List<AttendVo>list =  ext.getAll(map);
         System.out.println("====================="+list.size());
-        for(AttendanceVo2 vo :list){
+        for(AttendVo vo :list){
             System.out.println(vo);
         }
     }

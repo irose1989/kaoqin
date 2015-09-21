@@ -1,6 +1,7 @@
 package com.isoftstone.kaoqin.service.test;
 
 import com.isoftstone.kaoqin.common.BasicAttendance;
+import com.isoftstone.kaoqin.controller.vo.AttendVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
 import com.isoftstone.kaoqin.service.AttendanceService;
 import org.junit.Test;
@@ -24,9 +25,9 @@ public class AttendanceServiceTest {
     @Test
     public void test1(){
         int cur =2 ;
-        BasicAttendance<List<AttendanceVo>> basicAttendance = attendanceService.findAll(cur,null);
-        List<AttendanceVo> list = basicAttendance.getData();
-        for(AttendanceVo vo:list){
+        BasicAttendance<List<AttendVo>> basicAttendance = attendanceService.findAll(cur,null);
+        List<AttendVo> list = basicAttendance.getData();
+        for(AttendVo vo:list){
             System.out.println(vo);
         }
 

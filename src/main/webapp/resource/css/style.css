@@ -34,7 +34,7 @@ a{ text-decoration:none}
 .leftmenu2>ul>li>a.j_a_list2{ background:url(../images/ic_user.png) no-repeat 15px center}
 .leftmenu2>ul>li>a.j_a_list3{ background:url(../images/ic_chats.png) no-repeat 15px center}
 
-.leftmenu2>ul>li>.j_menu_list{ width:140px; height:auto; float:left; font-size:14px; background:#353f4f; position:absolute; margin-left:52px; display:none}
+.leftmenu2>ul>li>.j_menu_list{ width:140px; height:auto; float:left; font-size:14px; background:#353f4f; position:absolute; margin-left:52px; display:none;z-index: 1;}
 .leftmenu2>ul>li>.j_menu_list>span{ display:block; float:left; margin-left:-52px; width:192px; height:45px;  color:#FFF; line-height:45px; text-indent:6.5em}
 .leftmenu2>ul>li>.j_menu_list>span>i{ width:52px; height:45px; float:left; position:absolute; cursor:pointer; display:block;border-right:solid 1px #FFF}
 .sp1{ background:url(../images/ic_grid.png) no-repeat 15px center #65cea7;}
@@ -69,6 +69,7 @@ table.formdata th{           /*行列标题*/
 
     :;
 }
+
 table.formdata td{         /*表格行*/
     margin:0px;
     padding:0px;

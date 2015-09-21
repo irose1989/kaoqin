@@ -40,3 +40,28 @@ val()输入框的内容
 另外数据库id 名字一样的话，返回的结果集会不一样（变少）； -----------
 http://www.cnblogs.com/zemliu/archive/2013/08/16/3263053.html
 http://www.oschina.net/question/154489_141658
+
+9-21
+{"userVoList":[{"isoftNo":"123"},{"isoftNo":"1234"}]} ---json 数组形式传 后台模拟：postman
+
+表单转 json
+		var json = {};
+				x=$("form").serializeArray();
+				var json="{"
+				$.each(x, function(i, field){
+					json +=('"'+field.name +'"'+ ":" + '"'+field.value+'"' + ",");
+				});
+				var index =json.lastIndexOf(",");
+				json =json.substring(0,index)+"}";
+				alert(json)
+
+         备注
+          var json = {};                   json基本要双引号
+                 x=$("form").serializeArray();
+                 var json='{"userVoList":['           ----------------这里要双引号
+                 $.each(x, function(i, field){
+                     json +=('{"'+field.name +'"'+ ":" + '"'+field.value+'"}' + ",");
+                 });
+                 var index =json.lastIndexOf(",");
+                 json =json.substring(0,index)+"]}";
+

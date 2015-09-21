@@ -1,9 +1,12 @@
 package com.isoftstone.kaoqin.common.utils;
 
+import com.isoftstone.kaoqin.bean.attendance.Attendance;
 import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.common.constants.AttendanceConstants;
+import com.isoftstone.kaoqin.controller.vo.AttendVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceDateVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
+import org.springframework.util.CollectionUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -88,15 +91,22 @@ public class DateFormat {
     }
 
     /**获取readonly*/
-    public static List<AttendanceVo> getReadOnly(List<AttendanceVo> voList){
+    public static List<AttendVo> getReadOnly(List<AttendVo> voList){
         Date d = new Date();
         long today = d.getTime();
-        for(AttendanceVo vo:voList){
-            long day = vo.getDate().getTime();
-            if(today-day>=0 && today-day<=AttendanceConstants.WEEK){
-                vo.setReadonly(false);
-            }else{
-                vo.setReadonly(true);
+        for(AttendVo vo:voList){
+            List<Attendance> attList = vo.getAttendanceList();
+            if(CollectionUtils.isEmpty(attList)){
+                return null;
+            }
+            for(Attendance attendance:attList){
+
+                long day = attendance.getDate().getTime();
+                if(today-day>=0 && today-day<=AttendanceConstants.WEEK){
+                    attendance.setReadonly(false);
+                }else{
+                    attendance.setReadonly(true);
+                }
             }
         }
         return voList;
@@ -129,13 +139,19 @@ public class DateFormat {
         return c.getTime();
     }
     /**根据数据库的date 转换成 只有天数*/
-    public static BasicAttendance<List<AttendanceVo>> getDateToDay(BasicAttendance<List<AttendanceVo>> basicAttendance){
-        List<AttendanceVo> list = basicAttendance.getData();
+    public static BasicAttendance<List<AttendVo>> getDateToDay(BasicAttendance<List<AttendVo>> basicAttendance){
+        List<AttendVo> list = basicAttendance.getData();
         SimpleDateFormat format = new SimpleDateFormat("dd");
-        for(AttendanceVo vo:list){
-            Date date = vo.getDate();
-            String day = format.format(date);
-            vo.setDay(day);
+        for(AttendVo vo:list){
+            List<Attendance> attList = vo.getAttendanceList();
+            if(CollectionUtils.isEmpty(attList)){
+                return null;
+            }
+            for(Attendance attendance:attList){
+                Date date = attendance.getDate();
+                String day = format.format(date);
+                attendance.setDay(day);
+            }
         }
         basicAttendance.setData(list);
         return  basicAttendance;

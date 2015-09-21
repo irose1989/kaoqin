@@ -3,6 +3,9 @@ package com.isoftstone.kaoqin.bean.attendance;
 import java.util.Date;
 
 public class Attendance {
+
+    private String day;
+
     private Long id;
 
     private Date date;
@@ -28,6 +31,14 @@ public class Attendance {
     private String description;
 
     private boolean readonly;
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
 
     public boolean isReadonly() {
         return readonly;
@@ -136,7 +147,8 @@ public class Attendance {
     @Override
     public String toString() {
         return "Attendance{" +
-                "id=" + id +
+                "day='" + day + '\'' +
+                ", id=" + id +
                 ", date=" + date +
                 ", userId=" + userId +
                 ", workhours=" + workhours +

@@ -210,7 +210,7 @@ public class UserServiceImpl implements UserService {
         int code = userMapper.batchOpenAccount(userList);
 
         basicAttendance.setCode(code);
-        basicAttendance.setMsg("");
+        basicAttendance.setMsg("开通账号成功");
         basicAttendance.setData(null);
         return basicAttendance;
     }

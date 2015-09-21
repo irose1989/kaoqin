@@ -21,4 +21,6 @@ public interface UserService {
     BasicAttendance<User> editUserInfo(User user);
     /**密码更改*/
     BasicAttendance modfifyPwd(PasswordModify passwordModify);
+    /**检查用户是否存在*/
+    BasicAttendance checkUserExist(String userName);
 }

@@ -3,6 +3,9 @@ package com.isoftstone.kaoqin.common.utils;
 import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.common.constants.BasicConstants;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by wb-chenchaobin on 2015/9/16.
  */
@@ -43,5 +46,14 @@ public class PageUtil {
         basicAttendance.setData(t);
         basicAttendance.setPageConf(pageConf);
         return basicAttendance;
+    }
+    public static <T>List<T> getPageList(List<T> list,int limit,int size){
+        List<T> newList = new ArrayList<T>();
+            for(int i =0;i<list.size();i++){
+                if(i>=limit && i<limit+size){
+                    newList.add(list.get(i));
+                }
+            }
+        return newList;
     }
 }

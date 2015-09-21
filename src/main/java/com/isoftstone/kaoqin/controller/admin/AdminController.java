@@ -30,14 +30,25 @@ public class AdminController {
     private UserService userService;
     @Autowired
     private AttendanceService attendanceService;
-
+    /**开通账号*/
+    @RequestMapping(value = "/openAccount.do" ,method = RequestMethod.GET)
+    public String openAccount(){
+        return "createAccount";
+    }
     /**
      * 开通一个账号
      * */
-    @RequestMapping(value ="/openAccount.do",method = RequestMethod.POST)
+   /* @RequestMapping(value ="/openAccount.do",method = RequestMethod.POST)
     @ResponseBody
     public BasicAttendance openAccount(@RequestBody UserVo vo){
         BasicAttendance basicAttendance= userService.openAccount(vo);
+        return basicAttendance;
+    }*/
+    /**检查账号是否已经开通*/
+    @ResponseBody
+    @RequestMapping(value = "/checkUser",method = RequestMethod.GET)
+    public BasicAttendance checkUser(String isoftNo){
+        BasicAttendance basicAttendance = userService.checkUserExist(isoftNo);
         return basicAttendance;
     }
 
@@ -54,7 +65,7 @@ public class AdminController {
     public String findAttendance
     (@RequestBody PageVo pageVo,HttpServletRequest request){
         /*测试pageVo.getCurrentPage()*/
-        BasicAttendance<List<AttendanceVo>> basicAttendance
+        BasicAttendance<List<AttendVo>> basicAttendance
                 =attendanceService.findAll(1,null);
         request.setAttribute("list",basicAttendance.getData());
 
@@ -69,7 +80,7 @@ public class AdminController {
         /**封装整个月考勤时间段，考勤时间集*/
         AttendanceDateVo dateVo = DateFormat.getDateList();
         /**默认第一页*/
-        BasicAttendance<List<AttendanceVo>> basicAttendance
+        BasicAttendance<List<AttendVo>> basicAttendance
                 =attendanceService.findAll(BasicConstants.DEFAULT_CURRENT_PAGE, dateVo);
         /**给date转换只有天数的格式*/
         basicAttendance = DateFormat.getDateToDay(basicAttendance);

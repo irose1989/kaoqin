@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" type="text/css" href="../resource/css/style.css" />
     <script type="text/javascript" src="../resource/js/index.js"></script>
+    <script type="text/javascript" src="../resource/js/admin.js"></script>
 </head>
 <body>
 <div class="nav-top">
@@ -29,6 +30,7 @@
             <li>
                 <a class="a_list a_list2">权限管理</a>
                 <div class="menu_list">
+                    <a href="openAccount.do">创建账号</a>
                     <a href="#">基本权限</a>
                     <a href="#">分配权限</a>
                     <a href="#">权限管理</a>
@@ -38,7 +40,7 @@
             <li>
                 <a class="a_list a_list3">考勤管理</a>
                 <div class="menu_list">
-                    <a href="#">考勤</a>
+                    <a href="findAttendance.do">考勤</a>
                 </div>
             </li>
         </ul>
@@ -50,6 +52,7 @@
                 <a class="j_a_list j_a_list2"></a>
                 <div class="j_menu_list">
                     <span class="sp2"><i></i>权限管理</span>
+                    <a href="openAccount.do">创建账号</a>
                     <a href="#">基本权限</a>
                     <a href="#">分配权限</a>
                     <a href="#">权限管理</a>
@@ -60,7 +63,7 @@
                 <a class="j_a_list j_a_list3"></a>
                 <div class="j_menu_list">
                     <span class="sp3"><i></i>考勤管理</span>
-                    <a href="#">考勤</a>
+                    <a href="findAttendance.do">考勤</a>
                 </div>
             </li>
         </ul>
