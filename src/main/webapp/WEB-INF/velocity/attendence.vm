@@ -15,8 +15,9 @@
     </select>月
 </div>
 
-<div style="width:100%; height:80%; overflow:auto; border:1px solid #000000;padding: 0px;">
-      <form method="post" action="">
+<div id="attendance_form"
+     style="width:100%; height:80%; overflow:auto; border:1px solid #000000;padding: 0px;">
+      <form >
           <table class="formdata  table table-bordered ">
               <caption>考勤系统</caption>
               <thead>
@@ -30,31 +31,47 @@
                       <th scope="col">加班合计</th>
                   </tr>
               </thead>
+              <td class="hidden" id="edit_state">1</td>
               <tbody>
-                  #foreach($!attend in $!list)
+                  #foreach($attend in $!list)#*行数*#
                   #set($t=$!velocityCount)
                       <tr scope="row" >
-                          <td>$!t</td>
+                          <td>$!t </td>
                           <td><input type="text" class="attend$!velocityCount$!t" value="$!attend.realName" style="width: 80px" readonly/></td>
                           <td><input type="text" class="attend$!velocityCount$!t" value="$!attend.projectName" style="width: 120px" readonly/></td>
                           #set($count=0)
-                          #foreach($item in $!month.dateList)
+                          #foreach($item in $!month.dateList)#*列数*#
                               #set($count=1)
                               #set($workhours=0)
                               #set($readonly=true)
-                              #foreach($att in $attend.attendanceList)
+                              #set($date="")
+                              #set($userId="")
+                              #foreach($att in $attend.attendanceList)#*匹配*#
+                                  #set($date=$!att.date)
+                                  #set($userId=$!att.userId)
                                   #if($!item == $!att.day)
                                       #set($count=2)
-                                      #set($workhours=$!att.workhours)
+                                      #set($workhours=$!att.workhours)#if($workhours==0)#set($workhours="")#end
                                       #set($readonly=$!att.readonly)
                                   #end
                               #end
+                              #*count为2时 日期属性跟X轴日期对应*#
                               #if($count==2)
-                                  <td ><input type="text" class="attend$!velocityCount$!t " value="$!workhours"
-                                              #if($readonly==true) readonly #end /></td>
+                                  #if($readonly==true)
+                                      <td>$!workhours</td>
+                                  #else
+                                      <td><input hidden value="'userId':$!userId,'date':'$!item'" name=""/>
+                                          <input type="text" class="attend$!velocityCount$!t" value="$!workhours" readonly/>
+                                      </td>
+                                  #end
                               #end
                               #if($count==1)
-                                  <td><input type="text" class="attend$!velocityCount$!t" #if($readonly==true) readonly #end /></td>
+                                  #if($readonly==true)
+                                      <td></td>
+                                  #else
+                                      <td><input hidden value="'userId':$!userId,'date':$!item"/>
+                                          <input type="text" class="attend$!velocityCount$!t" readonly/></td>
+                                  #end
                               #end
                           #end
                           <td><input type="text" class="attend$!velocityCount$!t" value="$!attend.allOverhours" "readonly"="readonly"/></td>
@@ -62,8 +79,10 @@
                   #end
               </tbody>
           </table>
-          <div class="pull-right">
-              <button class="btn btn-info" value="">确认提交</button>
+          <div class="pull-right" >
+              <button class="btn btn-info" id="attendance_edit" type="button">考勤编辑</button>
+              <button class="btn btn-info hidden" id="attendance_cancle" type="button" >取消</button>
+              <button class="btn btn-info hidden" id="attendance_submit" type="button">确认提交</button>
           </div>
       </form>
 

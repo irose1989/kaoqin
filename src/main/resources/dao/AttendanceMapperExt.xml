@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.isoftstone.kaoqin.dao.attendanceMapper.AttendanceMapperExt" >
+
   <resultMap id="BaseResultMap" type="com.isoftstone.kaoqin.controller.vo.AttendVo" >
+
+    <id column="aId" property="id" jdbcType="BIGINT" />
     <result column="real_name" property="realName" jdbcType="VARCHAR"/>
     <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
-    <collection property="attendanceList" ofType="com.isoftstone.kaoqin.bean.attendance.Attendance" resultMap="attend"/>
-  </resultMap>
-  <resultMap id="attend" type="com.isoftstone.kaoqin.bean.attendance.Attendance">
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="date" property="date" jdbcType="DATE" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="workhours" property="workhours" jdbcType="INTEGER" />
-    <result column="overhour" property="overhour" jdbcType="DOUBLE" />
-    <result column="work_off" property="workOff" jdbcType="INTEGER" />
-    <result column="late" property="late" jdbcType="INTEGER" />
-    <result column="early" property="early" jdbcType="INTEGER" />
-    <result column="absent" property="absent" jdbcType="INTEGER" />
-    <result column="on_duty" property="onDuty" jdbcType="TIMESTAMP" />
-    <result column="off_duty" property="offDuty" jdbcType="TIMESTAMP" />
-    <result column="description" property="description" jdbcType="VARCHAR" />
+
+    <collection property="attendanceList" ofType="com.isoftstone.kaoqin.bean.attendance.Attendance"  javaType="ArrayList">
+
+      <id column="attend_id" property="id" jdbcType="BIGINT" />
+      <result column="date" property="date" jdbcType="DATE" />
+      <result column="user_id" property="userId" jdbcType="INTEGER" />
+      <result column="workhours" property="workhours" jdbcType="INTEGER" />
+      <result column="overhour" property="overhour" jdbcType="DOUBLE" />
+      <result column="work_off" property="workOff" jdbcType="INTEGER" />
+      <result column="late" property="late" jdbcType="INTEGER" />
+      <result column="early" property="early" jdbcType="INTEGER" />
+      <result column="absent" property="absent" jdbcType="INTEGER" />
+      <result column="on_duty" property="onDuty" jdbcType="TIMESTAMP" />
+      <result column="off_duty" property="offDuty" jdbcType="TIMESTAMP" />
+      <result column="description" property="description" jdbcType="VARCHAR" />
+    </collection>
   </resultMap>
 
+
   <select id="getAll" resultMap="BaseResultMap"  parameterType="Map" >
-   select a.real_name,b.* ,c.project_name  from emp_user a LEFT join attendance b
+   select b.* ,a.real_name,c.project_name,a.id as aId  from emp_user a LEFT join attendance b
     ON  a.id = b.user_id
-    JOIN project c
+    LEFT JOIN project c
     on  a.project_id = c.id
    WHERE b.date >= #{from} and #{to} >=b.date
   <if test="projectId !=null">
@@ -33,12 +38,59 @@
   <if test="userId !=null">
     AND a.id = #{userId}
   </if>
-  GROUP BY b.user_id,b.date
+  GROUP BY aId,b.date
   ORDER by c.id
   <if test="limit > -1">
     limit #{limit},#{size};
   </if>
   </select>
+
+  <insert id="insertMonth" useGeneratedKeys="true" parameterType="java.util.List">
+    insert into attendance (date, user_id,
+      workhours, overhour, work_off,
+      late, early, absent,
+      on_duty, off_duty, description
+      )
+    values
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+      <if test="#{item.date} != null">
+        #{item.date,jdbcType=DATE},
+      </if>
+      <if test="#{item.userId} != null">
+        #{item.userId,jdbcType=INTEGER},
+      </if>
+      <if test="#{item.workhours} != null">
+        #{item.workhours,jdbcType=INTEGER},
+      </if>
+      <if test="#{item.overhour} != null">
+        #{item.overhour,jdbcType=DOUBLE},
+      </if>
+      <if test="#{item.workOff} != null">
+        #{item.workOff,jdbcType=INTEGER},
+      </if>
+      <if test="#{item.late} != null">
+        #{item.late,jdbcType=INTEGER},
+      </if>
+      <if test="#{item.early} != null">
+        #{item.early,jdbcType=INTEGER},
+      </if>
+      <if test="#{item.absent} != null">
+        #{item.absent,jdbcType=INTEGER},
+      </if>
+      <if test="#{item.onDuty} != null">
+        #{item.onDuty,jdbcType=TIMESTAMP},
+      </if>
+      <if test="#{item.offDuty} != null">
+        #{item.offDuty,jdbcType=TIMESTAMP},
+      </if>
+      <if test="#{item.description} != null">
+        #{item.description,jdbcType=VARCHAR}
+      </if>
+      )
+    </foreach>
+
+  </insert>
 
 
 </mapper>

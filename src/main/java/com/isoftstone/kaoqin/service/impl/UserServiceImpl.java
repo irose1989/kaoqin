@@ -12,6 +12,7 @@ import com.isoftstone.kaoqin.controller.vo.PasswordModify;
 import com.isoftstone.kaoqin.controller.vo.UserVo;
 import com.isoftstone.kaoqin.controller.vo.UserVoList;
 import com.isoftstone.kaoqin.dao.userMapper.UserMapperExt;
+import com.isoftstone.kaoqin.service.AttendanceService;
 import com.isoftstone.kaoqin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,9 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired(required = true)
     private UserMapperExt userMapper;
+
+    @Autowired
+    private AttendanceService attendanceService;
 
     /**
      * 检查用户名 密码 正不正确
@@ -151,7 +155,7 @@ public class UserServiceImpl implements UserService {
         }
         UserExample userExample = new UserExample();
         userExample.createCriteria().andIsoftNoEqualTo(isoftNo);
-        int code = userMapper.updateByExampleSelective(user,userExample);
+        int code = userMapper.updateByExampleSelective(user, userExample);
         /**编辑成功*/
         if(code>0){
             basicAttendance.setCode(UserConstants.editUserInfoCode);
@@ -208,10 +212,16 @@ public class UserServiceImpl implements UserService {
             return basicAttendance;
         }
         int code = userMapper.batchOpenAccount(userList);
-
-        basicAttendance.setCode(code);
-        basicAttendance.setMsg("开通账号成功");
+        basicAttendance.setCode(UserConstants.accountSuscessCode);
+        basicAttendance.setMsg(UserConstants.accountSuccessMsg);
         basicAttendance.setData(null);
+
+
+        /**获取每个人的userId*/
+        userList = findAllUserId(userList);
+        /**创建成功之后 给每个用户生成本月的考勤记录*/
+        attendanceService.batchCreateAttendanceRecord(userList);
+
         return basicAttendance;
     }
 
@@ -264,4 +274,28 @@ public class UserServiceImpl implements UserService {
         basicAttendance.setCode(UserConstants.oldPwdUnmatchCode);
         return basicAttendance;
     }
+
+    /**根据isoftNo 查找userId*/
+    public List<User> findAllUserId(List<User> userList){
+
+        if(CollectionUtils.isEmpty(userList)){
+            return null;
+        }
+        List<User> newUserList = new ArrayList<User>();
+        for(User u:userList){
+            UserExample example = new UserExample();
+            UserExample.Criteria criteria = example.createCriteria();
+            String isofthNo = u.getIsoftNo();
+            criteria.andIsoftNoEqualTo(isofthNo);
+            List<User> users = userMapper.selectByExample(example);
+            if(CollectionUtils.isEmpty(users)){
+                continue;
+            }
+            int userId = users.get(0).getId();
+            u.setId(userId);
+            newUserList.add(u);
+        }
+        return newUserList;
+    }
+
 }

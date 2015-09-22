@@ -64,4 +64,8 @@ http://www.oschina.net/question/154489_141658
                  });
                  var index =json.lastIndexOf(",");
                  json =json.substring(0,index)+"]}";
+9-22
+多层嵌套方法  return loop; 外边写loop 可以指定跳到哪层循环
+
+Collection 主键id 影响 返回数据（参照9-20的问题）可以设置一个别名
 

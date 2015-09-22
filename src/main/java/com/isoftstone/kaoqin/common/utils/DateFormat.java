@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class DateFormat {
 
-    /**根据获取整个 考勤日期表*/
+    /**客户端 根据获取整个 考勤日期表*/
     public static AttendanceDateVo getDateList(){
         AttendanceDateVo vo = new AttendanceDateVo();
         List<String> list = new ArrayList<String>();
@@ -49,48 +49,25 @@ public class DateFormat {
         }
         vo.setDateList(list);
         return vo;
-        /*if(upOrDown == AttendanceConstants.UPMONTH){
-            for (int i = 1; i <= 15; i++) {
-                c.set(Calendar.DAY_OF_MONTH, i);
-                Date date = c.getTime();
-                String s = format.format(date);
-                list.add(s);
-
-                *//**设置上旬的区间*//*
-                if(i==1){
-                    String from = format2.format(date) ;
-                    vo.setFrom(from);
-                }
-                if(i==15){
-                    String to = format2.format(date) ;
-                    vo.setTo(to);
-                }
-            }
-
-            vo.setDateList(list);
-        }else {
-            for (int i = 16; i <= totalDays; i++) {
-                c.set(Calendar.DAY_OF_MONTH, i);
-                Date date = c.getTime();
-                String s = format.format(date);
-                list.add(s);
-
-                *//**设置下旬的区间*//*
-                if(i==16){
-                    String from = format2.format(date) ;
-                    vo.setFrom(from);
-                }
-                if(i==totalDays){
-                    String to = format2.format(date) ;
-                    vo.setTo(to);
-                }
-            }
-            vo.setDateList(list);
-        }*/
 
     }
 
-    /**获取readonly*/
+    /**dao层 根据系统时间获取整个月 考勤日期表*/
+    public static List<Date> getDaoDateList(){
+        List<Date> dateList = new ArrayList<Date>();
+        Date d = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(d);
+        int totalDays = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+        for(int i =1;i<=totalDays;i++){
+            c.set(Calendar.DAY_OF_MONTH,i);
+            Date date = c.getTime();
+            dateList.add(date);
+        }
+        return dateList;
+    }
+
+    /**获取readonly 最近一周*/
     public static List<AttendVo> getReadOnly(List<AttendVo> voList){
         Date d = new Date();
         long today = d.getTime();

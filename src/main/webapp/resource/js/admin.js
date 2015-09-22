@@ -5,14 +5,27 @@ $(function(){
         count++;
         var cla = "create_account"+count
         $("#add_more_account").before('<div class="'+cla+'"><input class="span3"  type="text" name="isoftNo"><button class="btn remove" style="color: #cc374b">删除</button><span style="color: red;font-size: small"></span></div>');
+
+        swithchOpen();
     })
 
     /**删除输入框*/
     $("#create_account").on("click",'.remove',function(e){
         $(e.target).parent('div').remove();
+        swithchOpen();
     })
-
 })
+
+/**开通账号名字切换方法*/
+function swithchOpen(){
+    /**多个输入框显示批量开通*/
+    var inputCounts =$('#create_account input').length;
+    if(inputCounts==1){
+        $('#bitch_openAccount').text("开通账号");
+    }else{
+        $('#bitch_openAccount').text("批量开通账号");
+    }
+}
 
 /**失去焦点检查是否为空，用户是否已经注册提示*/
 $(function(){
@@ -44,25 +57,23 @@ $(function(){
 })
 
 $(function(){
+    loop:
     $("#bitch_openAccount").click(function(){
         /**遍历 有无提示消息                return 跳出一个方法？？？？？？？？？？？？？*/
         $('#create_msg').text("")
         $('#create_account input').each(function(){
-            alert(1);
             var input = $(this).val();
             if(!input){
-                alert(2)
                 $(this).parent('div').find('span').text("账号不能为空");
-                return;
+                return loop;
             }
         });
-        alert(3);
         $('#create_account span').each(function(index,element){
             var msg = $(this).text();
            /* alert(msg);*/
             if(msg){
                 $('#create_msg').text("请按提示填写");
-                return;
+                return loop;
             }
         });
         var json = {};
@@ -82,8 +93,14 @@ $(function(){
             dataType: "json",
             data:json,
             success:function(data){
+                var code = data.code;
                 var msg = data.msg;
-                $('#create_msg').text(msg);
+                if(code == 6){
+                    $('#create_msg').text(msg);
+                }else{
+                    $('#create_msg').text(msg);
+                }
+
             }
         });
     });

@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class AttendVo {
 
+    private  long id;
     /**每天的考勤记录*/
     private List<Attendance> attendanceList;
 
@@ -16,6 +17,13 @@ public class AttendVo {
 
     private  String projectName;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public List<Attendance> getAttendanceList() {
         return attendanceList;

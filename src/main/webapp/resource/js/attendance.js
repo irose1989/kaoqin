@@ -1,61 +1,30 @@
 $(function() {
-    var mydate = new Date();
-    var fromDay = new Date(mydate-7*24*3600*1000);
-    var today = mydate.getDate();
-    $(".upOrDown_month").click(function () {
+    /**编辑的切换*/
+    $('#attendance_edit').click(function(){
+        $("#attendance_edit").addClass("hidden");
+        $("#attendance_cancle").removeClass("hidden");
+        $("#attendance_submit").removeClass("hidden");
 
-        /**清空*/
-        for(var i=0;i<16;i++) {
-            var index1 = i + 1;
-            for (var j = 0; j < 10; j++) {
-                var index2 = j + 1;
-                var clean = ".attend" + index1 + index2;
-               // if (clean) {
-                    $(clean).text("");
-              //  }
-
-            }
-        }
-        /**通过事件源*/
-        var t = $(event.target).val();
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:8080/kaoqin/admin/changeDay.do",
-            dataType: "json",
-            contentType: 'application/json',
-            data: {upOrDown: t},
-            success: function (data) {
-                /**返回考勤日期区间及考勤天数*/
-                var list = data.data.month.dateList;
-                var len1 = list.length;
-                /**返回考勤记录 及考勤记录条数*/
-                var listAttend = data.data.listAttend;
-                var len2 = listAttend.length;
-
-                    /**填充考勤记录*/
-                    /**名字要先对应下 现在算法还是错误的。。。。*/
-                for(var i=0;i<len1;i++){
-                    var index =i+1;
-                    /**切换上下月*/
-                    var claDate  = ".date"+index;
-                    var date = list[i];
-                    $(claDate).text(date);
-                    /**对应的考勤记录*/
-                    var claAttend1  = ".attend"+index;
-                    for(var j =0;j<len2;j++){
-                        var index2 = j+1
-                        var claAttend2 = claAttend1+index2
-                        var day =listAttend[j].day;
-                        if(day==list[i]){
-                            $(claAttend2).text(listAttend[j].workhours);
-                        }
-                    }
-
-                }
-            }
+        /**可输入input*/
+        $('#attendance_form input').each(function(){
+            $(this).removeAttr("readonly");
         });
-    })
+    });
+    $('#attendance_cancle').click(function(){
+        $("#attendance_edit").removeClass("hidden");
+        $("#attendance_cancle").addClass("hidden");
+        $("#attendance_submit").addClass("hidden");
 
-
+        /**不可输入input*/
+        $('#attendance_form input').each(function(){
+            $(this).attr("readonly","readonly");
+        });
+    });
+    /**编辑后提交*/
+    $('#attendance_submit').click(function(){
+        $('#attendance_form input').each(function(){
+            console.log($(this).val());
+        });
+    });
 
 });
