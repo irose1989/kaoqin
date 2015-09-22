@@ -1,13 +1,16 @@
 $(function() {
+
     /**编辑的切换*/
     $('#attendance_edit').click(function(){
+
         $("#attendance_edit").addClass("hidden");
         $("#attendance_cancle").removeClass("hidden");
         $("#attendance_submit").removeClass("hidden");
 
-        /**可输入input*/
+        /**可以编辑考勤 状态*/
         $('#attendance_form input').each(function(){
             $(this).removeAttr("readonly");
+            $(this).parent('td').addClass("info");
         });
     });
     $('#attendance_cancle').click(function(){
@@ -15,16 +18,28 @@ $(function() {
         $("#attendance_cancle").addClass("hidden");
         $("#attendance_submit").addClass("hidden");
 
-        /**不可输入input*/
+        /**不可编辑考勤 状态*/
         $('#attendance_form input').each(function(){
             $(this).attr("readonly","readonly");
+            $(this).parent('td').removeClass("info");
         });
     });
     /**编辑后提交*/
     $('#attendance_submit').click(function(){
+        var jsonStr = '{"attendanceVoList":[';
         $('#attendance_form input').each(function(){
-            console.log($(this).val());
+            var des = $(this).val().trim();
+            //{"attendanceVoList":[{"description":"p","userId":1,"day":"sd"},{}]}
+            /**有考勤记录 编辑*/
+            if(des){
+                var content = '{"description":"'+des+'",';
+                var info = $(this).parent("td").find("span").text().trim();
+                jsonStr += content+info+'},'
+            }
         });
+        var index = jsonStr.lastIndexOf(",");
+        var json =jsonStr.substring(0,index);
+        json=json+"]}"
     });
 
 });

@@ -21,7 +21,7 @@
       <result column="absent" property="absent" jdbcType="INTEGER" />
       <result column="on_duty" property="onDuty" jdbcType="TIMESTAMP" />
       <result column="off_duty" property="offDuty" jdbcType="TIMESTAMP" />
-      <result column="description" property="description" jdbcType="VARCHAR" />
+        <result column="description" property="description" jdbcType="VARCHAR" />
     </collection>
   </resultMap>
 
