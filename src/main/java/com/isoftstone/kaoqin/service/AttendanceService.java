@@ -5,6 +5,7 @@ import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.controller.vo.AttendVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceDateVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
+import com.isoftstone.kaoqin.controller.vo.AttendanceVoList;
 
 import java.util.List;
 
@@ -15,4 +16,5 @@ public interface AttendanceService {
     /**查找考勤多有记录*/
     public BasicAttendance<List<AttendVo>> findAll(int currentPage, AttendanceDateVo dateVo);
     public BasicAttendance batchCreateAttendanceRecord(List<User> userList);
+    public BasicAttendance savaAttendanceRecord(AttendanceVoList voList);
 }

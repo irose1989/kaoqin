@@ -1,9 +1,9 @@
 package com.isoftstone.kaoqin.dao.attendanceMapper.test;
 
 import com.isoftstone.kaoqin.bean.attendance.Attendance;
-import com.isoftstone.kaoqin.bean.user.User;
 import com.isoftstone.kaoqin.common.utils.DateFormat;
 import com.isoftstone.kaoqin.controller.vo.AttendVo;
+import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
 import com.isoftstone.kaoqin.dao.attendanceMapper.AttendanceMapperExt;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -84,5 +85,38 @@ public class AttendanceMapperExtTest {
         }
     }
 
+    @Test
+    public void test5(){
+        List<AttendanceVo>list = new ArrayList<AttendanceVo>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate1 = "2015-09-23";
+        String strDate2 = "2015-09-22";
+        AttendanceVo vo1 = new AttendanceVo();
+        AttendanceVo vo2 = new AttendanceVo();
+        vo1.setDay(strDate1);
+        vo2.setDay(strDate2);
+        vo1.setWorkhours(6);
+        vo1.setUserId(75);
+        vo2.setWorkhours(6);
+        vo2.setUserId(75);
+        list.add(vo1);
+        list.add(vo2);
+        int t =ext.saveRecords(list);
+        System.out.println("=========================="+t);
+    }
 
+    @Test
+    public void test6(){
+        List<AttendanceVo>list = new ArrayList<AttendanceVo>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate1 = "2015-09-23";
+        String strDate2 = "2015-09-22";
+        AttendanceVo vo1 = new AttendanceVo();
+        vo1.setDay(strDate1);
+        vo1.setWorkhours(6);
+        vo1.setUserId(75);
+        list.add(vo1);
+        int t =ext.saveRecord(vo1);
+        System.out.println("=========================="+t);
+    }
 }

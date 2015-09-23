@@ -119,6 +119,7 @@ public class DateFormat {
     public static BasicAttendance<List<AttendVo>> getDateToDay(BasicAttendance<List<AttendVo>> basicAttendance){
         List<AttendVo> list = basicAttendance.getData();
         SimpleDateFormat format = new SimpleDateFormat("dd");
+        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
         for(AttendVo vo:list){
             List<Attendance> attList = vo.getAttendanceList();
             if(CollectionUtils.isEmpty(attList)){
@@ -127,7 +128,9 @@ public class DateFormat {
             for(Attendance attendance:attList){
                 Date date = attendance.getDate();
                 String day = format.format(date);
+                String dayFormart = format2.format(date);
                 attendance.setDay(day);
+                attendance.setDayFormart(dayFormart);
             }
         }
         basicAttendance.setData(list);

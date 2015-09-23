@@ -4,11 +4,13 @@ import antlr.StringUtils;
 import com.isoftstone.kaoqin.bean.attendance.Attendance;
 import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.common.constants.BasicConstants;
+import com.isoftstone.kaoqin.common.utils.CreateExcelToDisk;
 import com.isoftstone.kaoqin.common.utils.DateFormat;
 import com.isoftstone.kaoqin.controller.vo.*;
 import com.isoftstone.kaoqin.service.AttendanceService;
 import com.isoftstone.kaoqin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -77,12 +79,12 @@ public class AdminController {
     /**登录默认展现页面 或者点击考勤查询 默认当前一整个月*/
     @RequestMapping(value = "/findAttendance.do",method = RequestMethod.GET)
     public String findAttendance2(HttpServletRequest request){
-        /**封装整个月考勤时间段，考勤时间集*/
+        /**封装整个月考勤时间段，考勤时间集(前台显示横坐标)*/
         AttendanceDateVo dateVo = DateFormat.getDateList();
         /**默认第一页*/
         BasicAttendance<List<AttendVo>> basicAttendance
                 =attendanceService.findAll(BasicConstants.DEFAULT_CURRENT_PAGE, dateVo);
-        /**给date转换只有天数的格式*/
+        /**给date转换只有天数的格式 考勤上的时间（跟横坐标日期比较）*/
         basicAttendance = DateFormat.getDateToDay(basicAttendance);
         request.setAttribute("list",basicAttendance.getData());
         request.setAttribute("month",dateVo);
@@ -109,9 +111,29 @@ public class AdminController {
         request.setAttribute("month",dateVo);*/
         Map<String, Object> map = new HashMap<String,Object>();
         map.put("month",dateVo);
-        map.put("listAttend",basicAttendance.getData());
+        map.put("listAttend", basicAttendance.getData());
         basicAttendance.setData(map);
         return basicAttendance;
     }
     /**登记考勤*/
+    @RequestMapping(value = "/saveAttendance.do",method = RequestMethod.POST)
+    @ResponseBody
+    public BasicAttendance saveAttendance(@RequestBody AttendanceVoList attendanceVoList){
+        BasicAttendance basicAttendance = attendanceService.savaAttendanceRecord(attendanceVoList);
+        return basicAttendance;
+    }
+    /**导出excel表格*/
+    @RequestMapping(value = "/createExcel.do",method = RequestMethod.GET)
+    @ResponseBody
+    public BasicAttendance createExcel()throws  Exception{
+        /**封装整个月考勤时间段，考勤时间集(前台显示横坐标)*/
+        AttendanceDateVo dateVo = DateFormat.getDateList();
+        /**默认第一页*/
+        BasicAttendance<List<AttendVo>> basicAttendance
+                =attendanceService.findAll(BasicConstants.DEFAULT_CURRENT_PAGE, dateVo);
+        /**给date转换只有天数的格式 考勤上的时间（跟横坐标日期比较）*/
+        basicAttendance = DateFormat.getDateToDay(basicAttendance);
+        basicAttendance = CreateExcelToDisk.getExcel(basicAttendance.getData(),dateVo);
+        return basicAttendance;
+    }
 }

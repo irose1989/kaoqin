@@ -10,6 +10,8 @@ import com.isoftstone.kaoqin.common.utils.DateFormat;
 import com.isoftstone.kaoqin.common.utils.PageUtil;
 import com.isoftstone.kaoqin.controller.vo.AttendVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceDateVo;
+import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
+import com.isoftstone.kaoqin.controller.vo.AttendanceVoList;
 import com.isoftstone.kaoqin.dao.attendanceMapper.AttendanceMapperExt;
 import com.isoftstone.kaoqin.service.AttendanceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +63,7 @@ public class AttendanceServiceImpl implements AttendanceService {
         else return  voList.size();
     }
 
+    /**批量 创建 考勤记录表*/
     public BasicAttendance<Attendance> batchCreateAttendanceRecord(List<User> userList) {
         BasicAttendance<Attendance> basicAttendance = new BasicAttendance<Attendance>();
         if(CollectionUtils.isEmpty(userList)){
@@ -93,6 +96,34 @@ public class AttendanceServiceImpl implements AttendanceService {
         }
         basicAttendance.setCode(AttendanceConstants.createAttendFailedCode);
         basicAttendance.setMsg(AttendanceConstants.createAttendFailedMsg);
+        return basicAttendance;
+    }
+
+    /**批量 保存 考勤记录表*/
+    public BasicAttendance savaAttendanceRecord(AttendanceVoList voList) {
+
+        BasicAttendance basicAttendance = new BasicAttendance();
+        if(voList ==null){
+            basicAttendance.setCode(AttendanceConstants.saveAttendFailedCode);
+            basicAttendance.setMsg(AttendanceConstants.saveAttendFailedMsg);
+            return  basicAttendance;
+        }
+        List<AttendanceVo> list =voList.getAttendanceVoList();
+        if(CollectionUtils.isEmpty(list)){
+            basicAttendance.setCode(AttendanceConstants.saveAttendFailedCode);
+            basicAttendance.setMsg(AttendanceConstants.saveAttendFailedMsg);
+            return  basicAttendance;
+        }
+        for(AttendanceVo vo:list){
+            int code = admExt.saveRecord(vo);
+            if(code==0){
+                basicAttendance.setCode(AttendanceConstants.saveAttendFailedCode);
+                basicAttendance.setMsg(AttendanceConstants.saveAttendFailedMsg);
+                return  basicAttendance;
+            }
+        }
+        basicAttendance.setCode(AttendanceConstants.saveAttendSuccessCode);
+        basicAttendance.setMsg(AttendanceConstants.saveAttendSuccessMsg);
         return basicAttendance;
     }
 }

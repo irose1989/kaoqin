@@ -39,20 +39,21 @@ $(function(){
             return;
         }
         /**检查用户是否已经注册*/
-        $.ajax({
-            type:'GET',
-            url:"http://localhost:8080/kaoqin/admin/checkUser.do",
-            dataType: "json",
-            data:{"isoftNo":no},
-            success:function(data){
-                var code = data.code;
-                var msg = data.msg;
-                if(code==3){
-                    $(e.target).parent('div').find('span').text(msg);
-                    return;
+            $.ajax({
+                type:'GET',
+                url:"http://localhost:8080/kaoqin/admin/checkUser.do",
+                contentType:"application/json",
+                dataType: "json",
+                data:{"isoftNo":no},
+                success:function(data){
+                    var code = data.code;
+                    var msg = data.msg;
+                    if(code==3){
+                        $(e.target).parent('div').find('span').text(msg);
+                        return;
+                    }
                 }
-            }
-        });
+            });
     })
 })
 
@@ -60,6 +61,7 @@ $(function(){
     loop:
     $("#bitch_openAccount").click(function(){
         /**遍历 有无提示消息                return 跳出一个方法？？？？？？？？？？？？？*/
+
         $('#create_msg').text("")
         $('#create_account input').each(function(){
             var input = $(this).val();
@@ -85,7 +87,6 @@ $(function(){
         var index =json.lastIndexOf(",");
         json =json.substring(0,index)+"]}";
         var ttt ='{"userVoList":[{"isoftNo":"123"},{"isoftNo":"1234"}]}'
-
         $.ajax({
             type:'POST',
             url:"http://localhost:8080/kaoqin/admin/batchOpenAccount.do",

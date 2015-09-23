@@ -4,7 +4,9 @@ import java.util.Date;
 
 public class Attendance {
 
-    private String day;
+    private String day;//("dd格式")
+
+    private String dayFormart;//("yy-mm-dd格式")
 
     private Long id;
 
@@ -31,6 +33,14 @@ public class Attendance {
     private String description;
 
     private boolean readonly;
+
+    public String getDayFormart() {
+        return dayFormart;
+    }
+
+    public void setDayFormart(String dayFomart) {
+        this.dayFormart = dayFomart;
+    }
 
     public String getDay() {
         return day;

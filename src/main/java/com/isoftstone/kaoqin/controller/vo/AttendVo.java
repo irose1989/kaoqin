@@ -9,6 +9,8 @@ import java.util.List;
  */
 public class AttendVo {
 
+    /**封装向前台发送的数据*/
+
     private  long id;
     /**每天的考勤记录*/
     private List<Attendance> attendanceList;

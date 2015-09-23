@@ -53,6 +53,7 @@ table.formdata{
     border:1px solid #5F6F7E;
     border-collapse:collapse;
     font-family:Arial;
+    font-size: smaller;
 }
 table.formdata caption{       /*标题*/
     text-align:left;

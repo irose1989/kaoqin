@@ -52,7 +52,7 @@
       on_duty, off_duty, description
       )
     values
-    <foreach collection="list" index="index" item="item" separator=",">
+    <foreach collection="list" index="index" item="item"  separator=",">
       (
       <if test="#{item.date} != null">
         #{item.date,jdbcType=DATE},
@@ -91,6 +91,48 @@
     </foreach>
 
   </insert>
+
+  <update id="saveRecords" parameterType="java.util.List">
+    <foreach collection="list" item="item" index="index" separator=";" >
+      select #{item.workhours}
+    </foreach>
+
+  </update>
+
+  <update id="saveRecord" parameterType="com.isoftstone.kaoqin.controller.vo.AttendanceVo">
+    update attendance
+    <set>
+      <if test="workhours != null" >
+        workhours = #{workhours,jdbcType=INTEGER},
+      </if>
+      <if test="overhour != null" >
+        overhour = #{overhour,jdbcType=DOUBLE},
+      </if>
+      <if test="workOff != null" >
+        work_off = #{workOff,jdbcType=INTEGER},
+      </if>
+      <if test="late != null" >
+        late = #{late,jdbcType=INTEGER},
+      </if>
+      <if test="early != null" >
+        early = #{early,jdbcType=INTEGER},
+      </if>
+      <if test="absent != null" >
+        absent = #{absent,jdbcType=INTEGER},
+      </if>
+      <if test="onDuty != null" >
+        on_duty = #{onDuty,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offDuty != null" >
+        off_duty = #{offDuty,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where date= #{day} and user_id=#{userId}
+
+  </update>
 
 
 </mapper>

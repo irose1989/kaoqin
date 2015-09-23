@@ -14,6 +14,7 @@ $(function() {
         });
     });
     $('#attendance_cancle').click(function(){
+        $("#saveAttend_msg").text("");
         $("#attendance_edit").removeClass("hidden");
         $("#attendance_cancle").addClass("hidden");
         $("#attendance_submit").addClass("hidden");
@@ -39,7 +40,30 @@ $(function() {
         });
         var index = jsonStr.lastIndexOf(",");
         var json =jsonStr.substring(0,index);
-        json=json+"]}"
+        json=json+"]}";
+        console.log(json);
+        $.ajax({
+            type:'POST',
+            url:"http://localhost:8080/kaoqin/admin/saveAttendance.do?excel=1",
+            dataType: "json",
+            contentType:"application/json",
+            data:json,
+            success:function(data){
+                $("#saveAttend_msg").text(data.msg);
+            }
+        });
+    });
+
+    $('#create_excel').click(function(){
+        alert(1);
+        $.ajax({
+            type:'GET',
+            url:"http://localhost:8080/kaoqin/admin/createExcel.do",
+            dataType:"json",
+            success:function(data){
+                $("#saveAttend_msg").text(data.msg);
+            }
+        });
     });
 
 });
