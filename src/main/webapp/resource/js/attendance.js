@@ -54,13 +54,16 @@ $(function() {
         });
     });
 
+
+    /**到处excel*/
     $('#create_excel').click(function(){
-        alert(1);
+
         $.ajax({
             type:'GET',
             url:"http://localhost:8080/kaoqin/admin/createExcel.do",
             dataType:"json",
             success:function(data){
+                alert(1);
                 $("#saveAttend_msg").text(data.msg);
             }
         });

@@ -5,12 +5,10 @@ import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.common.constants.AttendanceConstants;
 import com.isoftstone.kaoqin.controller.vo.AttendVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceDateVo;
-import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
 import org.apache.poi.hssf.usermodel.*;
 
+import java.io.File;
 import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -66,14 +64,15 @@ public class CreateExcelToDisk {
             row.createCell((short) 1).setCellValue(attendVo.getRealName());
             row.createCell((short) 2).setCellValue(attendVo.getProjectName());
             for(int j= 0 ;j<colNum ;j++){
-                for(Attendance attendance:attendanceList){
-                    row.createCell((short)(j+3)).setCellValue(attendance.getDescription());
-                }
+                Attendance attendance = attendanceList.get(j);
+                row.createCell((short)(j+3)).setCellValue(attendance.getDescription());
             }
         }
         // 第六步，将文件存到指定位置
 
-            FileOutputStream fout = new FileOutputStream("C:/Users/wb-chenchaobin/Desktop/students.xls");
+            File file = new File("C:/Users/Administrator/Desktop/考勤表.xls");
+            if(file.exists()){file.delete();}
+            FileOutputStream fout = new FileOutputStream(file);
             wb.write(fout);
             fout.close();
             basicAttendance.setMsg(AttendanceConstants.createExcelSuccessMsg);

@@ -39,7 +39,7 @@
     AND a.id = #{userId}
   </if>
   GROUP BY aId,b.date
-  ORDER by c.id
+  ORDER by c.id,b.date
   <if test="limit > -1">
     limit #{limit},#{size};
   </if>
