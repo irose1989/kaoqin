@@ -44,7 +44,7 @@ $(function() {
         console.log(json);
         $.ajax({
             type:'POST',
-            url:"http://localhost:8080/kaoqin/admin/saveAttendance.do?excel=1",
+            url:"http://localhost:8080/kaoqin/admin/saveAttendance.do",
             dataType: "json",
             contentType:"application/json",
             data:json,
@@ -55,18 +55,18 @@ $(function() {
     });
 
 
-    /**到处excel*/
-    $('#create_excel').click(function(){
-
+    /**导出excel*/
+   /* $('#create_excel').click(function(){
+        alert(1);
         $.ajax({
             type:'GET',
             url:"http://localhost:8080/kaoqin/admin/createExcel.do",
             dataType:"json",
             success:function(data){
-                alert(1);
+                alert(data.msg);
                 $("#saveAttend_msg").text(data.msg);
             }
         });
-    });
+    });*/
 
 });

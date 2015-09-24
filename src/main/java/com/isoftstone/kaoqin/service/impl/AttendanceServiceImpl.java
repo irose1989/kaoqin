@@ -7,6 +7,7 @@ import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.common.constants.AttendanceConstants;
 import com.isoftstone.kaoqin.common.constants.BasicConstants;
 import com.isoftstone.kaoqin.common.utils.DateFormat;
+import com.isoftstone.kaoqin.common.utils.PageConf;
 import com.isoftstone.kaoqin.common.utils.PageUtil;
 import com.isoftstone.kaoqin.controller.vo.AttendVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceDateVo;
@@ -29,12 +30,12 @@ public class AttendanceServiceImpl implements AttendanceService {
     @Autowired
     private  AttendanceMapperExt admExt;
     /**分页查询考勤记录*/
-    public BasicAttendance<List<AttendVo>> findAll(int currentPage, AttendanceDateVo dateVo) {
+    public BasicAttendance findAll(PageConf pageConf, AttendanceDateVo dateVo) {
         /**考勤时间段条件*/
         String from = dateVo.getFrom();
         String to = dateVo.getTo();
         /**分页查询条件*/
-        int page = currentPage-1;
+        int page = pageConf.getCurrentPage()-1;
         int size = BasicConstants.PAGESIZE;
         Map<String,Object> map = new HashMap<String, Object>();
         map.put("limit",-1);
@@ -43,12 +44,27 @@ public class AttendanceServiceImpl implements AttendanceService {
         map.put("to",to);
 
         List<AttendVo>voList = admExt.getAll(map);
-         voList = PageUtil.getPageList(voList,page*size,size);
+        int totalResults=voList.size();
+         voList = PageUtil.getPageList(voList, page * size, size);
         /**最近一周才能修改*/
         voList = DateFormat.getReadOnly(voList);
+        BasicAttendance basicAttendance = PageUtil.getPage(voList,totalResults,pageConf);
+        return basicAttendance;
+    }
 
-        int totalResults=voList.size();
-        return PageUtil.getPage(voList,totalResults,page);
+    public BasicAttendance findAll(AttendanceDateVo dateVo) {
+        BasicAttendance basicAttendance = new BasicAttendance();
+        /**考勤时间段条件*/
+        String from = dateVo.getFrom();
+        String to = dateVo.getTo();
+        Map<String,Object> map = new HashMap<String, Object>();
+        map.put("from",from);
+        map.put("to",to);
+        map.put("limit",-1);
+        map.put("size", BasicConstants.PAGESIZE);
+        List<AttendVo>voList = admExt.getAll(map);
+        basicAttendance.setData(voList);
+        return basicAttendance;
     }
 
     public int getCounts(Map map){

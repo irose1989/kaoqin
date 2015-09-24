@@ -11,12 +11,12 @@ import java.util.List;
  */
 public class PageUtil {
     public static <T>BasicAttendance<T> getPage
-            (T t,int totalResults, int page){
+            (T t,int totalResults, PageConf pageConf ){
         BasicAttendance<T> basicAttendance = new BasicAttendance<T>();
-        PageConf pageConf = new PageConf();
-        int pre = 0;
-        int next = 0;
-        int currentPage = page + 1;
+        Integer pre = pageConf.getPre();
+        Integer next = pageConf.getNext();
+        Integer currentPage = pageConf.getCurrentPage();
+
         int totalPage = totalResults/BasicConstants.PAGESIZE;
         if (totalResults % BasicConstants.PAGESIZE > 0) {
             totalPage++;
@@ -55,5 +55,16 @@ public class PageUtil {
                 }
             }
         return newList;
+    }
+    public static PageConf getNewPageConf(int totalResults,PageConf pageConf){
+        Integer pre = pageConf.getPre();
+        Integer next = pageConf.getNext();
+        Integer currentPage = pageConf.getCurrentPage();
+        int totalPage = totalResults/BasicConstants.PAGESIZE;//(取整)
+        /**点击下一页 */
+        if(pre == null && next !=null){
+
+        }
+        return null;
     }
 }

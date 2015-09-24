@@ -6,6 +6,7 @@ import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.common.constants.BasicConstants;
 import com.isoftstone.kaoqin.common.utils.CreateExcelToDisk;
 import com.isoftstone.kaoqin.common.utils.DateFormat;
+import com.isoftstone.kaoqin.common.utils.PageConf;
 import com.isoftstone.kaoqin.controller.vo.*;
 import com.isoftstone.kaoqin.service.AttendanceService;
 import com.isoftstone.kaoqin.service.UserService;
@@ -62,13 +63,15 @@ public class AdminController {
         return basicAttendance;
     }
 
-    /**查找所有考勤记录*/
+    /**测试 查找所有考勤记录*/
     @RequestMapping(value = "/findAttendance2.do",method = RequestMethod.POST)
     public String findAttendance
     (@RequestBody PageVo pageVo,HttpServletRequest request){
         /*测试pageVo.getCurrentPage()*/
+        PageConf pageConf = new PageConf();
+        pageConf.setCurrentPage(BasicConstants.DEFAULT_CURRENT_PAGE);
         BasicAttendance<List<AttendVo>> basicAttendance
-                =attendanceService.findAll(1,null);
+                =attendanceService.findAll(pageConf,null);
         request.setAttribute("list",basicAttendance.getData());
 
         AttendanceDateVo dateVo = DateFormat.getDateList();
@@ -82,11 +85,14 @@ public class AdminController {
         /**封装整个月考勤时间段，考勤时间集(前台显示横坐标)*/
         AttendanceDateVo dateVo = DateFormat.getDateList();
         /**默认第一页*/
-        BasicAttendance<List<AttendVo>> basicAttendance
-                =attendanceService.findAll(BasicConstants.DEFAULT_CURRENT_PAGE, dateVo);
+        PageConf pageConf = new PageConf();
+        pageConf.setCurrentPage(BasicConstants.DEFAULT_CURRENT_PAGE);
+        BasicAttendance basicAttendance
+                =attendanceService.findAll(pageConf, dateVo);
         /**给date转换只有天数的格式 考勤上的时间（跟横坐标日期比较）*/
         basicAttendance = DateFormat.getDateToDay(basicAttendance);
-        request.setAttribute("list",basicAttendance.getData());
+        request.setAttribute("list", basicAttendance.getData());
+        request.setAttribute("page",basicAttendance.getPageConf());
         request.setAttribute("month",dateVo);
         return "attendence";
     }
@@ -103,14 +109,16 @@ public class AdminController {
         int upOrDown = Integer.parseInt(request.getParameter("upOrDown"));
         AttendanceDateVo dateVo = DateFormat.getDateList();
         /**默认第一页 List<AttendanceVo>*/
+        PageConf pageConf = new PageConf();
+        pageConf.setCurrentPage(BasicConstants.DEFAULT_CURRENT_PAGE);
         BasicAttendance basicAttendance
-                =attendanceService.findAll(BasicConstants.DEFAULT_CURRENT_PAGE, dateVo);
+                =attendanceService.findAll(pageConf, dateVo);
         /**给date转换只有天数的格式*/
         basicAttendance = DateFormat.getDateToDay(basicAttendance);
     /*    request.setAttribute("list",basicAttendance.getData());
         request.setAttribute("month",dateVo);*/
         Map<String, Object> map = new HashMap<String,Object>();
-        map.put("month",dateVo);
+        map.put("month", dateVo);
         map.put("listAttend", basicAttendance.getData());
         basicAttendance.setData(map);
         return basicAttendance;
@@ -129,11 +137,46 @@ public class AdminController {
         /**封装整个月考勤时间段，考勤时间集(前台显示横坐标)*/
         AttendanceDateVo dateVo = DateFormat.getDateList();
         /**默认第一页*/
+        PageConf pageConf = new PageConf();
+        pageConf.setCurrentPage(BasicConstants.DEFAULT_CURRENT_PAGE);
         BasicAttendance<List<AttendVo>> basicAttendance
-                =attendanceService.findAll(BasicConstants.DEFAULT_CURRENT_PAGE, dateVo);
+                =attendanceService.findAll(dateVo);
         /**给date转换只有天数的格式 考勤上的时间（跟横坐标日期比较）*/
         basicAttendance = DateFormat.getDateToDay(basicAttendance);
         basicAttendance = CreateExcelToDisk.getExcel(basicAttendance.getData(),dateVo);
         return basicAttendance;
+    }
+    /**分页*/
+    @RequestMapping(value = "/page.do",method = RequestMethod.POST)
+    public String getPage(HttpServletRequest request,@RequestBody PageConf pageConf){
+        /**封装整个月考勤时间段，考勤时间集(前台显示横坐标)*/
+        AttendanceDateVo dateVo = DateFormat.getDateList();
+        /**分页*/
+        BasicAttendance basicAttendance
+                =attendanceService.findAll(pageConf, dateVo);
+        /**给date转换只有天数的格式 考勤上的时间（跟横坐标日期比较）*/
+        basicAttendance = DateFormat.getDateToDay(basicAttendance);
+        request.setAttribute("list",basicAttendance.getData());
+        request.setAttribute("page",basicAttendance.getPageConf());
+        request.setAttribute("month",dateVo);
+        return "attendence";
+    }
+
+    /**分页*/
+    @RequestMapping(value = "/getPage.do",method = RequestMethod.GET)
+    public String getOtherPage(HttpServletRequest request,int currentPage){
+        PageConf pageConf = new PageConf();
+        pageConf.setCurrentPage(currentPage);
+        /**封装整个月考勤时间段，考勤时间集(前台显示横坐标)*/
+        AttendanceDateVo dateVo = DateFormat.getDateList();
+        /**分页*/
+        BasicAttendance basicAttendance
+                =attendanceService.findAll(pageConf, dateVo);
+        /**给date转换只有天数的格式 考勤上的时间（跟横坐标日期比较）*/
+        basicAttendance = DateFormat.getDateToDay(basicAttendance);
+        request.setAttribute("list",basicAttendance.getData());
+        request.setAttribute("page",basicAttendance.getPageConf());
+        request.setAttribute("month",dateVo);
+        return "attendence";
     }
 }

@@ -5,43 +5,43 @@ package com.isoftstone.kaoqin.common.utils;
  */
 public class PageConf {
     /**上一页*/
-    private  int pre = 0;
+    private  Integer pre ;
     /**下一页*/
-    private  int next = 0;
+    private  Integer next ;
     /**当前页*/
-    private  int currentPage =0;
+    private  Integer currentPage ;
     /**总页数*/
-    private int totalPage =0;
+    private Integer totalPage ;
 
-    public int getPre() {
+    public Integer getPre() {
         return pre;
     }
 
-    public void setPre(int pre) {
+    public void setPre(Integer pre) {
         this.pre = pre;
     }
 
-    public int getNext() {
+    public Integer getNext() {
         return next;
     }
 
-    public void setNext(int next) {
+    public void setNext(Integer next) {
         this.next = next;
     }
 
-    public int getCurrentPage() {
+    public Integer getCurrentPage() {
         return currentPage;
     }
 
-    public void setCurrentPage(int currentPage) {
+    public void setCurrentPage(Integer currentPage) {
         this.currentPage = currentPage;
     }
 
-    public int getTotalPage() {
+    public Integer getTotalPage() {
         return totalPage;
     }
 
-    public void setTotalPage(int totalPage) {
+    public void setTotalPage(Integer totalPage) {
         this.totalPage = totalPage;
     }
 
