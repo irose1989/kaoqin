@@ -68,9 +68,10 @@ public class CreateExcelToDisk {
                 row.createCell((short)(j+3)).setCellValue(attendance.getDescription());
             }
         }
-        // 第六步，将文件存到指定位置
-
-            File file = new File("C:\\Users\\wb-chenchaobin\\Desktop\\考勤表.xls");
+        // 第六步，将文件存到指定位置/**/
+            /*home:C:\Users\Administrator\Desktop\考勤表.xls */
+            /*C:\Users\wb-chenchaobin\Desktop\考勤表.xls*/
+            File file = new File("C:/Users/Administrator/Desktop/考勤表.xls");
             if(file.exists()){file.delete();}
             FileOutputStream fout = new FileOutputStream(file);
             wb.write(fout);

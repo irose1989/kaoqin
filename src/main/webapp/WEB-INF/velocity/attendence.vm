@@ -15,10 +15,10 @@
     </select>月
 </div>
 
-<div id="attendance_form"
-     style="width:100%; height:80%; overflow:auto; border:1px solid #000000;padding: 0px;">
+    <div id="attendance_form"
+        style="width:100%; height:80%; overflow:auto; /*border:1px solid #000000;*/padding: 0px;">
       <form >
-          <table class="formdata  table table-bordered table-hover">
+          <table class="formdata  table table-bordered table-hover" >
               <caption>考勤系统</caption>
               <thead>
                   <tr>
@@ -82,18 +82,18 @@
           </table>
           <div class="row">
               <div class="pull-right" >
-                  <button class="btn btn-info" id="attendance_edit" type="button">考勤编辑</button>
-                  <button class="btn btn-info hidden" id="attendance_cancle" type="button" >取消</button>
-                  <button class="btn btn-info hidden" id="attendance_submit" type="button">确认提交</button>
-                  <button class="btn btn-info" id="create_excel">导出Excel</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <div id="saveAttend_msg"></div>
+              <button class="btn btn-info" id="attendance_edit" type="button">考勤编辑</button>
+              <button class="btn btn-info hidden" id="attendance_cancle" type="button" >取消</button>
+              <button class="btn btn-info hidden" id="attendance_submit" type="button">确认提交</button>
+               <button class="btn btn-info" id="create_excel">导出Excel</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <div id="saveAttend_msg"></div>
               </div>
           </div>
 
       </form>
 
 
-</div>
+    </div>
 
       <div class="pagination" id="search_page">
               #set($preCur =$!page.currentPage+(-1))

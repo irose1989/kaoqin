@@ -56,7 +56,7 @@ $(function() {
 
 
     /**导出excel*/
-   /* $('#create_excel').click(function(){
+    $('#create_excel').click(function(){
         alert(1);
         $.ajax({
             type:'GET',
@@ -67,6 +67,6 @@ $(function() {
                 $("#saveAttend_msg").text(data.msg);
             }
         });
-    });*/
+    });
 
 });
