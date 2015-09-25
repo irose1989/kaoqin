@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -50,8 +51,9 @@ public class AdminController {
     /**检查账号是否已经开通*/
     @ResponseBody
     @RequestMapping(value = "/checkUser",method = RequestMethod.GET)
-    public BasicAttendance checkUser(String isoftNo){
+    public BasicAttendance checkUser(String isoftNo,HttpServletResponse response){
         BasicAttendance basicAttendance = userService.checkUserExist(isoftNo);
+        /*response.setHeader("Access-Control-Allow-Origin","*");*/
         return basicAttendance;
     }
 

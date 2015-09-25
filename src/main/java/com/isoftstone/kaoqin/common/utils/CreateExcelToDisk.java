@@ -70,8 +70,8 @@ public class CreateExcelToDisk {
         }
         // 第六步，将文件存到指定位置/**/
             /*home:C:\Users\Administrator\Desktop\考勤表.xls */
-            /*C:\Users\wb-chenchaobin\Desktop\考勤表.xls*/
-            File file = new File("C:/Users/Administrator/Desktop/考勤表.xls");
+            /*C:/Users/wb-chenchaobin/Desktop/考勤表.xls*/
+            File file = new File("D:/考勤表.xls");
             if(file.exists()){file.delete();}
             FileOutputStream fout = new FileOutputStream(file);
             wb.write(fout);
@@ -82,7 +82,8 @@ public class CreateExcelToDisk {
         }
         catch (Exception e){
             e.printStackTrace();
-            basicAttendance.setMsg(AttendanceConstants.createExcelFailedMsg);
+            String msg = AttendanceConstants.createExcelFailedMsg+":"+e.getMessage();
+            basicAttendance.setMsg(msg);
             basicAttendance.setCode(AttendanceConstants.createExcelFailedCode);
             return basicAttendance;
         }

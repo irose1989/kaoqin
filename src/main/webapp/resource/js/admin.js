@@ -41,7 +41,7 @@ $(function(){
         /**检查用户是否已经注册*/
             $.ajax({
                 type:'GET',
-                url:"http://localhost:8080/kaoqin/admin/checkUser.do",
+                url:"checkUser.do",
                 contentType:"application/json",
                 dataType: "json",
                 data:{"isoftNo":no},
@@ -89,7 +89,7 @@ $(function(){
         var ttt ='{"userVoList":[{"isoftNo":"123"},{"isoftNo":"1234"}]}'
         $.ajax({
             type:'POST',
-            url:"http://localhost:8080/kaoqin/admin/batchOpenAccount.do",
+            url:"batchOpenAccount.do",
             contentType:"application/json",
             dataType: "json",
             data:json,

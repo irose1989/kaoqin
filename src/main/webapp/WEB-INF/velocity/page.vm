@@ -71,7 +71,7 @@
 
     </div>
     <br>
-    <div class="rightcon" style="height:900px">
+    <div class="rightcon" style="height:600px">
         $!screen_content
     </div>
 </div>

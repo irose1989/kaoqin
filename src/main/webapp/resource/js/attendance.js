@@ -6,7 +6,7 @@ $(function() {
         $("#attendance_edit").addClass("hidden");
         $("#attendance_cancle").removeClass("hidden");
         $("#attendance_submit").removeClass("hidden");
-
+        $("#saveAttend_msg").addClass("hidden");
         /**可以编辑考勤 状态*/
         $('#attendance_form input').each(function(){
             $(this).removeAttr("readonly");
@@ -14,7 +14,7 @@ $(function() {
         });
     });
     $('#attendance_cancle').click(function(){
-        $("#saveAttend_msg").text("");
+        $("#saveAttend_msg").addClass("hidden");
         $("#attendance_edit").removeClass("hidden");
         $("#attendance_cancle").addClass("hidden");
         $("#attendance_submit").addClass("hidden");
@@ -44,11 +44,12 @@ $(function() {
         console.log(json);
         $.ajax({
             type:'POST',
-            url:"http://localhost:8080/kaoqin/admin/saveAttendance.do",
+            url:"saveAttendance.do",
             dataType: "json",
             contentType:"application/json",
             data:json,
             success:function(data){
+                $("#saveAttend_msg").removeClass("hidden");
                 $("#saveAttend_msg").text(data.msg);
             }
         });
@@ -57,13 +58,12 @@ $(function() {
 
     /**导出excel*/
     $('#create_excel').click(function(){
-        alert(1);
         $.ajax({
             type:'GET',
-            url:"http://localhost:8080/kaoqin/admin/createExcel.do",
+            url:"createExcel.do",
             dataType:"json",
             success:function(data){
-                alert(data.msg);
+                $("#saveAttend_msg").removeClass("hidden");
                 $("#saveAttend_msg").text(data.msg);
             }
         });
