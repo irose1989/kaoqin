@@ -1,0 +1,130 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<script language="javascript" src="jquery-1.11.3.js"></script>
+		<style>
+			#id2,#name2{
+				display:none;
+			}
+			#id1,#name1{
+				color:grey;
+			}
+		</style>
+		<script language="javascript">
+			//权限
+			var power;
+			
+			$(function(){
+
+				$("#id1").focus(function(){
+					$("#id1").hide();
+					$("#id2").show();
+					$("#id2").focus();
+				});
+				
+				$("#id2").blur(function(){
+					if($("#id2").val().length==0){
+						$("#id2").hide();
+						$("#id1").show();
+					}
+				});
+				
+				$("#name1").focus(function(){
+					$("#name1").hide();
+					$("#name2").show();
+					$("#name2").focus();
+				});
+				
+				$("#name2").blur(function(){
+					if($("#name2").val().length==0){
+						$("#name2").hide();
+						$("#name1").show();
+					}
+				});
+				
+			
+				
+				//修改权限
+				$('tbody').on("click",".change",function(){
+					
+					var att=$(this).parent().prev();
+					power=att.text();
+					//alert(att.html());
+					var htmlString='<select id="changeSelect"><option value="普通员工">普通员工</option><option value="项目经理">项目经理</option><option value="管理员">管理员</option></select>';
+					att.html(htmlString);
+					$("#changeSelect").focus();
+				});
+				
+				
+				$('tbody').on("change","#changeSelect",function(){
+					
+					if(confirm("确定修改？")){
+						power=$("#changeSelect").val();
+						
+					}
+					
+					$("#changeSelect").parent().html(power);
+				});
+				
+				$('tbody').on("blur","#changeSelect",function(){
+					//alert($("#changSelect").val());
+					$("#changeSelect").parent().html(power);
+				});
+				
+				//删除
+				$('tbody').on("click",".delete",function(){
+					if(confirm("确定删除？")){
+						$(this).parent().parent().remove();
+					}
+				});
+				
+				
+				
+			});
+		</script>
+	
+	</head>
+	<body>
+		<form>
+			工号：<input type="text" id="id1" value="支持模糊搜索"/><input type="text" id="id2" value=""/>
+			姓名：<input type="text" id="name1" value="支持模糊搜索"/><input type="text" id="name2" value=""/>
+			权限：<select><option value="">全部</option><option value="">普通员工</option><option value="">项目经理</option><option value="">管理员</option></select>
+			<input type="submit" value="搜索"/>
+		</form>
+		
+		<table border="1px" cellpadding="0" cellspacing="0">
+			<caption>人员表（暂定）</caption>
+			<thead>
+				<tr>
+					<th>工号</th>
+					<th>姓名</th>
+					<th>部门</th>
+					<th>权限</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>张三</td>
+					<td>网商银行</td>
+					<td>普通员工</td>
+					<td><a href="javascript:;" class="change">修改权限</a>/<a href="javascript:;" class="delete">删除</a></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>李四</td>
+					<td>网商银行</td>
+					<td>普通员工</td>
+					<td><a href="javascript:;" class="change">修改权限</a>/<a href="javascript:;" class="delete">删除</a></td>
+				</tr><tr>
+					<td>3</td>
+					<td>王五</td>
+					<td>网商银行</td>
+					<td>普通员工</td>
+					<td><a href="javascript:;" class="change">修改权限</a>/<a href="javascript:;" class="delete">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

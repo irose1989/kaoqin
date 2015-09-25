@@ -39,9 +39,9 @@ public class LoginController {
     /**
      * 用户登入检查(默认员工号登入)
      * */
-    @RequestMapping(value = "/toLogin.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/toLogin.do",method = RequestMethod.GET)
     @ResponseBody
-    public BasicAttendance toLogin(@RequestBody UserVo userVo){
+    public BasicAttendance toLogin(UserVo userVo){
         BasicAttendance basicAttendance = userService.toLogin(userVo.getIsoftNo(),userVo.getPassword());
         return basicAttendance;
     }
@@ -63,6 +63,5 @@ public class LoginController {
 
         return "attendence";
     }
-
 
 }

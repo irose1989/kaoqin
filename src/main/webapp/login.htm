@@ -1,4 +1,4 @@
-﻿<HTML><HEAD><TITLE>登录 - UI制造者</TITLE>
+﻿<HTML><HEAD><TITLE>登录 - 软通考勤</TITLE>
   <script type="text/javascript"
           src="resource/js/jquery-2.1.4.js"></script>
 <META content="text/html; charset=UTF-8" http-equiv=Content-Type>
@@ -20,19 +20,23 @@ media=screen>
 <UL class=floatLeft>
   <LI>
   <H4>请登录</H4></LI>
-  <FORM id=login >
-    <li class="form-group" height="30px">
+  <FORM id="login" >
+    <li class="form-group" height="30px" >
       <p>工号：</p>
-      <input type="text" class="form-control" id="isoftNo"  style="height: 30px;width: 250px;" placeholder="软通工号">
+      <input type="text" class="form-control" id="isoftNo"  style="height: 30px;width: 220px;display: inline-block" placeholder="软通工号">
+      <span id="user_msg" style="color:red"></span>
     </li>
     <li class="form-group">
       <p>密码：</p>
-      <input type="password" class="form-control" id="exampleInputPassword3"
-             style="height: 30px;width: 250px;" placeholder="密码">
+      <input type="password" class="form-control" id="password"
+             style="height: 30px;width: 220px;display: inline-block" placeholder="密码">
+      <span style="color: red" id="password_msg"></span>
     </li>
   <LI>
-  <LI class=highlight><INPUT id=loginBtn onclick=this.blur(); value=登录 type=submit>
-  <A id=regBtn href="#" >注册新账号</A><A class=highlight href="#" >忘记密码？</A><!--target=_blank--> </LI>
+  <li class=highlight><input class="btn-info" id="loginBtn" value="登录" type="button">
+  <a id=regBtn href="#" >注册新账号</a><A class=highlight href="#" >忘记密码？</A>
+  <span id="login_msg" style="color:red"></span>
+  </li>
   <LI></LI></FORM></UL>
 <DIV class=floatRight>公告:电脑打卡系统开发中</DIV>
   <BR clear=all></DIV>
