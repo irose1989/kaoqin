@@ -40,7 +40,14 @@ $(function(){
             dataType: "json",
             data:{"isoftNo":isoftNo,"password":password},
             success:function(data){
-                alert(data.msg);
+                var code = data.code;
+                var msg = data.msg;
+                if(code == 0){
+                    $('#login_msg').text(msg);
+                    window.location.href='attendance/findAttendance.do';
+                }else{
+                    $('#login_msg').text(msg);
+                }
             }
         });
     });

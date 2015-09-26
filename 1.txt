@@ -69,3 +69,8 @@ http://www.oschina.net/question/154489_141658
 
 Collection 主键id 影响 返回数据（参照9-20的问题）可以设置一个别名
 
+9-28  js 地址跳转：
+
+window.location.href='admin/findAttendance.do';     ---------------对
+/*window.location.href("admin/findAttendance.do");*/---------------错
+

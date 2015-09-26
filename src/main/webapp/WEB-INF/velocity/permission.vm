@@ -1,0 +1,43 @@
+﻿<br>
+<br>
+<form>
+	工号：<input type="text" id="id1" value="支持模糊搜索"/><input type="text" id="id2" style="display:none;" value=""/>
+	姓名：<input type="text" id="name1" value="支持模糊搜索"/><input type="text" id="name2" style="display:none;" value=""/>
+	权限：<select><option value="">全部</option><option value="">普通员工</option><option value="">项目经理</option><option value="">管理员</option></select>
+	<input type="submit" value="搜索"/>
+</form>
+
+<table border="1px" cellpadding="0" cellspacing="0">
+	<caption>人员表（暂定）</caption>
+	<thead>
+		<tr>
+			<th class="col-lg-1">工号</th>
+			<th class="col-lg-2">姓名</th>
+			<th class="col-lg-3">项目</th>
+			<th class="col-lg-2">权限</th>
+			<th class="col-lg-4">操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>张三</td>
+			<td>网商银行</td>
+			<td>普通员工</td>
+			<td><a href="javascript:;" class="change">修改权限</a>/<a href="javascript:;" class="delete">删除</a></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>李四</td>
+			<td>网商银行</td>
+			<td>普通员工</td>
+			<td><a href="javascript:;" class="change">修改权限</a>/<a href="javascript:;" class="delete">删除</a></td>
+		</tr><tr>
+			<td>3</td>
+			<td>王五</td>
+			<td>网商银行</td>
+			<td>普通员工</td>
+			<td><a href="javascript:;" class="change">修改权限</a>/<a href="javascript:;" class="delete">删除</a></td>
+		</tr>
+	</tbody>
+</table>
