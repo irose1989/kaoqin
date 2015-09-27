@@ -26,6 +26,14 @@
   <resultMap id="ResultMapWithBLOBs" type="com.isoftstone.kaoqin.bean.user.User" extends="BaseResultMap" >
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
   </resultMap>
+  <resultMap id="ResultUserVo" type="com.isoftstone.kaoqin.controller.vo.UserVo">
+    <id column="id" property="userId" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="roleId" property="roleId" jdbcType="INTEGER" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
+  </resultMap>
     <insert id="batchOpenAccount" parameterType="java.util.List" useGeneratedKeys="true">
       INSERT INTO emp_user (username,job_state,
       real_name, telephone,password,
@@ -63,4 +71,18 @@
         </foreach>
       </if>
     </insert>
+  <select id="findUserByCondition" resultMap="ResultUserVo" parameterType="map">
+        SELECT a.isoft_no,a.real_name,a.project_id,b.project_name,a.roleId FROM emp_user a , project b
+        WHERE a.project_id =b.id
+        <if test="realName!=null and realName!='' ">
+          AND a.real_name LIKE "%"#{realName}"%"
+        </if>
+        <if test="projectId !=null and projectId!=''">
+          AND b.id=#{projectId}
+        </if>
+        <if test="isoftNo !=null and isoftNo!=''">
+          AND a.isoft_no LIKE "%"#{isoftNo}"%"
+        </if>
+
+  </select>
  </mapper>

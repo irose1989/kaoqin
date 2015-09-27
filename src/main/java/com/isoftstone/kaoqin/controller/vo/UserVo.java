@@ -8,18 +8,47 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 
 public class UserVo{
-    private String userName;
+    private Integer userId;
+    private String realName;
     private String isoftNo;//员工号
     private String telephone;//手机号
-    private int projectNo;//项目组信息
+    private Integer projectNo;//项目组信息
+    private String projectName;
     private String password;//密码
+    private Integer projectId;
 
-    public String getUserName() {
-        return userName;
+    public Integer getProjectId() {
+        return projectId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    private Integer roleId;//身份 角色id 1，普通 2，管理员，3，项目经理
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
     public String getIsoftNo() {
@@ -38,11 +67,11 @@ public class UserVo{
         this.telephone = telephone;
     }
 
-    public int getProjectNo() {
+    public Integer getProjectNo() {
         return projectNo;
     }
 
-    public void setProjectNo(int projectNo) {
+    public void setProjectNo(Integer projectNo) {
         this.projectNo = projectNo;
     }
 
@@ -54,14 +83,23 @@ public class UserVo{
         this.password = password;
     }
 
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
     @Override
     public String toString() {
         return "UserVo{" +
-                "userName='" + userName + '\'' +
+                "userName='" + realName + '\'' +
                 ", isoftNo='" + isoftNo + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", projectNo=" + projectNo +
                 ", password='" + password + '\'' +
+                ", roleId=" + roleId +
                 '}';
     }
 }
