@@ -20,7 +20,9 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by wb-chenchaobin on 2015/9/8.
@@ -298,4 +300,24 @@ public class UserServiceImpl implements UserService {
         return newUserList;
     }
 
+    /**权限页面 根据搜索条件 搜索*/
+    public BasicAttendance findByConditions(UserVo userVo) {
+        BasicAttendance basicAttendance = new BasicAttendance();
+        if(userVo == null){
+            basicAttendance.setMsg("输入不能为空");
+        }
+        Map<String,Object> map = new HashMap<String, Object>() ;
+        map.put("isoftNo",userVo.getIsoftNo());
+        map.put("projectId",userVo.getProjectId());
+        map.put("realName", userVo.getRealName());
+        List<UserVo> userVoList = userMapper.findUserByCondition(map);
+        if(CollectionUtils.isEmpty(userVoList)){
+            basicAttendance.setMsg(UserConstants.userNotExistedMsg);
+            basicAttendance.setCode(UserConstants.userNotExisted);
+            return basicAttendance;
+        }
+        basicAttendance.setCode(UserConstants.accountExistedCode);
+        basicAttendance.setData(userVoList);
+        return basicAttendance;
+    }
 }

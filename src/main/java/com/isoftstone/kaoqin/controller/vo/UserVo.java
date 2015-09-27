@@ -9,13 +9,22 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 public class UserVo{
     private Integer userId;
+
     private String realName;
+
     private String isoftNo;//员工号
+
     private String telephone;//手机号
+
     private Integer projectNo;//项目组信息
+
     private String projectName;
+
     private String password;//密码
+
     private Integer projectId;
+
+    private Integer roleId;//身份 角色id 1，普通 2，管理员，3，项目经理
 
     public Integer getProjectId() {
         return projectId;
@@ -33,7 +42,7 @@ public class UserVo{
         this.projectName = projectName;
     }
 
-    private Integer roleId;//身份 角色id 1，普通 2，管理员，3，项目经理
+
 
     public Integer getUserId() {
         return userId;
@@ -94,11 +103,14 @@ public class UserVo{
     @Override
     public String toString() {
         return "UserVo{" +
-                "userName='" + realName + '\'' +
+                "userId=" + userId +
+                ", realName='" + realName + '\'' +
                 ", isoftNo='" + isoftNo + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", projectNo=" + projectNo +
+                ", projectName='" + projectName + '\'' +
                 ", password='" + password + '\'' +
+                ", projectId=" + projectId +
                 ", roleId=" + roleId +
                 '}';
     }

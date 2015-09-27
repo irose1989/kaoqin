@@ -2,7 +2,7 @@ var power;
 
 $(function(){
 
-    $("#id1").focus(function(){
+    /*$("#id1").focus(function(){
         $("#id1").hide();
         $("#id2").show();
         $("#id2").focus();
@@ -26,6 +26,47 @@ $(function(){
             $("#name2").hide();
             $("#name1").show();
         }
+    });*/
+
+    $('#search_form button').click(function(){
+        $('#search_form .search_msg').text("");
+        var realName = $('#search_form .real_name').val();
+        var projectName = $('#search_form .project_name').val();
+        var isoftNo = $('#search_form .isoftNo').val();
+        if(!realName && !projectName && !isoftNo){
+            $('#search_form .search_msg').text("搜索条件不能全为空");
+        }else{
+            //不为空
+            $.ajax({
+                type:'GET',
+                url:"searchUser.do",
+                dataType:"json",
+                data:{"realName":realName,"isoftNo":isoftNo,"projectName":projectName},
+                success:function(data){
+                    var userVoList = data.data;
+                    var len = userVoList.length;
+                    /*alert(userVoList[0].roleId);*/
+                    /*<tr><td>1</td><td>张三</td><td>网商银行</td><td>普通员工</td>
+                    <td><a href="javascript:;" class="change">修改权限</a>/<a href="javascript:;" class="delete">删除</a></td>
+                    </tr>*/
+                    for(var i =0;i<len;i++){
+                        var index = i+1;
+                        var user = userVoList[i];
+                        var isoftNo = user.isoftNo;
+                        var name = user.realName;
+                        var projectName = user.projectName;
+                        var roleId = user.roleId;
+                        var row ='<tr><td>'+isoftNo+'</td><td>'+name+'</td><td>'+projectName+'</td>' +
+                            '<td>'+roleId+'</td><td><a href="javascript:;" class="change">修改权限' +
+                            '</a>/<a href="javascript:;" class="delete">删除</a></td></tr>'
+                        $('#search_table').append(row);
+                    }
+
+                }
+            });
+        }
+        return false;
+
     });
 
     //�޸�Ȩ��

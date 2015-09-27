@@ -33,6 +33,7 @@
     <result column="project_id" property="projectId" jdbcType="INTEGER" />
     <result column="roleId" property="roleId" jdbcType="INTEGER" />
     <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
+    <result column="isoft_no" property="isoftNo" jdbcType="VARCHAR" />
   </resultMap>
     <insert id="batchOpenAccount" parameterType="java.util.List" useGeneratedKeys="true">
       INSERT INTO emp_user (username,job_state,
