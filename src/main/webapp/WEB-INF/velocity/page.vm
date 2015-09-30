@@ -21,7 +21,8 @@
 <div class="nav-top">
     <span>后台考勤管理系统</span>
     <div class="nav-topright">
-        <p>上次登陆时间：2015-04-15 22:33:50   登陆IP：192.168.1.1</p>
+        #*2015-04-15 22:33:50   登陆IP：192.168.1.1*#
+        <p></p>
         <span>您好：管理员</span><span>注销</span>
     </div>
 </div>

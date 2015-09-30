@@ -1,4 +1,36 @@
 // JavaScript Document
+function getTime(){
+	var now= new Date();
+	var year=now.getYear()+1900;
+	var month=now.getMonth()+1;
+	var day=now.getDate();
+	var hour=now.getHours();
+	var minute=now.getMinutes();
+	var second=now.getSeconds();
+	var weekday=now.getDay();
+	if(weekday==0)          weekday="星期日"
+	if(weekday==1)          weekday="星期一"
+	if(weekday==2)          weekday="星期二"
+	if(weekday==3)          weekday="星期三"
+	if(weekday==4)          weekday="星期四"
+	if(weekday==5)          weekday="星期五"
+	if(weekday==6)          weekday="星期六"
+	/**每月1号更新考勤表
+	if(day == 1 && hour == 0 && minute == 0 && second == 0 ){
+	}*/
+	if (month < 10) month = "0" + month;
+	if (day < 10) day = "0" + day;
+	if (hour < 10) hour = "0" + hour;
+	if (minute < 10) minute = "0" + minute;
+	if (second < 10) second = "0" + second;
+	var nowdate="登陆时间："+year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second+" "+weekday;
+	$('.nav-topright').find('p').text(nowdate);
+
+};
+/**更新时间*/
+$(function(){
+	setInterval(getTime,1000);
+});
 $(function(){
 	//完整菜单效果1
 		$(".menu_list").hide();

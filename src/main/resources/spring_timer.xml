@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="timerTaskerUtil" class="com.isoftstone.kaoqin.utils.TimerTaskerUtil"/>
+
+    <bean id="jobDetailFactory"
+
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+
+        <!--实际调用类-->
+
+        <property name="targetObject" ref="timerTaskerUtil" />
+
+        <!--实际调用方法-->
+
+        <property name="targetMethod" value="getTest" />
+
+    </bean>
+
+    <!-- 触发器 -->
+
+    <bean id="cronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+
+        <property name="jobDetail">
+
+            <ref bean="jobDetailFactory" />
+
+        </property>
+
+        <property name="cronExpression">
+
+            <value>0 0 0 1 * ?</value>
+
+        </property>
+
+    </bean>
+
+    <!--启动触发器-->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+
+        <property name="triggers">
+
+            <list>
+
+                <ref local="cronTriggerBean" />
+
+            </list>
+
+        </property>
+
+    </bean>
+
+
+</beans>

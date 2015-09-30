@@ -186,6 +186,13 @@
       <version>3.13-beta1</version>
     </dependency>
 
+    <!--定时器-->
+    <dependency>
+      <groupId>org.opensymphony.quartz</groupId>
+      <artifactId>quartz-all</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+
   </dependencies>
 
   <build>
