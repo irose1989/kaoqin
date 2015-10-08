@@ -1,18 +1,45 @@
       <br>
-<div class="row" id="month_year">
-    <select class="span2" name="year">
-    <option value="2015" selected>2015</option>
-    <option value="2016" >2016</option>
-    <option value="2017" >2017</option>
-    <option value="2018" >2018</option>
-    <option value="2019" >2019</option>
+<div class="row" id="month_year_project">
+    &nbsp;&nbsp;
+    <select class="span2 year" name="year">
+        <option value="2015" >2015</option>
+        <option value="2016" >2016</option>
+        <option value="2017" >2017</option>
+        <option value="2018" >2018</option>
+        <option value="2019" >2019</option>
     </select>年
-    <select  class="span2" name="month">
-    <option value="9" selected>9</option>
-    <option value="10" >10</option>
-    <option value="11" >11</option>
-    <option value="12" >12</option>
+    <select  class="span2 month" name="month">
+        <option value="01" >1</option>
+        <option value="02" >2</option>
+        <option value="03" >3</option>
+        <option value="04" >4</option>
+        <option value="05" >5</option>
+        <option value="06" >6</option>
+        <option value="07" >7</option>
+        <option value="08" >8</option>
+        <option value="09" >9</option>
+        <option value="10" >10</option>
+        <option value="11" >11</option>
+        <option value="12" >12</option>
     </select>月
+    项目
+    <select class="span2 project" name="project" style="font-size: smaller">
+    <option value="1">法务网上法庭项目</option>
+    <option value="2">集团合同平台建设一期</option>
+    <option value="3">法务二期诉讼及合同</option>
+    <option value="4">法务内部系统优化服务</option>
+    <option value="5">法务平台运维服务</option>
+    <option value="6">信息平台UED服务</option>
+    <option value="7">质量保障测试服务6人项目</option>
+    <option value="8">淘宝质量测试</option>
+    <option value="9">阿里智能云测试服务</option>
+    <option value="10">国际UED前端服务外包 </option>
+    <option value="11">湖畔大学项目</option>
+    <option value="12">高法项目</option>
+    <option value="13">采购立项全打通项目</option>
+    <option value="14">五道口项目</option>
+    </select>
+    <button class="btn btn-info" id="search_condition">查找</button>
 </div>
 
     <div id="attendance_form"

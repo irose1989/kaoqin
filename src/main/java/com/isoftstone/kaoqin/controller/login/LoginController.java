@@ -1,13 +1,10 @@
-package com.isoftstone.kaoqin.controller.admin.login;
+package com.isoftstone.kaoqin.controller.login;
 
-import com.isoftstone.kaoqin.bean.user.User;
 import com.isoftstone.kaoqin.common.BasicAttendance;
-import com.isoftstone.kaoqin.common.utils.DateFormat;
 import com.isoftstone.kaoqin.controller.vo.PasswordModify;
 import com.isoftstone.kaoqin.controller.vo.UserVo;
 import com.isoftstone.kaoqin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**

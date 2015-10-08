@@ -38,4 +38,10 @@ public class UserServiceTest {
         BasicAttendance b = userService.modfifyPwd(pm);
         System.out.println(b);
     }
+
+    @Test
+    public void test3(){
+        BasicAttendance basicAttendance = userService.findAllUser();
+        System.out.print(basicAttendance);
+    }
 }

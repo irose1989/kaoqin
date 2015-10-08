@@ -1,4 +1,4 @@
-package com.isoftstone.kaoqin.controller;
+package com.isoftstone.kaoqin.controller.users;
 
 import com.isoftstone.kaoqin.bean.user.User;
 import com.isoftstone.kaoqin.common.BasicAttendance;

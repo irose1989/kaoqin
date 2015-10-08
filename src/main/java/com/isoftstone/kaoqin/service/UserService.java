@@ -25,4 +25,7 @@ public interface UserService {
     BasicAttendance checkUserExist(String userName);
     /**搜索用户信息*/
     BasicAttendance findByConditions(UserVo userVo);
+    /**搜索所有用户*/
+    BasicAttendance findAllUser();
+
 }

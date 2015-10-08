@@ -320,4 +320,13 @@ public class UserServiceImpl implements UserService {
         basicAttendance.setData(userVoList);
         return basicAttendance;
     }
+
+    /**查找所有用户*/
+    public BasicAttendance findAllUser() {
+        BasicAttendance basicAttendance = new BasicAttendance();
+        UserExample example = new UserExample();
+        List<User> users = userMapper.selectByExample(example);
+        basicAttendance.setData(users);
+        return basicAttendance;
+    }
 }
