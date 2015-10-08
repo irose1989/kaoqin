@@ -3,10 +3,7 @@ package com.isoftstone.kaoqin.service;
 import com.isoftstone.kaoqin.bean.user.User;
 import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.common.utils.PageConf;
-import com.isoftstone.kaoqin.controller.vo.AttendVo;
-import com.isoftstone.kaoqin.controller.vo.AttendanceDateVo;
-import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
-import com.isoftstone.kaoqin.controller.vo.AttendanceVoList;
+import com.isoftstone.kaoqin.controller.vo.*;
 
 import java.util.List;
 
@@ -18,6 +15,9 @@ public interface AttendanceService {
     public BasicAttendance findAll(PageConf pageConf, AttendanceDateVo dateVo);
     /**导出excel 不用分页*/
     public BasicAttendance findAll( AttendanceDateVo dateVo);
+    /**根据条件 查看考勤记录*/
+    public BasicAttendance findByCondition(SearchConditions conditions);
     public BasicAttendance batchCreateAttendanceRecord(List<User> userList);
     public BasicAttendance savaAttendanceRecord(AttendanceVoList voList);
+
 }

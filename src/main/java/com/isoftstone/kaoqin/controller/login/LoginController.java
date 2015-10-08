@@ -61,7 +61,7 @@ public class LoginController {
     @RequestMapping(value = "/toPage.do")
     public String toPage(HttpServletRequest request){
 
-        return "attendence";
+        return "attendance";
     }
 
 }

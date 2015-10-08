@@ -8,6 +8,7 @@ import com.isoftstone.kaoqin.common.utils.PageConf;
 import com.isoftstone.kaoqin.controller.vo.AttendVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceDateVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceVoList;
+import com.isoftstone.kaoqin.controller.vo.SearchConditions;
 import com.isoftstone.kaoqin.service.AttendanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,7 @@ public class AttendanceController {
 
     /**登录默认展现页面 或者点击考勤查询 默认当前一整个月*/
     @RequestMapping(value = "/findAttendance.do",method = RequestMethod.GET)
-    public String findAttendance2(HttpServletRequest request){
+    public String findAttendance(HttpServletRequest request){
         /**封装整个月考勤时间段，考勤时间集(前台显示横坐标)*/
         AttendanceDateVo dateVo = DateFormat.getDateList();
         /**默认第一页*/
@@ -49,7 +50,24 @@ public class AttendanceController {
         request.setAttribute("list", basicAttendance.getData());
         request.setAttribute("page",basicAttendance.getPageConf());
         request.setAttribute("month",dateVo);
-        return "attendence";
+        return "attendance";
+    }
+
+    /**根据查询条件显示考勤记录*/
+    @RequestMapping(value = "/findByCondition.do",method = RequestMethod.GET)
+    public String findByCondition(HttpServletRequest request,SearchConditions searchConditions){
+        /**封装整个月考勤时间段，考勤时间集(前台显示横坐标)*/
+        AttendanceDateVo dateVo = DateFormat.getDateList(searchConditions);
+        BasicAttendance basicAttendance = DateFormat.getFromAndTo(searchConditions);
+        searchConditions = (SearchConditions)basicAttendance.getData();
+        basicAttendance = attendanceService.findByCondition(searchConditions);
+        /**给date转换只有天数的格式 考勤上的时间（跟横坐标日期比较）*/
+        basicAttendance = DateFormat.getDateToDay(basicAttendance);
+        request.setAttribute("list", basicAttendance.getData());
+        request.setAttribute("page",basicAttendance.getPageConf());
+        request.setAttribute("month",dateVo);
+        request.setAttribute("conditions",searchConditions);
+        return "attendance";
     }
 
     /**登记考勤*/
@@ -92,6 +110,8 @@ public class AttendanceController {
         request.setAttribute("list",basicAttendance.getData());
         request.setAttribute("page",basicAttendance.getPageConf());
         request.setAttribute("month",dateVo);
-        return "attendence";
+        return "attendance";
     }
+
+
 }

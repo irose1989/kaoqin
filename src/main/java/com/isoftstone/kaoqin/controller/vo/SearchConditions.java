@@ -5,8 +5,18 @@ package com.isoftstone.kaoqin.controller.vo;
  */
 public class SearchConditions {
     private String from;
-    private System to;
+    private String to;
     private Integer projectId;
+    private Integer month;
+    private Integer year;
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
 
     public String getFrom() {
         return from;
@@ -16,11 +26,11 @@ public class SearchConditions {
         this.from = from;
     }
 
-    public System getTo() {
+    public String getTo() {
         return to;
     }
 
-    public void setTo(System to) {
+    public void setTo(String to) {
         this.to = to;
     }
 
@@ -32,12 +42,22 @@ public class SearchConditions {
         this.projectId = projectId;
     }
 
+    public Integer getMonth() {
+        return month;
+    }
+
+    public void setMonth(Integer month) {
+        this.month = month;
+    }
+
     @Override
     public String toString() {
         return "SearchConditions{" +
                 "from='" + from + '\'' +
-                ", to=" + to +
+                ", to='" + to + '\'' +
                 ", projectId=" + projectId +
+                ", month=" + month +
+                ", year=" + year +
                 '}';
     }
 }

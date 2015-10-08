@@ -1,6 +1,6 @@
 $(function() {
     /**查询条件默认月份*/
-    var now= new Date();
+   /* var now= new Date();
     var year=now.getYear()+1900;
     var month=now.getMonth()+1;
     $('#month_year_project .month option').each(function(){
@@ -9,19 +9,29 @@ $(function() {
             $(this).attr('selected','true');
         }
     });
-    /**查询条件默认年份*/
+    /!**查询条件默认年份*!/
     $('#month_year_project .year option').each(function(){
         var year_select = $(this).text();
         if(year_select == year){
             $(this).attr('selected','true');
         }
-    });
-
+    });*/
+    /**根据条件查询*/
     $('#search_condition').click(function(){
         var year_select = $('#month_year_project .year').val();
         var month_select = $('#month_year_project .month').val();
         var project_id = $('#month_year_project .project').val();
-        var from =year_select+"-"+month_select+"-01";
+        var url ="findByCondition.do?projectId="+project_id+"&year="+year_select+"&month="+month_select;
+        location.href=url;
+        /*$.ajax({
+            type:'GET',
+            url:"findByCondition.do",
+            dataType: "json",
+            data:{"projectId":project_id,"year":year_select,"month":month_select},
+            success:function(data){
+               alert(123123);
+            }
+        });*/
     });
 
     /**编辑的切换*/

@@ -1,6 +1,8 @@
 package com.isoftstone.kaoqin.common.utils;
 
 import com.isoftstone.kaoqin.bean.attendance.Attendance;
+import com.isoftstone.kaoqin.common.BasicAttendance;
+import com.isoftstone.kaoqin.controller.vo.SearchConditions;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;
@@ -48,5 +50,15 @@ public class DateTest {
         Date date = new Date();
         long l =date.getTime();
         System.out.print(l);
+    }
+    @Test
+    public void  test3(){
+        int year = 2015;
+        int month = 9;
+        SearchConditions conditions = new SearchConditions();
+        conditions.setMonth(month);
+        conditions.setYear(year);
+        BasicAttendance basicAttendance = DateFormat.getFromAndTo(conditions);
+        System.out.print(basicAttendance);
     }
 }

@@ -9,10 +9,7 @@ import com.isoftstone.kaoqin.common.constants.BasicConstants;
 import com.isoftstone.kaoqin.common.utils.DateFormat;
 import com.isoftstone.kaoqin.common.utils.PageConf;
 import com.isoftstone.kaoqin.common.utils.PageUtil;
-import com.isoftstone.kaoqin.controller.vo.AttendVo;
-import com.isoftstone.kaoqin.controller.vo.AttendanceDateVo;
-import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
-import com.isoftstone.kaoqin.controller.vo.AttendanceVoList;
+import com.isoftstone.kaoqin.controller.vo.*;
 import com.isoftstone.kaoqin.dao.attendanceMapper.AttendanceMapperExt;
 import com.isoftstone.kaoqin.service.AttendanceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,6 +137,35 @@ public class AttendanceServiceImpl implements AttendanceService {
         }
         basicAttendance.setCode(AttendanceConstants.saveAttendSuccessCode);
         basicAttendance.setMsg(AttendanceConstants.saveAttendSuccessMsg);
+        return basicAttendance;
+    }
+
+    /**根据条件查询考勤记录*/
+    public BasicAttendance findByCondition(SearchConditions conditions) {
+        /**考勤时间段条件*/
+        String from = conditions.getFrom();
+        String to = conditions.getTo();
+        int projectId = conditions.getProjectId();
+        /**分页查询条件*/
+        PageConf pageConf = new PageConf();
+        pageConf.setCurrentPage(BasicConstants.DEFAULT_CURRENT_PAGE);
+        int page = pageConf.getCurrentPage()-1;
+        int size = BasicConstants.PAGESIZE;
+        Map<String,Object> map = new HashMap<String, Object>();
+        /**查询条件*/
+        map.put("limit",-1);
+        map.put("size", size);
+        map.put("from",from);
+        map.put("to",to);
+        if(projectId !=0){
+            map.put("projectId",projectId);
+        }
+        List<AttendVo>voList = admExt.getAll(map);
+        int totalResults=voList.size();
+        voList = PageUtil.getPageList(voList, page * size, size);
+        /**最近一周才能修改*/
+        voList = DateFormat.getReadOnly(voList);
+        BasicAttendance basicAttendance = PageUtil.getPage(voList,totalResults,pageConf);
         return basicAttendance;
     }
 }

@@ -6,6 +6,7 @@ import com.isoftstone.kaoqin.common.constants.AttendanceConstants;
 import com.isoftstone.kaoqin.controller.vo.AttendVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceDateVo;
 import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
+import com.isoftstone.kaoqin.controller.vo.SearchConditions;
 import org.springframework.util.CollectionUtils;
 
 import java.text.SimpleDateFormat;
@@ -19,7 +20,7 @@ import java.util.List;
  */
 public class DateFormat {
 
-    /**客户端 根据获取整个 考勤日期表*/
+    /**客户端 根据系统时间获取当前月份整个 考勤日期表*/
     public static AttendanceDateVo getDateList(){
         AttendanceDateVo vo = new AttendanceDateVo();
         List<String> list = new ArrayList<String>();
@@ -31,6 +32,37 @@ public class DateFormat {
         SimpleDateFormat format = new SimpleDateFormat("dd");
         SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
         int totalDays = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+        for (int i = 1; i <= totalDays; i++) {
+            c.set(Calendar.DAY_OF_MONTH, i);
+            Date date = c.getTime();
+            String s = format.format(date);
+            list.add(s);
+
+            /**设置整个月 考勤区间*/
+            if(i==1){
+                String from = format2.format(getFirstDay(c)) ;
+                vo.setFrom(from);
+            }
+            if(i==totalDays){
+                String to = format2.format(getLastDay(c)) ;
+                vo.setTo(to);
+            }
+        }
+        vo.setDateList(list);
+        return vo;
+
+    }
+    /**客户端 根据指定月份获取当前月份整个 考勤日期表*/
+    public static AttendanceDateVo getDateList(SearchConditions conditions){
+        AttendanceDateVo vo = new AttendanceDateVo();
+        List<String> list = new ArrayList<String>();
+        /**自动获取登入的当天时间*/
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR,conditions.getYear());
+        c.set(Calendar.MONTH, conditions.getMonth() - 1);//Java月份才0开始算
+        int totalDays = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+        SimpleDateFormat format = new SimpleDateFormat("dd");
+        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
         for (int i = 1; i <= totalDays; i++) {
             c.set(Calendar.DAY_OF_MONTH, i);
             Date date = c.getTime();
@@ -135,6 +167,22 @@ public class DateFormat {
         }
         basicAttendance.setData(list);
         return  basicAttendance;
+    }
+    /**根据月份获取第一天跟最后一天*/
+    public static  BasicAttendance getFromAndTo(SearchConditions searchConditions){
+        int month = searchConditions.getMonth();
+        int year = searchConditions.getYear();
+        BasicAttendance basicAttendance = new BasicAttendance();
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR,year);
+        cal.set(Calendar.MONTH, month - 1);//Java月份才0开始算
+        int totalDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        String from = year+"-"+month+"-01";
+        String to = year+"-"+month+"-"+totalDays;
+        searchConditions.setFrom(from);
+        searchConditions.setTo(to);
+        basicAttendance.setData(searchConditions);
+        return basicAttendance;
     }
 
 
