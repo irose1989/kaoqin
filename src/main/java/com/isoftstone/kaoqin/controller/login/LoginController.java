@@ -1,6 +1,7 @@
 package com.isoftstone.kaoqin.controller.login;
 
 import com.isoftstone.kaoqin.common.BasicAttendance;
+import com.isoftstone.kaoqin.common.constants.UserConstants;
 import com.isoftstone.kaoqin.controller.vo.PasswordModify;
 import com.isoftstone.kaoqin.controller.vo.UserVo;
 import com.isoftstone.kaoqin.service.UserService;
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -37,12 +41,16 @@ public class LoginController {
      * */
     @RequestMapping(value = "/toLogin.do",method = RequestMethod.GET)
     @ResponseBody
-    public BasicAttendance toLogin(UserVo userVo) throws ServletException, IOException {
+    public BasicAttendance toLogin(HttpServletRequest request,UserVo userVo) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         BasicAttendance basicAttendance = userService.toLogin(userVo.getIsoftNo(),userVo.getPassword());
-        /*int code =basicAttendance.getCode();
-        if(code == 0){
-            return ("redirect:admin/findAttendance.do");
-        }*/
+
+        int code = basicAttendance.getCode();
+        if(UserConstants.loginSuccess == code){
+            Object userInfo = basicAttendance.getData();
+            /**登入成功，储存到session*/
+            session.setAttribute("userInfo",userInfo);
+        }
         return basicAttendance;
     }
 

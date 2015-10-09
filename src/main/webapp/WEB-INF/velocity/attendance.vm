@@ -1,6 +1,8 @@
       <br>
 <div class="row" id="month_year_project">
     &nbsp;&nbsp;
+    <input id="year_warn" value="$!searchConditions.year" hidden>
+    <input value="$!searchConditions.month" hidden>
     <select class="span2 year" name="year">
         <option value="2015" #if($!searchConditions.year==2015)selected#end>2015</option>
         <option value="2016" #if($!searchConditions.year==2016)selected#end>2016</option>
@@ -110,16 +112,20 @@
     </div>
       <div class="row">
             <div class="pull-left" id="search_page">
-              #set($preCur =$!page.currentPage+(-1))
+             #* #set($preCur =$!page.currentPage+(-1))*#
+                <input id="currentPage_warn" value="$!page.currentPage" hidden>
+                <input id="totalPage_warn" value="$!page.totalPage" hidden>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="getPage.do?currentPage=$!preCur" class="btn btn-info"
+             #* <a href="getPage.do?currentPage=$!preCur&projectId=$!searchConditions.projectId&year=$!searchConditions.year&month=$!searchConditions.month" class="btn btn-info"
                   #if($!page.currentPage==1) onclick="return false" #end
-                      >上一页</a>
+                      >上一页</a>*#
+              <button class="btn btn-info" id="page_up" type="button">上一页</button>
               <button class="btn btn-info"  aria-disabled="true">$!page.currentPage/$!page.totalPage</button>
-              #set($nextCur =$!page.currentPage+1)
+              <button class="btn btn-info" id="page_down" type="button">下一页</button>
+             #* #set($nextCur =$!page.currentPage+1)
               <a href="getPage.do?currentPage=$!nextCur" class="btn btn-info"
                  #if($!page.totalPage ==$!page.currentPage)onclick="return false"#end
-                      >下一页</a></li>
+                      >下一页</a></li>*#
           </div>
           <div class="pull-right " >
               <button class="btn btn-info" id="attendance_edit" type="button">考勤编辑</button>

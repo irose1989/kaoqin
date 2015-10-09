@@ -97,19 +97,21 @@ public class AttendanceController {
 
     /**分页*/
     @RequestMapping(value = "/getPage.do",method = RequestMethod.GET)
-    public String getOtherPage(HttpServletRequest request,int currentPage){
-        PageConf pageConf = new PageConf();
-        pageConf.setCurrentPage(currentPage);
+    public String getOtherPage(HttpServletRequest request,SearchConditions conditions){
+       /* PageConf pageConf = new PageConf();
+        pageConf.setCurrentPage(currentPage);*/
         /**封装整个月考勤时间段，考勤时间集(前台显示横坐标)*/
-        AttendanceDateVo dateVo = DateFormat.getDateList();
+        AttendanceDateVo dateVo = DateFormat.getDateList(conditions);
+        BasicAttendance basicAttendance = DateFormat.getFromAndTo(conditions);
+        conditions = (SearchConditions)basicAttendance.getData();
         /**分页*/
-        BasicAttendance basicAttendance
-                =attendanceService.findAll(pageConf, dateVo);
+         basicAttendance = attendanceService.findByCondition(conditions);
         /**给date转换只有天数的格式 考勤上的时间（跟横坐标日期比较）*/
         basicAttendance = DateFormat.getDateToDay(basicAttendance);
         request.setAttribute("list",basicAttendance.getData());
         request.setAttribute("page",basicAttendance.getPageConf());
         request.setAttribute("month",dateVo);
+        request.setAttribute("conditions",conditions);
         return "attendance";
     }
 

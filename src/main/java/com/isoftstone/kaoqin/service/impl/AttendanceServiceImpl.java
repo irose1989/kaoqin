@@ -148,7 +148,11 @@ public class AttendanceServiceImpl implements AttendanceService {
         int projectId = conditions.getProjectId();
         /**分页查询条件*/
         PageConf pageConf = new PageConf();
-        pageConf.setCurrentPage(BasicConstants.DEFAULT_CURRENT_PAGE);
+        if(conditions.getCurrentPage() == null){
+            pageConf.setCurrentPage(BasicConstants.DEFAULT_CURRENT_PAGE);
+        }else{
+            pageConf.setCurrentPage(conditions.getCurrentPage());
+        }
         int page = pageConf.getCurrentPage()-1;
         int size = BasicConstants.PAGESIZE;
         Map<String,Object> map = new HashMap<String, Object>();

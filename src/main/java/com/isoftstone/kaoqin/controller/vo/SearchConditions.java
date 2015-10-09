@@ -9,6 +9,15 @@ public class SearchConditions {
     private Integer projectId;
     private Integer month;
     private Integer year;
+    private Integer currentPage;
+
+    public Integer getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(Integer currentPage) {
+        this.currentPage = currentPage;
+    }
 
     public Integer getYear() {
         return year;
@@ -58,6 +67,7 @@ public class SearchConditions {
                 ", projectId=" + projectId +
                 ", month=" + month +
                 ", year=" + year +
+                ", currentPage=" + currentPage +
                 '}';
     }
 }

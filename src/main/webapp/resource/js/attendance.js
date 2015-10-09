@@ -1,38 +1,60 @@
+function getCondition(){
+    var year_select = $('#month_year_project .year').val();
+    var month_select = $('#month_year_project .month').val();
+    var project_id = $('#month_year_project .project').val();
+    var condition = {"year_select":year_select,"month_select":month_select,"project_id":project_id};
+    return condition;
+};
 $(function() {
-    /**查询条件默认月份*/
-   /* var now= new Date();
-    var year=now.getYear()+1900;
-    var month=now.getMonth()+1;
-    $('#month_year_project .month option').each(function(){
-        var month_select = $(this).text();
-        if(month_select == month){
-            $(this).attr('selected','true');
-        }
-    });
-    /!**查询条件默认年份*!/
-    $('#month_year_project .year option').each(function(){
-        var year_select = $(this).text();
-        if(year_select == year){
-            $(this).attr('selected','true');
-        }
-    });*/
-    /**根据条件查询*/
-    $('#search_condition').click(function(){
-        var year_select = $('#month_year_project .year').val();
-        var month_select = $('#month_year_project .month').val();
-        var project_id = $('#month_year_project .project').val();
-        var url ="findByCondition.do?projectId="+project_id+"&year="+year_select+"&month="+month_select;
-        location.href=url;
-        /*$.ajax({
-            type:'GET',
-            url:"findByCondition.do",
-            dataType: "json",
-            data:{"projectId":project_id,"year":year_select,"month":month_select},
-            success:function(data){
-               alert(123123);
+    var year_warn = $('#year_warn').val();
+    if(!year_warn){
+        /**查询条件默认月份*/
+        var now= new Date();
+        var year=now.getYear()+1900;
+        var month=now.getMonth()+1;
+        $('#month_year_project .month option').each(function(){
+            var month_select = $(this).text();
+            if(month_select == month){
+                $(this).attr('selected','true');
             }
-        });*/
+        });
+        /**查询条件默认年份*/
+        $('#month_year_project .year option').each(function(){
+            var year_select = $(this).text();
+            if(year_select == year){
+                $(this).attr('selected','true');
+            }
+        });
+    }
+    /**根据条件查询*/
+
+    $('#search_condition').click(function(){
+        var condition = getCondition();
+        var url ="findByCondition.do?projectId="+condition.project_id+"&year="+condition.year_select+"&month="+condition.month_select;
+        location.href=url;
     });
+
+    /**分页*/
+    $('#page_up').click(function(){
+        var curPage = parseInt($('#currentPage_warn').val());
+        if(curPage == 1){
+            return;
+        }
+        var preCur = curPage-1;
+        var condition = getCondition();
+        var url="getPage.do?currentPage="+preCur+"&projectId="+condition.project_id+"&year="+condition.year_select+"&month="+condition.month_select;
+        location.href=url;
+    });
+    $('#page_down').click(function(){
+        var totalPage = $('#totalPage_warn').val();
+        var curPage = parseInt($('#currentPage_warn').val());
+        if(totalPage == curPage){return;}
+        var nextCur = curPage+1;
+        var condition = getCondition();
+        var url="getPage.do?currentPage="+nextCur+"&projectId="+condition.project_id+"&year="+condition.year_select+"&month="+condition.month_select;
+        location.href=url;
+    });
+
 
     /**编辑的切换*/
     $('#attendance_edit').click(function(){
@@ -75,8 +97,7 @@ $(function() {
         var index = jsonStr.lastIndexOf(",");
         var json =jsonStr.substring(0,index);
         json=json+"]}";
-        console.log(json);
-        $.ajax({
+        console.log(json);$.ajax({
             type:'POST',
             url:"saveAttendance.do",
             dataType: "json",
