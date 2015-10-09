@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by wb-chenchaobin on 2015/9/14.
  */
 @Controller
-@RequestMapping
+@RequestMapping("/userInfo")
 public class UserInfoEditController {
     @Autowired
     private UserService userService;
@@ -25,4 +25,10 @@ public class UserInfoEditController {
         BasicAttendance basicAttendance = userService.editUserInfo(user);
         return basicAttendance;
     }
+
+    @RequestMapping(value = "/toEditInfo.do")
+    public String openAccount(){
+        return "editInfo";
+    }
+
 }

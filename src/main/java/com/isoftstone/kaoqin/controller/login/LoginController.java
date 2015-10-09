@@ -51,6 +51,7 @@ public class LoginController {
             /**登入成功，储存到session*/
             session.setAttribute("userInfo",userInfo);
         }
+
         return basicAttendance;
     }
 

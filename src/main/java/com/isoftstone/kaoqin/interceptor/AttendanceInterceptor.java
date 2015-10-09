@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
  */
 public class AttendanceInterceptor implements HandlerInterceptor{
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        System.out.print("拦截中==========================");
+        /**控制访问只能登入页面进来*/
         HttpSession session = httpServletRequest.getSession();
         Object userInfo = session.getAttribute("userInfo");
         if(userInfo == null){

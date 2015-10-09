@@ -15,9 +15,7 @@ function getTime(){
 	if(weekday==4)          weekday="星期四"
 	if(weekday==5)          weekday="星期五"
 	if(weekday==6)          weekday="星期六"
-	/**每月1号更新考勤表
-	if(day == 1 && hour == 0 && minute == 0 && second == 0 ){
-	}*/
+
 	if (month < 10) month = "0" + month;
 	if (day < 10) day = "0" + day;
 	if (hour < 10) hour = "0" + hour;
@@ -26,6 +24,16 @@ function getTime(){
 	var nowdate="登陆时间："+year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second+" "+weekday;
 	$('.nav-topright').find('p').text(nowdate);
 
+	var role_warn = $('#role_warn').val();
+	if(role_warn==1){
+		$('#hi_role').text("您好：员工");
+	}
+	else if(role_warn==2){
+		$('#hi_role').text("您好：管理员");
+	}
+	else if(role_warn==3){
+		$('#hi_role').text("您好：项目经理");
+	}
 };
 /**更新时间*/
 $(function(){

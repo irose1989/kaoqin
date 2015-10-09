@@ -1,0 +1,10 @@
+       <br>
+       <br>
+       <div style="background-color:gainsboro ;width: auto;height: 600px">
+            <br>
+           <div class="row">
+               &nbsp;&nbsp;&nbsp;
+               姓名：<input type="text" >
+               手机号：<input type="text">
+           </div>
+       </div>
