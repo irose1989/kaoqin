@@ -25,6 +25,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.opensymphony.quartz:quartz-all:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:3.2.13.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.1.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:3.2.13.RELEASE" level="project" />
@@ -49,7 +50,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:jconsole:1.8.0">
         <CLASSES>
-          <root url="jar://D:/alibaba/java/jdk1.7.0_80/lib/jconsole.jar!/" />
+          <root url="jar://D:/java/jdk1.7.0_67/lib/jconsole.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -58,7 +59,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:tools:1.8.0">
         <CLASSES>
-          <root url="jar://D:/alibaba/java/jdk1.7.0_80/lib/tools.jar!/" />
+          <root url="jar://D:/java/jdk1.7.0_67/lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

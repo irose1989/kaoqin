@@ -1,10 +1,55 @@
        <br>
        <br>
-       <div style="background-color:gainsboro ;width: auto;height: 600px">
-            <br>
+       #* &nbsp;&nbsp;&nbsp;*#
+
+       <div  class="container" style="background-color:gainsboro ;height: inherit;/*font-size: smaller*/">
+           <br>
+           员工个人信息编辑：
+           <br>
+           <br>
            <div class="row">
-               &nbsp;&nbsp;&nbsp;
-               姓名：<input type="text" >
-               手机号：<input type="text">
+               <div class="col-lg-3">工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<span>123</span></div>
+               <div class="col-lg-3">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" value="$!userInfo.realName"></div>
+
+               <div class="col-lg-6">项目名称：
+                   <select class="span2 project" name="project" >
+                       <option value="1" #if($!searchConditions.projectId==1)selected#end>法务网上法庭项目</option>
+                       <option value="2" #if($!searchConditions.projectId==2)selected#end>集团合同平台建设一期</option>
+                       <option value="3" #if($!searchConditions.projectId==3)selected#end>法务二期诉讼及合同</option>
+                       <option value="4" #if($!searchConditions.projectId==4)selected#end>法务内部系统优化服务</option>
+                       <option value="5" #if($!searchConditions.projectId==5)selected#end>法务平台运维服务</option>
+                       <option value="6" #if($!searchConditions.projectId==6)selected#end>信息平台UED服务</option>
+                       <option value="7" #if($!searchConditions.projectId==7)selected#end>质量保障测试服务6人项目</option>
+                       <option value="8" #if($!searchConditions.projectId==8)selected#end>淘宝质量测试</option>
+                       <option value="9" #if($!searchConditions.projectId==9)selected#end>阿里智能云测试服务</option>
+                       <option value="10" #if($!searchConditions.projectId==10)selected#end>国际UED前端服务外包 </option>
+                       <option value="11" #if($!searchConditions.projectId==11)selected#end>湖畔大学项目</option>
+                       <option value="12" #if($!searchConditions.projectId==12)selected#end>高法项目</option>
+                       <option value="13" #if($!searchConditions.projectId==13)selected#end>采购立项全打通项目</option>
+                       <option value="14" #if($!searchConditions.projectId==14)selected#end>五道口项目</option>
+                   </select>
+               </div>
+           </div>
+           <br>
+           <div class="row">
+               <div class="col-lg-3">手&nbsp;机&nbsp;号&nbsp;：<input type="text" ></div>
+               <div class="col-lg-3">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="text"></div>
+               <div class="col-lg-3">权&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限：<input type="text" ></div>
+               <div class="col-lg-3">职务岗位：<input type="text" ></div>
+
+           </div>
+           <br>
+           <div class="row">
+               <div class="col-lg-3">旺&nbsp;旺&nbsp;号&nbsp;：<input type="text" ></div>
+               <div class="col-lg-3">软通邮箱：<input type="text" ></div>
+               <div class="col-lg-3">阿里邮箱：<input type="text" ></div>
+               <div class="col-lg-3">在职状态：<input type="text" ></div>
+           </div>
+           <br>
+           <div class="row">
+               <div class="col-lg-3">办公地点：<input type="text" ></div>
+               <div class="col-lg-3">专业技术：<input type="text"></div>
+               <div class="col-lg-3">技术等级：<input type="text" ></div>
+               <div class="col-lg-3">阿里工号：<input type="text" ></div>
            </div>
        </div>
