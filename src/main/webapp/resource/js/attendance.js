@@ -69,18 +69,12 @@ $(function() {
             $(this).parent('td').addClass("info");
         });
     });
-    $('#attendance_cancle').click(function(){
-        $("#saveAttend_msg").addClass("hidden");
-        $("#attendance_edit").removeClass("hidden");
-        $("#attendance_cancle").addClass("hidden");
-        $("#attendance_submit").addClass("hidden");
 
-        /**不可编辑考勤 状态*/
-        $('#attendance_form input').each(function(){
-            $(this).attr("readonly","readonly");
-            $(this).parent('td').removeClass("info");
-        });
+    $('#attendance_cancle').click(function(){
+        notEdit();
     });
+
+
     /**编辑后提交*/
     $('#attendance_submit').click(function(){
         var jsonStr = '{"attendanceVoList":[';
@@ -96,8 +90,13 @@ $(function() {
         });
         var index = jsonStr.lastIndexOf(",");
         var json =jsonStr.substring(0,index);
+        if(!json){
+            notEdit();
+            return;
+        }
         json=json+"]}";
-        console.log(json);$.ajax({
+        console.log(json);
+        $.ajax({
             type:'POST',
             url:"saveAttendance.do",
             dataType: "json",
@@ -106,6 +105,7 @@ $(function() {
             success:function(data){
                 $("#saveAttend_msg").removeClass("hidden");
                 $("#saveAttend_msg").text(data.msg);
+                notEdit();
             }
         });
     });
@@ -125,3 +125,15 @@ $(function() {
     });
 
 });
+function notEdit(){
+    $("#saveAttend_msg").addClass("hidden");
+    $("#attendance_edit").removeClass("hidden");
+    $("#attendance_cancle").addClass("hidden");
+    $("#attendance_submit").addClass("hidden");
+
+    /**不可编辑考勤 状态*/
+    $('#attendance_form input').each(function(){
+        $(this).attr("readonly","readonly");
+        $(this).parent('td').removeClass("info");
+    });
+}

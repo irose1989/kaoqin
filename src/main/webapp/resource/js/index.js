@@ -34,6 +34,21 @@ function getTime(){
 	else if(role_warn==3){
 		$('#hi_role').text("您好：项目经理");
 	}
+	/**退出登入*/
+	$('#logout').click(function(){
+		$.ajax({
+			type:'GET',
+			url:"../logout.do",
+			dataType: "json",
+			contentType:"application/json",
+			success:function(data){
+				var code = data.code;
+				if(code == 0){
+					location.href="../login.htm";
+				}
+			}
+		});
+	});
 };
 /**更新时间*/
 $(function(){

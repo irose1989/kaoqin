@@ -24,7 +24,8 @@
     <span>后台考勤管理系统</span>
     <div class="nav-topright">
         <p></p>
-        <span id="hi_role"></span><span id="logout">退出</span>
+        <span id="hi_role"></span>
+        <a href="#" id="logout" ><span style="color: white;">退出</span></a>
     </div>
 </div>
 <div class="nav-down">
