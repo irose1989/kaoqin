@@ -10,6 +10,24 @@ public class SearchConditions {
     private Integer month;
     private Integer year;
     private Integer currentPage;
+    private String isoftNo;
+    private Integer roleId;
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getIsoftNo() {
+        return isoftNo;
+    }
+
+    public void setIsoftNo(String isoftNo) {
+        this.isoftNo = isoftNo;
+    }
 
     public Integer getCurrentPage() {
         return currentPage;
@@ -68,6 +86,8 @@ public class SearchConditions {
                 ", month=" + month +
                 ", year=" + year +
                 ", currentPage=" + currentPage +
+                ", isoftNo='" + isoftNo + '\'' +
+                ", roleId=" + roleId +
                 '}';
     }
 }

@@ -1,7 +1,9 @@
 package com.isoftstone.kaoqin.controller.admin.permission;
 
 import com.isoftstone.kaoqin.common.BasicAttendance;
+import com.isoftstone.kaoqin.controller.vo.SearchConditions;
 import com.isoftstone.kaoqin.controller.vo.UserVo;
+import com.isoftstone.kaoqin.service.PermissionService;
 import com.isoftstone.kaoqin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class PermissionController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private PermissionService permissionService;
 
     /**权限分配 加载页面*/
     @RequestMapping(value = "/getPermission.do",method = RequestMethod.GET)
@@ -35,5 +39,14 @@ public class PermissionController {
         BasicAttendance basicAttendance = userService.findByConditions(userVo);
         return  basicAttendance;
     }
+
+    /**修改权限*/
+    @RequestMapping(value = "/changeRole.do",method = RequestMethod.GET)
+    @ResponseBody
+    public BasicAttendance changeRole(SearchConditions conditions){
+        BasicAttendance basicAttendance = permissionService.changeRole(conditions);
+        return  basicAttendance;
+    }
+
 
 }

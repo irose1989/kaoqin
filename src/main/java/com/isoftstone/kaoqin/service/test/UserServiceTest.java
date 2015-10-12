@@ -2,6 +2,8 @@ package com.isoftstone.kaoqin.service.test;
 
 import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.controller.vo.PasswordModify;
+import com.isoftstone.kaoqin.controller.vo.SearchConditions;
+import com.isoftstone.kaoqin.service.PermissionService;
 import com.isoftstone.kaoqin.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +20,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class UserServiceTest {
     @Autowired(required = true)
     private UserService userService;
-
+    @Autowired
+    private PermissionService permissionService;
     /**
      * 检测登入功能
      * */
@@ -44,4 +47,15 @@ public class UserServiceTest {
         BasicAttendance basicAttendance = userService.findAllUser();
         System.out.print(basicAttendance);
     }
+
+    /**测试权限修改*/
+    @Test
+    public void test4(){
+        SearchConditions conditions = new SearchConditions();
+        conditions.setRoleId(1);
+        conditions.setIsoftNo("2");
+        BasicAttendance basicAttendance = permissionService.changeRole(conditions);
+        System.out.println(basicAttendance);
+    }
+
 }

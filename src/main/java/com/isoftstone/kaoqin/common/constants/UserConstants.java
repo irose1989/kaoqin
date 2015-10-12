@@ -43,5 +43,10 @@ public class UserConstants {
     public static String editUserInfoErrorMsg="编辑信息失败";
     public static Integer editUserInfoErrorCode=11;
 
+    public static String changePermissonSuccessMsg="修改权限成功";
+    public static Integer changePermissonSuccessCode=1;
+    public static String changePermissonFailedMsg="修改权限失败";
+    public static Integer changePermissonFailedCode=0;
+
 }
 
