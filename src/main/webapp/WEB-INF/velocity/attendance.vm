@@ -63,7 +63,8 @@
               <td class="hidden" id="edit_state">1</td>
               <tbody>
                   #foreach($attend in $!list)#*行数*#
-                  #set($t=$!velocityCount)
+                  #set($p = $!page.currentPage+(-1))
+                  #set($t=$!velocityCount +$!p*10)
                       <tr scope="row" >
                           <td>$!t </td>
                           <td style="width: 80px" >$!attend.realName</td>

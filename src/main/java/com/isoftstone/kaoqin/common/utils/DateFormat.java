@@ -111,7 +111,7 @@ public class DateFormat {
             for(Attendance attendance:attList){
 
                 long day = attendance.getDate().getTime();
-                if(today-day>=0 && today-day<=AttendanceConstants.WEEK){
+                if(today-day>=0 && today-day<=AttendanceConstants.TWOWEEK){
                     attendance.setReadonly(false);
                 }else{
                     attendance.setReadonly(true);
