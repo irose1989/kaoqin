@@ -16,9 +16,11 @@
     <script type="text/javascript" src="../resource/js/index.js"></script>
     <script type="text/javascript" src="../resource/js/account.js"></script>
     <script type="text/javascript" src="../resource/js/permission.js"></script>
+    <script type="text/javascript" src="../resource/js/userInfoEdit.js"></script>
 </head>
 <body>
 <input hidden id="role_warn" value="$!userInfo.roleid">
+<span hidden id="userInfo_warn">$!infoUser</span>
 #set($role=$!userInfo.roleid)
 <div class="nav-top">
     <span>后台考勤管理系统</span>
@@ -31,24 +33,43 @@
 <div class="nav-down">
     <div class="leftmenu1">
         <div class="menu-oc"><img src="../resource/images/menu-all.png" /></div>
-        <ul>
-            <li>
-                <a class="a_list a_list2">权限管理</a>
-                <div class="menu_list">
-                    <a href="../account/openAccount.do">创建账号</a>
+        #if($!role==1)
+            <ul>
+                <li>
+                    <a class="a_list a_list2">个人资料</a>
+                    <div class="menu_list">
+                        <a href="../userInfoEdit/toEditInfo.do">编辑资料</a>
+                    </div>
+                </li>
+                <li>
+                    <a class="a_list a_list3">考勤管理</a>
+                    <div class="menu_list">
+                        <a href="../attendance/findAttendance.do">登记考勤</a>
+                    </div>
+                </li>
+            </ul>
+
+        #else
+            <ul>
+                <li>
+                    <a class="a_list a_list2">权限管理</a>
+                    <div class="menu_list">
+                        <a href="../account/openAccount.do">创建账号</a>
                     #*<a href="#">基本权限</a>*#
-                    <a href="../permission/getPermission.do">分配权限</a>
-                    <a href="#">权限管理</a>
-                    <a href="#">成员管理</a>
-                </div>
-            </li>
-            <li>
-                <a class="a_list a_list3">考勤管理</a>
-                <div class="menu_list">
-                    <a href="../attendance/findAttendance.do">考勤</a>
-                </div>
-            </li>
-        </ul>
+                        <a href="../permission/getPermission.do">分配权限</a>
+                        <a href="#">权限管理</a>
+                        <a href="#">成员管理</a>
+                    </div>
+                </li>
+                <li>
+                    <a class="a_list a_list3">考勤管理</a>
+                    <div class="menu_list">
+                        <a href="../attendance/findAttendance.do">考勤</a>
+                    </div>
+                </li>
+            </ul>
+        #end
+
     </div>
     <div class="leftmenu2">
         <div class="menu-oc1"><img src="../resource/images/menu-all.png" /></div>
@@ -58,7 +79,7 @@
                     <a class="j_a_list j_a_list2"></a>
                     <div class="j_menu_list">
                         <span class="sp2"><i></i>个人资料</span>
-                        <a href="../userInfo/toEditInfo.do">编辑资料</a>
+                        <a href="../userInfoEdit/toEditInfo.do">编辑资料</a>
                     </div>
                 </li>
                 <li>

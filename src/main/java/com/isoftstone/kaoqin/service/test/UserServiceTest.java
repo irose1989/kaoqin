@@ -1,5 +1,6 @@
 package com.isoftstone.kaoqin.service.test;
 
+import com.isoftstone.kaoqin.bean.user.User;
 import com.isoftstone.kaoqin.common.BasicAttendance;
 import com.isoftstone.kaoqin.controller.vo.PasswordModify;
 import com.isoftstone.kaoqin.controller.vo.SearchConditions;
@@ -56,6 +57,17 @@ public class UserServiceTest {
         conditions.setIsoftNo("2");
         BasicAttendance basicAttendance = permissionService.changeRole(conditions);
         System.out.println(basicAttendance);
+    }
+
+    /**测试更改用户信息*/
+    @Test
+    public void test5(){
+        User user = new User();
+        user.setIsoftNo("3");
+        user.setRealName("chen");
+        BasicAttendance basicAttendance = userService.editUserInfo(user);
+        System.out.println(basicAttendance);
+
     }
 
 }

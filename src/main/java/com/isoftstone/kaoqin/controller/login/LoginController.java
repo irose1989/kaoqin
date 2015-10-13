@@ -5,6 +5,7 @@ import com.isoftstone.kaoqin.common.constants.UserConstants;
 import com.isoftstone.kaoqin.controller.vo.PasswordModify;
 import com.isoftstone.kaoqin.controller.vo.UserVo;
 import com.isoftstone.kaoqin.service.UserService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,8 +17,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 
 /**
@@ -29,12 +28,6 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-
-    //@RequestMapping("/login.do")
-    public BasicAttendance toLogin(String username,String password){
-
-        return null;
-    }
 
     /**
      * 用户登入检查(默认员工号登入)
@@ -50,6 +43,8 @@ public class LoginController {
             Object userInfo = basicAttendance.getData();
             /**登入成功，储存到session*/
             session.setAttribute("userInfo",userInfo);
+            JSONObject infoUser = JSONObject.fromObject(userInfo);
+            session.setAttribute("infoUser",infoUser);
         }
 
         return basicAttendance;

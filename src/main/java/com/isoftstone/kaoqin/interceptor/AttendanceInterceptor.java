@@ -15,10 +15,10 @@ public class AttendanceInterceptor implements HandlerInterceptor{
         /**控制访问只能登入页面进来*/
         HttpSession session = httpServletRequest.getSession();
         Object userInfo = session.getAttribute("userInfo");
-        if(userInfo == null){
+        /*if(userInfo == null){
             httpServletResponse.sendRedirect("/kaoqin/login.htm");
             return false;
-        }
+        }*/
         return true;
     }
 

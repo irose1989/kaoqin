@@ -1,0 +1,105 @@
+       <br>
+       <br>
+       #* &nbsp;&nbsp;&nbsp;*#
+    <form id="userInfoEdit" style="height: inherit" >
+       <div  class="container" style="background-color:gainsboro ;height: inherit;/*font-size: smaller*/">
+           <br>
+           员工个人信息编辑：
+           <br>
+           <br>
+           <div class="row">
+               <div class="col-lg-3">工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<span class="isoftNo">$!userInfo.isoftNo</span></div>
+               <div class="col-lg-3"><span style="color: #c12e2a">* </span>姓&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" class="realName" value="$!userInfo.realName"></div>
+               <div class="col-lg-4"><span style="color: #c12e2a">* </span>项目名称：
+                   <select class="span2 project" name="project" >
+                       <option value="1" >法务网上法庭项目</option>
+                       <option value="2" >集团合同平台建设一期</option>
+                       <option value="3" >法务二期诉讼及合同</option>
+                       <option value="4" >法务内部系统优化服务</option>
+                       <option value="5" >法务平台运维服务</option>
+                       <option value="6" >信息平台UED服务</option>
+                       <option value="7" >质量保障测试服务6人项目</option>
+                       <option value="8" >淘宝质量测试</option>
+                       <option value="9" >阿里智能云测试服务</option>
+                       <option value="10" >国际UED前端服务外包 </option>
+                       <option value="11" >湖畔大学项目</option>
+                       <option value="12" >高法项目</option>
+                       <option value="13" >采购立项全打通项目</option>
+                       <option value="14" >五道口项目</option>
+                   </select>
+               </div>
+           </div>
+           <br>
+           <div class="row">
+               <div class="col-lg-3">手&nbsp;机&nbsp;号&nbsp;：<input type="text" class="tel" value="$!userInfo.telephone"></div>
+               <div class="col-lg-3">旺&nbsp;旺&nbsp;号&nbsp;：<input type="text" class="wangwang" value="$!userInfo.wangwangNum"></div>
+               <div class="col-lg-4"><span style="color: #c12e2a">* </span>软通邮箱：&nbsp;<input type="text" value="$!userInfo.isoftEmail" class="isoftEmail"></div>
+               <div class="col-lg-2">权&nbsp;&nbsp;限：
+                   <span readonly class="role">
+                       #if($!userInfo.roleid == 1)普通员工
+                       #end
+                       #if($!userInfo.roleid == 2)管理员
+                       #end
+                       #if($!userInfo.roleid == 3)项目经理
+                       #end
+                       <input hidden class="roleId" value="$!userInfo.roleid">
+                   </span></div>
+           </div>
+
+           <br>
+           <div class="row">
+               <div class="col-lg-3">阿里工号：<input type="text" class="aliId" value="$!userInfo.wbNo"></div>
+               <div class="col-lg-3">办公地点：<input type="text" class="location" value="$!userInfo.location"></div>
+               <div class="col-lg-4">&nbsp;&nbsp;&nbsp;阿里邮箱：&nbsp;<input type="text" class="aliEmail" value="$!userInfo.wbEmail"></div>
+           </div>
+           <br>
+           <div class="row">
+
+               <div class="col-lg-3">职务岗位：
+                   <select class="job" name="job" >
+                       <option value="1">java</option>
+                       <option value="2">前端</option>
+                       <option value="3">UED</option>
+                       <option value="4">测试</option>
+                       <option value="5">PM</option>
+                   </select>
+               </div>
+               <div class="col-lg-3">专业技术：
+                   <select class="professionalSkill" name="professional_skill" >
+                       <option value="1">java</option>
+                       <option value="2">前端</option>
+                       <option value="3">UED</option>
+                       <option value="4">测试</option>
+                       <option value="5">PM</option>
+                   </select>
+               </div>
+               <div class="col-lg-3">&nbsp;&nbsp;&nbsp;技术等级：
+                   <select class="skillLever" name="professional_skill" disabled>
+                       <option value="1">初级</option>
+                       <option value="2">中级</option>
+                       <option value="3">高级</option>
+                       <option value="4">资深</option>
+                   </select>
+               </div>
+               <div class="col-lg-3">在职状态：
+                   <select class="jobState" name="job_state" disabled>
+                       <option value="1">在职</option>
+                       <option value="2">离职</option>
+                       <option value="3">待入职</option>
+                       <option value="4">离职调出</option>
+                       <option value="5">离职调回</option>
+                   </select>
+               </div>
+           </div>
+           <br>
+           <br>
+           <br>
+           <div class="pull-right">
+               <button class="btn btn-info" id="userInfoEditCommit">提交</button>
+               <br>
+               <span class="warn" style="color: #c12e2a"></span>
+           </div>
+
+       </div>
+
+    </form>

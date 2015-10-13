@@ -52,6 +52,14 @@ $(function(){
             }
         });
 
+        //删除
+        $('tbody').on("click",".delete",function(){
+            if(confirm("确定删除")){
+                var isoftNo = $(this).parent().parent().children('td:eq(0)').text();
+                removeItem(arr,isoftNo);
+                $(this).parent().parent().remove();
+            }
+        });
         return false;
 
     });
@@ -102,15 +110,6 @@ $(function(){
     $('tbody').on("blur","#changeSelect",function(){
         //alert($("#changSelect").val());
         $("#changeSelect").parent().html(power);
-    });
-
-    //删除
-    $('tbody').on("click",".delete",function(){
-        if(confirm("确定删除")){
-            var isoftNo = $(this).parent().parent().children('td:eq(0)').text();
-            removeItem(arr,isoftNo);
-            $(this).parent().parent().remove();
-        }
     });
 
 });
