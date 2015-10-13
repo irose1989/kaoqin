@@ -44,7 +44,7 @@
                 <li>
                     <a class="a_list a_list3">考勤管理</a>
                     <div class="menu_list">
-                        <a href="../attendance/findAttendance.do">登记考勤</a>
+                        <a href="#">登记考勤</a>
                     </div>
                 </li>
             </ul>
@@ -86,7 +86,7 @@
                     <a class="j_a_list j_a_list3"></a>
                     <div class="j_menu_list">
                         <span class="sp3"><i></i>考勤管理</span>
-                        <a href="../attendance/findAttendance.do">登记考勤</a>
+                        <a href="#">登记考勤</a>
                     </div>
                 </li>
             </ul>

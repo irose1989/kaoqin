@@ -2,178 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb8572d3-d343-439d-82f4-207efe3d9fdc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/login/copyright.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/ic_chats.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/ic_grid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/ic_user.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/login/login_bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/login/login_box_bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/login/login_btn.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/login/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/login/master_logo2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/images/menu-all.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/admin/account/AccountController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/vo/AttendVo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/bean/attendance/Attendance.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/constants/AttendanceConstants.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/admin/attendence/AttendanceController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/vo/AttendanceDateVo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/bean/attendance/AttendanceExample.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/interceptor/AttendanceInterceptor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/dao/attendanceMapper/AttendanceMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/dao/AttendanceMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/dao/attendanceMapper/AttendanceMapperExt.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/dao/AttendanceMapperExt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/dao/attendanceMapper/test/AttendanceMapperExtTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/service/AttendanceService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/service/impl/AttendanceServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/service/test/AttendanceServiceTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/vo/AttendanceVo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/vo/AttendanceVoList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/constants/BasicConstants.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/utils/CreateExcelToDisk.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/utils/DateFormat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/utils/DateTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/login/LoginController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/login/LogoutController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/utils/PageConf.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/utils/PageUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/vo/PageVo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/vo/PasswordModify.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/admin/permission/PermissionController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/service/PermissionService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/service/impl/PermissionServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/bean/project/Project.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/bean/project/ProjectExample.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/dao/projectMapper/ProjectMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/dao/ProjectMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/utils/RandomPwd.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/bean/record/Record.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/bean/record/RecordExample.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/dao/recordMapper/RecordMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/dao/RecordMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/constants/RoleConstants.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/vo/SearchConditions.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/bean/TestForm.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/utils/TimerTaskerUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/bean/user/User.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/bean/user/UserExample.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/users/UserInfoEditController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/dao/userMapper/UserMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/dao/UserMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/dao/userMapper/UserMapperExt.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/dao/UserMapperExt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/dao/userMapper/test/UserMapperExtTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/service/test/UserServiceTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/vo/UserVo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/vo/UserVoList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/utils/Validate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/account.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/attendance.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity/attendance.vm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/css/bootstrap-theme.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/css/bootstrap-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/css/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/css/bootstrap.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity/createAccount.vm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/jquery-2.1.4.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kq.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/css/login.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/login.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/login.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/npm.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/permission.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity/permission.vm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/spring_timer.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/test.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/updown.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/userInfoEdit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity/userInfoedit.vm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/webdefault.xml" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\.name" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\artifacts\kaoqin_war.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\artifacts\kaoqin_war_exploded.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\copyright\profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__aopalliance_aopalliance_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__ch_qos_logback_logback_classic_1_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__ch_qos_logback_logback_core_1_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__com_alibaba_druid_1_0_9.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__commons_logging_commons_logging_1_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__junit_junit_4_11.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__mysql_mysql_connector_java_5_1_29.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_aspectj_aspectjweaver_1_6_11.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_codehaus_jackson_jackson_core_asl_1_9_13.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_codehaus_jackson_jackson_mapper_asl_1_9_13.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_hamcrest_hamcrest_core_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_mybatis_mybatis_3_2_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_mybatis_mybatis_spring_1_2_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_slf4j_slf4j_api_1_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_springframework_spring_aop_3_2_13_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_springframework_spring_beans_3_2_13_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_springframework_spring_context_3_2_13_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_springframework_spring_context_support_3_2_13_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_springframework_spring_core_3_2_13_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_springframework_spring_expression_3_2_13_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_springframework_spring_jdbc_3_2_13_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_springframework_spring_oxm_3_2_13_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_springframework_spring_test_3_2_13_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_springframework_spring_tx_3_2_13_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_springframework_spring_web_3_2_13_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\libraries\Maven__org_springframework_spring_webmvc_3_2_13_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\.idea\vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\src\main\java\com\isoftstone\kaoqin\bean\Attendance.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\src\main\java\com\isoftstone\kaoqin\bean\Dept.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\src\main\java\com\isoftstone\kaoqin\bean\User.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\src\main\java\com\isoftstone\kaoqin\controller\LoginController.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\src\main\java\com\isoftstone\kaoqin\controller\TurnController.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\src\main\java\com\isoftstone\kaoqin\dao\UserDao.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\src\main\java\com\isoftstone\kaoqin\dao\test\UserDaoTest.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\src\main\java\com\isoftstone\kaoqin\service\UserServiceTest\UserServiceTest.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\src\main\resources\dao\userSqlMap.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\src\main\webapp\WEB-INF\velocity\test.vm" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\target\classes\com\isoftstone\kaoqin\bean\Attendance.class" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\target\classes\com\isoftstone\kaoqin\bean\Dept.class" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\target\classes\com\isoftstone\kaoqin\bean\User.class" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\target\classes\com\isoftstone\kaoqin\common\BasicKq.class" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\target\classes\com\isoftstone\kaoqin\controller\LoginController.class" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\target\classes\com\isoftstone\kaoqin\dao\UserDao.class" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\target\classes\com\isoftstone\kaoqin\dao\test\UserDaoTest.class" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\target\classes\com\isoftstone\kaoqin\service\UserServiceTest\UserServiceTest.class" afterPath="" />
-      <change type="DELETED" beforePath="D:\chen_workspace\kaoqin\target\classes\dao\userSqlMap.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/isoftstone/kaoqin/common/constants/UserConstants.class" afterPath="$PROJECT_DIR$/target/classes/com/isoftstone/kaoqin/common/constants/UserConstants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/isoftstone/kaoqin/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/isoftstone/kaoqin/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/isoftstone/kaoqin/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/isoftstone/kaoqin/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/BasicAttendance.java" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/BasicAttendance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/utils/LogbackConfigListener.java" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/utils/LogbackConfigListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/constants/UserConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/common/constants/UserConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/service/impl/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/db.properties" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/db.properties" afterPath="$PROJECT_DIR$/target/classes/db.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kaoqin.iml" afterPath="$PROJECT_DIR$/kaoqin.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity/page.vm" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity/page.vm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/spring.xml" afterPath="$PROJECT_DIR$/target/classes/spring.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/spring_mybatis.xml" afterPath="$PROJECT_DIR$/target/classes/spring_mybatis.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="kaoqin.iws" />
@@ -196,7 +25,18 @@
     <favorites_list name="kaoqin" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="page.vm" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity/page.vm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.20965692">
+              <caret line="73" column="27" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -219,7 +59,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/logback.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/velocity.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/controller/TurnController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity/page.vm" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity/test.vm" />
         <option value="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/utils/LogbackConfigServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/isoftstone/kaoqin/bean/Attendance.java" />
@@ -239,6 +78,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/db.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity/page.vm" />
       </list>
     </option>
   </component>
@@ -256,7 +96,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
+        <option name="mavenHome" value="D:/alibaba/apache-maven-3.3.3" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -271,13 +111,19 @@
           <option name="myItemId" value="kaoqin Maven Webapp" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
+      </PATH>
+      <PATH>
         <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="net.sf.json-lib:json-lib:2.4" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependencyNode" />
+          <option name="myItemId" value="kaoqin Maven Webapp" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -290,18 +136,18 @@
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="jetty" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
           <option name="myItemId" value="" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="kaoqin Maven Webapp" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
       </PATH>
     </treeState>
@@ -365,10 +211,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="kaoqin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -707,11 +549,13 @@
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="recentsLimit" value="5" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -724,7 +568,31 @@
       <recent name="D:\chen_workspace\kaoqin\src\main\webapp\WEB-INF\velocity" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Maven.kaoqin [jetty:run]">
+    <configuration default="false" name="kaoqin [jetty:run]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="jetty:run" />
+              </list>
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
       <server-settings />
@@ -1007,6 +875,14 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Maven.kaoqin [jetty:run]" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Maven.kaoqin [jetty:run]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -1019,12 +895,12 @@
       <option name="number" value="Default" />
       <updated>1441763168359</updated>
       <workItem from="1441763171092" duration="1428000" />
-      <workItem from="1444734406749" duration="1235000" />
+      <workItem from="1444734406749" duration="2091000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4182000" />
+    <option name="totallyTimeSpent" value="5038000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1037,7 +913,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32897863" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1045,12 +921,12 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32897863" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5213777" sideWeight="0.6618123" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32897863" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44660193" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.302589" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32897863" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5213777" sideWeight="0.3381877" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.63301665" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31472492" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31472492" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32897863" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1058,7 +934,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39904988" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1417,14 +1293,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity/page.vm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity/createAccount.vm">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1461,6 +1329,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4600246">
           <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity/page.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.20965692">
+          <caret line="73" column="27" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
           <folding />
         </state>
       </provider>
