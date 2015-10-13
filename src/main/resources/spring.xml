@@ -7,12 +7,26 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 			http://www.springframework.org/schema/context
-			http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+			http://www.springframework.org/schema/context/spring-context-3.2.xsd
+			http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
 
     <!--自动扫描含有将其注入为bean -->
     <context:component-scan base-package="com.isoftstone.kaoqin.controller" />
     <mvc:annotation-driven/>
+   <!--加载静态资源-->
+    <mvc:default-servlet-handler />
+    <!--拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/login.htm"/>
+            <mvc:exclude-mapping path="/toLogin.do"/>
+            <mvc:exclude-mapping path="/resource/**"/>
+            <bean class="com.isoftstone.kaoqin.interceptor.AttendanceInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!-- 避免IE在ajax请求时，返回json出现下载 -->
     <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
@@ -22,26 +36,23 @@
             </list>
         </property>
     </bean>
-
     <!-- 配置velocity引擎 -->
     <bean id="velocityConfigurer"
           class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
         <property name="resourceLoaderPath" value="/WEB-INF/velocity/" /><!-- 模板存放的路径 -->
         <property name="configLocation" value="classpath:velocity.properties" />
-        <property name="velocityProperties" >
-            <props>
-                <prop key="contentType">text/html;charset=UTF-8</prop>
-                <prop key="velocimacro.library">macro/macros.vm</prop>
-            </props>
-        </property>
+
     </bean>
 
     <!-- 配置视图的显示 -->
     <bean id="ViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+        <property name="cache" value="true"></property>
         <property name="toolboxConfigLocation" value="/WEB-INF/tools.xml"/>
         <property name="suffix" value=".vm" /><!-- 视图文件的后缀名 -->
         <property name="contentType" value="text/html;charset=UTF-8" />
+        <property name="dateToolAttribute" value="date" /><!--日期函数名称-->
         <property name="exposeSessionAttributes" value="true" />
+        <property name="exposeRequestAttributes" value="true"/>
         <property name="layoutUrl" value="page.vm"/>
     </bean>
 

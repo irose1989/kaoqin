@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.kaoqin.dao.attendanceMapper.AttendanceMapper" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.kaoqin.bean.attendance.Attendance" >
+    <id column="attend_id" property="id" jdbcType="BIGINT" />
+    <result column="date" property="date" jdbcType="DATE" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="workhours" property="workhours" jdbcType="INTEGER" />
+    <result column="overhour" property="overhour" jdbcType="DOUBLE" />
+    <result column="work_off" property="workOff" jdbcType="INTEGER" />
+    <result column="late" property="late" jdbcType="INTEGER" />
+    <result column="early" property="early" jdbcType="INTEGER" />
+    <result column="absent" property="absent" jdbcType="INTEGER" />
+    <result column="on_duty" property="onDuty" jdbcType="TIMESTAMP" />
+    <result column="off_duty" property="offDuty" jdbcType="TIMESTAMP" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    attend_id, date, user_id, workhours, overhour, work_off, late, early, absent, on_duty, off_duty,
+    description
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.isoftstone.kaoqin.bean.attendance.AttendanceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from attendance
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from attendance
+    where attend_id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from attendance
+    where attend_id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.isoftstone.kaoqin.bean.attendance.AttendanceExample" >
+    delete from attendance
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.isoftstone.kaoqin.bean.attendance.Attendance" >
+    insert into attendance (id, date, user_id,
+      workhours, overhour, work_off,
+      late, early, absent,
+      on_duty, off_duty, description
+      )
+    values (#{id,jdbcType=BIGINT}, #{date,jdbcType=DATE}, #{userId,jdbcType=INTEGER},
+      #{workhours,jdbcType=INTEGER}, #{overhour,jdbcType=DOUBLE}, #{workOff,jdbcType=INTEGER},
+      #{late,jdbcType=INTEGER}, #{early,jdbcType=INTEGER}, #{absent,jdbcType=INTEGER},
+      #{onDuty,jdbcType=TIMESTAMP}, #{offDuty,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.isoftstone.kaoqin.bean.attendance.Attendance" >
+    insert into attendance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        attend_id,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="workhours != null" >
+        workhours,
+      </if>
+      <if test="overhour != null" >
+        overhour,
+      </if>
+      <if test="workOff != null" >
+        work_off,
+      </if>
+      <if test="late != null" >
+        late,
+      </if>
+      <if test="early != null" >
+        early,
+      </if>
+      <if test="absent != null" >
+        absent,
+      </if>
+      <if test="onDuty != null" >
+        on_duty,
+      </if>
+      <if test="offDuty != null" >
+        off_duty,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{attend_id,jdbcType=BIGINT},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="workhours != null" >
+        #{workhours,jdbcType=INTEGER},
+      </if>
+      <if test="overhour != null" >
+        #{overhour,jdbcType=DOUBLE},
+      </if>
+      <if test="workOff != null" >
+        #{workOff,jdbcType=INTEGER},
+      </if>
+      <if test="late != null" >
+        #{late,jdbcType=INTEGER},
+      </if>
+      <if test="early != null" >
+        #{early,jdbcType=INTEGER},
+      </if>
+      <if test="absent != null" >
+        #{absent,jdbcType=INTEGER},
+      </if>
+      <if test="onDuty != null" >
+        #{onDuty,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offDuty != null" >
+        #{offDuty,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.isoftstone.kaoqin.bean.attendance.AttendanceExample" resultType="java.lang.Integer" >
+    select count(*) from attendance
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update attendance
+    <set >
+      <if test="record.id != null" >
+        attend_id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.date != null" >
+        date = #{record.date,jdbcType=DATE},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.workhours != null" >
+        workhours = #{record.workhours,jdbcType=INTEGER},
+      </if>
+      <if test="record.overhour != null" >
+        overhour = #{record.overhour,jdbcType=DOUBLE},
+      </if>
+      <if test="record.workOff != null" >
+        work_off = #{record.workOff,jdbcType=INTEGER},
+      </if>
+      <if test="record.late != null" >
+        late = #{record.late,jdbcType=INTEGER},
+      </if>
+      <if test="record.early != null" >
+        early = #{record.early,jdbcType=INTEGER},
+      </if>
+      <if test="record.absent != null" >
+        absent = #{record.absent,jdbcType=INTEGER},
+      </if>
+      <if test="record.onDuty != null" >
+        on_duty = #{record.onDuty,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.offDuty != null" >
+        off_duty = #{record.offDuty,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update attendance
+    set attend_id = #{record.id,jdbcType=BIGINT},
+      date = #{record.date,jdbcType=DATE},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      workhours = #{record.workhours,jdbcType=INTEGER},
+      overhour = #{record.overhour,jdbcType=DOUBLE},
+      work_off = #{record.workOff,jdbcType=INTEGER},
+      late = #{record.late,jdbcType=INTEGER},
+      early = #{record.early,jdbcType=INTEGER},
+      absent = #{record.absent,jdbcType=INTEGER},
+      on_duty = #{record.onDuty,jdbcType=TIMESTAMP},
+      off_duty = #{record.offDuty,jdbcType=TIMESTAMP},
+      description = #{record.description,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.isoftstone.kaoqin.bean.attendance.Attendance" >
+    update attendance
+    <set >
+      <if test="date != null" >
+        date = #{date,jdbcType=DATE},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="workhours != null" >
+        workhours = #{workhours,jdbcType=INTEGER},
+      </if>
+      <if test="overhour != null" >
+        overhour = #{overhour,jdbcType=DOUBLE},
+      </if>
+      <if test="workOff != null" >
+        work_off = #{workOff,jdbcType=INTEGER},
+      </if>
+      <if test="late != null" >
+        late = #{late,jdbcType=INTEGER},
+      </if>
+      <if test="early != null" >
+        early = #{early,jdbcType=INTEGER},
+      </if>
+      <if test="absent != null" >
+        absent = #{absent,jdbcType=INTEGER},
+      </if>
+      <if test="onDuty != null" >
+        on_duty = #{onDuty,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offDuty != null" >
+        off_duty = #{offDuty,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.isoftstone.kaoqin.bean.attendance.Attendance" >
+    update attendance
+    set date = #{date,jdbcType=DATE},
+      user_id = #{userId,jdbcType=INTEGER},
+      workhours = #{workhours,jdbcType=INTEGER},
+      overhour = #{overhour,jdbcType=DOUBLE},
+      work_off = #{workOff,jdbcType=INTEGER},
+      late = #{late,jdbcType=INTEGER},
+      early = #{early,jdbcType=INTEGER},
+      absent = #{absent,jdbcType=INTEGER},
+      on_duty = #{onDuty,jdbcType=TIMESTAMP},
+      off_duty = #{offDuty,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR}
+    where attend_id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

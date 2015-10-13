@@ -1,15 +1,26 @@
 package com.isoftstone.kaoqin.common;
 
-import com.isoftstone.kaoqin.bean.User;
+import com.alibaba.druid.util.StringUtils;
+import com.isoftstone.kaoqin.common.constants.UserConstants;
+import com.isoftstone.kaoqin.common.utils.PageConf;
+import com.isoftstone.kaoqin.controller.vo.AttendanceDateVo;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.springframework.util.CollectionUtils;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by wb-chenchaobin on 2015/9/8.
  */
-public class BasicAttendance {
+
+public class BasicAttendance<T> {
 
     private String msg;
     private int code;//0:不存在；1；存在用户
-    private Object object;
+    private boolean flag;
+    private T data;
+    private PageConf pageConf;
 
     public String getMsg() {
         return msg;
@@ -27,26 +38,72 @@ public class BasicAttendance {
         this.code = code;
     }
 
-    public Object getObject() {
-        return object;
+    public boolean isFlag() {
+        return flag;
     }
 
-    public void setObject(Object object) {
-        this.object = object;
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 
-    public void setObject(User user) {
-        this.object = user;
+    public T getData() {
+        return data;
     }
 
+    public void setData(T data) {
+        this.data = data;
+    }
 
+    public PageConf getPageConf() {
+        return pageConf;
+    }
+
+    public void setPageConf(PageConf pageConf) {
+        this.pageConf = pageConf;
+    }
+
+    public void clear(){
+        this.msg="";
+        this.code= 0;
+        this.flag= false;
+        this.data = null;
+    }
+
+    /**字符串为空时*/
+    public boolean doEmpty(String pro){
+        if (StringUtils.isEmpty(pro)){
+            setMsg(UserConstants.notPutMsg);
+            setCode(UserConstants.notPutCode);
+            return true ;
+        }
+        return false;
+    }
+    /**集合为空时*/
+    public boolean doEmpty(Collection<T> collection ){
+        if (CollectionUtils.isEmpty(collection)){
+            setMsg(UserConstants.notPutMsg);
+            setCode(UserConstants.notPutCode);
+            return true;
+        }
+        return false;
+    }
+
+    /**对象为null时*/
+    public boolean doEmpity(Object o){
+        if(null == o){
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public String toString() {
         return "BasicAttendance{" +
                 "msg='" + msg + '\'' +
                 ", code=" + code +
-                ", object=" + object +
+                ", flag=" + flag +
+                ", data=" + data +
+                ", pageConf=" + pageConf +
                 '}';
     }
 }

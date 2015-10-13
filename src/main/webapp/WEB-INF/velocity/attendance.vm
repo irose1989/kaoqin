@@ -1,0 +1,143 @@
+      <br>
+<div class="row" id="month_year_project">
+    &nbsp;&nbsp;
+    <input id="year_warn" value="$!searchConditions.year" hidden>
+    <input value="$!searchConditions.month" hidden>
+    <select class="span2 year" name="year">
+        <option value="2015" #if($!searchConditions.year==2015)selected#end>2015</option>
+        <option value="2016" #if($!searchConditions.year==2016)selected#end>2016</option>
+        <option value="2017" #if($!searchConditions.year==2017)selected#end>2017</option>
+        <option value="2018" #if($!searchConditions.year==2018)selected#end>2018</option>
+        <option value="2019" #if($!searchConditions.year==2019)selected#end>2019</option>
+    </select>年
+    <select  class="span2 month" name="month">
+        <option value="1" #if($!searchConditions.month==1)selected#end>1</option>
+        <option value="2" #if($!searchConditions.month==2)selected#end>2</option>
+        <option value="3" #if($!searchConditions.month==3)selected#end>3</option>
+        <option value="4" #if($!searchConditions.month==4)selected#end>4</option>
+        <option value="5" #if($!searchConditions.month==5)selected#end>5</option>
+        <option value="6" #if($!searchConditions.month==6)selected#end>6</option>
+        <option value="7" #if($!searchConditions.month==7)selected#end>7</option>
+        <option value="8" #if($!searchConditions.month==8)selected#end>8</option>
+        <option value="9" #if($!searchConditions.month==9)selected#end>9</option>
+        <option value="10" #if($!searchConditions.month==10)selected#end>10</option>
+        <option value="11" #if($!searchConditions.month==11)selected#end>11</option>
+        <option value="12" #if($!searchConditions.month==12)selected#end>12</option>
+    </select>月
+    项目
+    <select class="span2 project" name="project" style="font-size: smaller">
+    <option value="0" #if($!searchConditions.projectId==0)selected#end>所有项目</option>
+    <option value="1" #if($!searchConditions.projectId==1)selected#end>法务网上法庭项目</option>
+    <option value="2" #if($!searchConditions.projectId==2)selected#end>集团合同平台建设一期</option>
+    <option value="3" #if($!searchConditions.projectId==3)selected#end>法务二期诉讼及合同</option>
+    <option value="4" #if($!searchConditions.projectId==4)selected#end>法务内部系统优化服务</option>
+    <option value="5" #if($!searchConditions.projectId==5)selected#end>法务平台运维服务</option>
+    <option value="6" #if($!searchConditions.projectId==6)selected#end>信息平台UED服务</option>
+    <option value="7" #if($!searchConditions.projectId==7)selected#end>质量保障测试服务6人项目</option>
+    <option value="8" #if($!searchConditions.projectId==8)selected#end>淘宝质量测试</option>
+    <option value="9" #if($!searchConditions.projectId==9)selected#end>阿里智能云测试服务</option>
+    <option value="10" #if($!searchConditions.projectId==10)selected#end>国际UED前端服务外包 </option>
+    <option value="11" #if($!searchConditions.projectId==11)selected#end>湖畔大学项目</option>
+    <option value="12" #if($!searchConditions.projectId==12)selected#end>高法项目</option>
+    <option value="13" #if($!searchConditions.projectId==13)selected#end>采购立项全打通项目</option>
+    <option value="14" #if($!searchConditions.projectId==14)selected#end>五道口项目</option>
+    </select>
+    <button class="btn btn-info" id="search_condition">查找</button>
+</div>
+
+    <div id="attendance_form"
+        style="width:100%; height:80%; overflow:auto; /*border:1px solid #000000;*/padding: 0px;">
+          <table class="formdata  table table-bordered table-hover" >
+              <caption>考勤系统</caption>
+              <thead>
+                  <tr>
+                      <th><div style="width: 40px">序号</div></th>
+                      <th><div style="width: 80px">姓名</div></th>
+                      <th scope="col" id="project_name"> <div style="width: 140px">实际项目</div></th>
+                      #foreach($item in $!month.dateList)
+                          <th scope="col" class="date$!velocityCount">$item</th>
+                      #end
+                      <th scope="col"><div style="width: 80px">加班合计</div></th>
+                  </tr>
+              </thead>
+              <td class="hidden" id="edit_state">1</td>
+              <tbody>
+                  #foreach($attend in $!list)#*行数*#
+                  #set($p = $!page.currentPage+(-1))
+                  #set($t=$!velocityCount +$!p*10)
+                      <tr scope="row" >
+                          <td>$!t </td>
+                          <td style="width: 80px" >$!attend.realName</td>
+                          <td style="width: 120px" >$!attend.projectName</td>
+                          #set($count=0)
+                          #foreach($item in $!month.dateList)#*列数*#
+                              #set($count=1)
+                              #set($description="")
+                              #set($readonly=true)
+                              #set($date="")
+                              #set($userId="")
+                              #foreach($att in $attend.attendanceList)#*匹配*#
+
+                                  #set($userId=$!att.userId)
+                                  #if($!item == $!att.day)
+                                      #set($count=2)
+                                      #set($description=$!att.description)#if($workhours==0)#set($workhours="")#end
+                                      #set($readonly=$!att.readonly)
+                                      #set($date=$!att.dayFormart)
+                                  #end
+                              #end
+                              #*count为2时 日期属性跟X轴日期对应*#
+                              #if($count==2)
+                                  #if($readonly==true)
+                                      <td>$!description</td>
+                                  #else
+                                      <td><span hidden>"userId":$!userId,"day":"$!date"</span>
+                                          <input type="text" class="attend$!velocityCount$!t" value="$!description" readonly style="background-color:transparent;"/>
+                                      </td>
+                                  #end
+                              #end
+                              #if($count==1)
+                                  #if($readonly==true)
+                                      <td></td>
+                                  #else
+                                      <td><span hidden>"userId":$!userId,"day":"$!date"</span>
+                                          <input type="text" class="attend$!velocityCount$!t" readonly style="background-color:transparent;"/></td>
+                                  #end
+                              #end
+                          #end
+                          <td>$!attend.allOverhours</td>
+                      </tr>
+                  #end
+              </tbody>
+          </table>
+    </div>
+      <div class="row">
+            <div class="pull-left" id="search_page">
+             #* #set($preCur =$!page.currentPage+(-1))*#
+                <input id="currentPage_warn" value="$!page.currentPage" hidden>
+                <input id="totalPage_warn" value="$!page.totalPage" hidden>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             #* <a href="getPage.do?currentPage=$!preCur&projectId=$!searchConditions.projectId&year=$!searchConditions.year&month=$!searchConditions.month" class="btn btn-info"
+                  #if($!page.currentPage==1) onclick="return false" #end
+                      >上一页</a>*#
+              <button class="btn btn-info" id="page_up" type="button">上一页</button>
+              <button class="btn btn-info"  aria-disabled="true">$!page.currentPage/$!page.totalPage</button>
+              <button class="btn btn-info" id="page_down" type="button">下一页</button>
+             #* #set($nextCur =$!page.currentPage+1)
+              <a href="getPage.do?currentPage=$!nextCur" class="btn btn-info"
+                 #if($!page.totalPage ==$!page.currentPage)onclick="return false"#end
+                      >下一页</a></li>*#
+          </div>
+          <div class="pull-right " >
+              <button class="btn btn-info" id="attendance_edit" type="button">考勤编辑</button>
+              <button class="btn btn-info hidden" id="attendance_cancle" type="button" >取消</button>
+              <button class="btn btn-info hidden" id="attendance_submit" type="button">确认提交</button>
+              <button class="btn btn-info" id="create_excel">导出Excel</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+      </div>
+      <div class="pull-right alert alert-success hidden" id="saveAttend_msg" ></div>
+
+
+
+
+

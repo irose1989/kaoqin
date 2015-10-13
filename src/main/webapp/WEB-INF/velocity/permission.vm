@@ -1,0 +1,50 @@
+﻿<br>
+<br>
+<form  id="search_form" >
+    姓名：<input type="text" class="real_name" placeholder="姓名"/>
+    #*项目：<input type="text" class="project_name" placeholder="项目名"/>*#
+    项目：
+    <select class="span2 project" name="project" style="font-size: smaller">
+        <option value="0" #if($!searchConditions.projectId==0)selected#end>所有项目</option>
+        <option value="1" #if($!searchConditions.projectId==1)selected#end>法务网上法庭项目</option>
+        <option value="2" #if($!searchConditions.projectId==2)selected#end>集团合同平台建设一期</option>
+        <option value="3" #if($!searchConditions.projectId==3)selected#end>法务二期诉讼及合同</option>
+        <option value="4" #if($!searchConditions.projectId==4)selected#end>法务内部系统优化服务</option>
+        <option value="5" #if($!searchConditions.projectId==5)selected#end>法务平台运维服务</option>
+        <option value="6" #if($!searchConditions.projectId==6)selected#end>信息平台UED服务</option>
+        <option value="7" #if($!searchConditions.projectId==7)selected#end>质量保障测试服务6人项目</option>
+        <option value="8" #if($!searchConditions.projectId==8)selected#end>淘宝质量测试</option>
+        <option value="9" #if($!searchConditions.projectId==9)selected#end>阿里智能云测试服务</option>
+        <option value="10" #if($!searchConditions.projectId==10)selected#end>国际UED前端服务外包 </option>
+        <option value="11" #if($!searchConditions.projectId==11)selected#end>湖畔大学项目</option>
+        <option value="12" #if($!searchConditions.projectId==12)selected#end>高法项目</option>
+        <option value="13" #if($!searchConditions.projectId==13)selected#end>采购立项全打通项目</option>
+        <option value="14" #if($!searchConditions.projectId==14)selected#end>五道口项目</option>
+    </select>
+    工号：<input type="text" class="isoftNo" placeholder="工号" />
+##	权限：<select><option value="">全部</option><option value="">普通员工</option><option value="">项目经理</option><option value="">管理员</option></select>
+	<button class="btn btn-info " >搜索</button>
+	<span class="search_msg"></span>
+</form>
+
+<table border="1px" cellpadding="0" cellspacing="0" id="search_table">
+	<caption>人员表（暂定）</caption>
+	<thead>
+		<tr>
+			<th class="col-lg-1">工号</th>
+			<th class="col-lg-2">姓名</th>
+			<th class="col-lg-3">项目</th>
+			<th class="col-lg-2">权限</th>
+			<th class="col-lg-4">操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>示例</td>
+			<td>张三</td>
+			<td>网商银行</td>
+			<td>普通员工</td>
+			<td><a href="javascript:;" class="change">修改权限</a>/<a href="javascript:;" class="delete">删除</a></td>
+		</tr>
+	</tbody>
+</table>

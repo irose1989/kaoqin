@@ -1,0 +1,19 @@
+    <br>
+
+    <div class="group" id="create_accountt">
+        <form>
+
+            <div>开通员工账号：软通工号开通</div><br>
+            <div class="input-append col-lg-6" id="create_account">
+                <div class="create_account1">
+                    <input class="input_account" type="text" name="isoftNo"><button class="btn" style="color: #cc374b">删除</button>
+                    <span style="color: red;font-size: small"></span></div>
+                <br>
+                <button class="btn " type="button" id="add_more_account">添加</button>
+                <button class="btn" type="button" id="bitch_openAccount">开通账号</button>
+                <span id="create_msg" style="color: red;font-size: small"></span>
+
+            </div>
+
+        </form>
+    </div>

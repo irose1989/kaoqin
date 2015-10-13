@@ -126,6 +126,11 @@
       <artifactId>jackson-mapper-asl</artifactId>
       <version>1.9.13</version>
     </dependency>
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-core-asl</artifactId>
+      <version>1.9.13</version>
+    </dependency>
 
     <!-- 日志sss文件管理包 -->
     <!-- log start -->
@@ -163,17 +168,94 @@
       <artifactId>javax.servlet-api</artifactId>
       <version>3.1.0</version>
     </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
-    </dependency>
     <!-- velocity end-->
 
+    <!--<dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-server</artifactId>
+      <version>9.2.1.v20140609</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>jetty-maven-plugin</artifactId>
+      <version>8.1.16.v20140903</version>
+    </dependency>-->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>3.13-beta1</version>
+    </dependency>
+
+    <!--定时器-->
+    <dependency>
+      <groupId>org.opensymphony.quartz</groupId>
+      <artifactId>quartz-all</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+    <!--json-->
+    <dependency>
+      <groupId>net.sf.json-lib</groupId>
+      <artifactId>json-lib</artifactId>
+      <version>2.4</version>
+    </dependency>
   </dependencies>
 
   <build>
+      <finalName>kaoqin</finalName>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
 
-    <finalName>kaoqin</finalName>
+    <plugins>
+
+      <!--<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>-->
+      <plugin>
+          <!-- jetty插件 -->
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-maven-plugin</artifactId>
+            <version>9.2.1.v20140609</version>
+            <configuration>
+                <!--<webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>-->
+              <scanIntervalSeconds>10</scanIntervalSeconds>
+
+              <webAppConfig>
+                <contextPath>/kaoqin</contextPath>
+                <defaultsDescriptor>src/main/resources/webdefault.xml</defaultsDescriptor>
+              </webAppConfig>
+            </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.mybatis.generator</groupId>
+        <artifactId>mybatis-generator-maven-plugin</artifactId>
+        <version>1.3.2</version>
+        <configuration>
+          <verbose>true</verbose>
+          <overwrite>true</overwrite>
+
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>

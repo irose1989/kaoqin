@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.kaoqin.dao.userMapper.UserMapperExt" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.kaoqin.bean.user.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="job_state" property="jobState" jdbcType="INTEGER" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="roleId" property="roleid" jdbcType="INTEGER" />
+    <result column="job" property="job" jdbcType="INTEGER" />
+    <result column="professional_skill" property="professionalSkill" jdbcType="INTEGER" />
+    <result column="skill_lever" property="skillLever" jdbcType="INTEGER" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="on_the_job" property="onTheJob" jdbcType="VARCHAR" />
+    <result column="hiredate" property="hiredate" jdbcType="DATE" />
+    <result column="departure_date" property="departureDate" jdbcType="DATE" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="wangwang_num" property="wangwangNum" jdbcType="VARCHAR" />
+    <result column="isoft_no" property="isoftNo" jdbcType="VARCHAR" />
+    <result column="wb_no" property="wbNo" jdbcType="VARCHAR" />
+    <result column="isoft_email" property="isoftEmail" jdbcType="VARCHAR" />
+    <result column="wb_email" property="wbEmail" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.isoftstone.kaoqin.bean.user.User" extends="BaseResultMap" >
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <resultMap id="ResultUserVo" type="com.isoftstone.kaoqin.controller.vo.UserVo">
+    <id column="id" property="userId" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="roleId" property="roleId" jdbcType="INTEGER" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
+    <result column="isoft_no" property="isoftNo" jdbcType="VARCHAR" />
+  </resultMap>
+    <insert id="batchOpenAccount" parameterType="java.util.List" useGeneratedKeys="true">
+      INSERT INTO emp_user (username,job_state,
+      real_name, telephone,password,
+      roleId,job,professional_skill,
+      skill_lever,location,on_the_job,
+      hiredate, departure_date,project_id,
+      wangwang_num, isoft_no, wb_no,
+      isoft_email, wb_email, description
+      )
+      VALUES
+      <if test="list!=null">
+        <foreach collection="list" item="item" index="index" separator="," >
+          (
+          #{item.username,jdbcType=VARCHAR},
+          #{item.jobState,jdbcType=INTEGER},
+          #{item.realName,jdbcType=VARCHAR},
+          #{item.telephone,jdbcType=VARCHAR},
+          #{item.password,jdbcType=VARCHAR},
+          #{item.roleid,jdbcType=INTEGER},
+          #{item.job,jdbcType=INTEGER},
+          #{item.professionalSkill,jdbcType=INTEGER},
+          #{item.skillLever,jdbcType=INTEGER},
+          #{item.location,jdbcType=VARCHAR},
+          #{item.onTheJob,jdbcType=VARCHAR},
+          #{item.hiredate,jdbcType=DATE},
+          #{item.departureDate,jdbcType=DATE},
+          #{item.projectId,jdbcType=INTEGER},
+          #{item.wangwangNum,jdbcType=VARCHAR},
+          #{item.isoftNo,jdbcType=VARCHAR},
+          #{item.wbNo,jdbcType=VARCHAR},
+          #{item.isoftEmail,jdbcType=VARCHAR},
+          #{item.wbEmail,jdbcType=VARCHAR},
+          #{item.description,jdbcType=LONGVARCHAR}
+          )
+        </foreach>
+      </if>
+    </insert>
+  <select id="findUserByCondition" resultMap="ResultUserVo" parameterType="map">
+        SELECT a.isoft_no,a.real_name,a.project_id,b.project_name,a.roleId FROM emp_user a , project b
+        WHERE a.project_id =b.id
+        <if test="realName!=null and realName!='' ">
+          AND a.real_name LIKE "%"#{realName}"%"
+        </if>
+        <if test="projectId !=null and projectId!=''">
+          AND b.id=#{projectId}
+        </if>
+        <if test="isoftNo !=null and isoftNo!=''">
+          AND a.isoft_no LIKE "%"#{isoftNo}"%"
+        </if>
+
+  </select>
+ </mapper>
