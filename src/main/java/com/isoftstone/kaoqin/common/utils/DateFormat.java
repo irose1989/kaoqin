@@ -9,6 +9,7 @@ import com.isoftstone.kaoqin.controller.vo.AttendanceVo;
 import com.isoftstone.kaoqin.controller.vo.SearchConditions;
 import org.springframework.util.CollectionUtils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,6 +20,10 @@ import java.util.List;
  * Created by wb-chenchaobin on 2015/9/16.
  */
 public class DateFormat {
+    /**节假日*/
+    private static List<String>holidays;
+    static {
+    }
 
     /**客户端 根据系统时间获取当前月份整个 考勤日期表*/
     public static AttendanceDateVo getDateList(){
@@ -99,7 +104,7 @@ public class DateFormat {
         return dateList;
     }
 
-    /**获取readonly 最近一周*/
+    /**获取readonly 最近15天*/
     public static List<AttendVo> getReadOnly(List<AttendVo> voList){
         Date d = new Date();
         long today = d.getTime();
@@ -183,6 +188,31 @@ public class DateFormat {
         searchConditions.setTo(to);
         basicAttendance.setData(searchConditions);
         return basicAttendance;
+    }
+
+    /**是否是法定节假日*/
+    public static boolean isHoliday(String date){
+
+        return false;
+    }
+
+    /**是否是周末*/
+    public static boolean isWeekend(String date){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date day = format.parse(date);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(day);
+            int weekday = cal.get(Calendar.DAY_OF_WEEK);
+            if(weekday == 7 || weekday == 1){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 

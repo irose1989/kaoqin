@@ -61,4 +61,11 @@ public class DateTest {
         BasicAttendance basicAttendance = DateFormat.getFromAndTo(conditions);
         System.out.print(basicAttendance);
     }
+    /**周末测试*/
+    @Test
+    public void test4(){
+        String day = "2015-10-17";
+        boolean isWeekend = DateFormat.isWeekend(day);
+        System.out.print(isWeekend);
+    }
 }

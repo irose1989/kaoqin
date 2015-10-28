@@ -28,7 +28,7 @@ public class UserServiceTest {
      * */
     @Test
     public void test1(){
-        BasicAttendance basicAttendance = userService.toLogin("admin","");
+        BasicAttendance basicAttendance = userService.toLogin("admin","admin");
         System.out.println(basicAttendance);
     }
 

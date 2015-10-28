@@ -97,8 +97,7 @@ $(function(){
             $('#userInfoEdit .warn').text("带*为必填项");
             return false;
         }
-        //{"attendanceVoList":[{"description":"p","userId":1,"day":"sd"},{}]}
-        var json ='{"realName":"'+realName+'","isoftNo":'+isoftNo+',"projectId":'+project+',"telephone":'+tel+',"wangwangNum":'+wangwang+',"isoftEmail":'+isoftEmail+',"wbNo":'+aliId+',"location":'+location+',"wbEmail":'+aliEmail+',"job":'+job+',"professionalSkill":'+professionalSkill+',"roleid":'+roleId+',"skillLever":'+skillLever+',"jobState":'+jobState+'}';
+        var json ='{"realName":"'+realName+'","isoftNo":"'+isoftNo+'","projectId":'+project+',"telephone":"'+tel+'","wangwangNum":"'+wangwang+'","isoftEmail":"'+isoftEmail+'","wbNo":"'+aliId+'","location":"'+location+'","wbEmail":"'+aliEmail+'","job":'+job+',"professionalSkill":'+professionalSkill+',"roleid":'+roleId+',"skillLever":'+skillLever+',"jobState":'+jobState+'}';
         /*console.log(json);*/
         /**向后台发起请求*/
         $.ajax({

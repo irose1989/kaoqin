@@ -141,12 +141,31 @@ public class UserServiceImpl implements UserService {
         return basicAttendance;
     }
 
+    public void doNullString(User user) {
+        if (user.getTelephone().equals("null")) {
+            user.setTelephone("");
+        }
+        if (user.getWangwangNum().equals("null")) {
+            user.setWangwangNum("");
+        }
+        if (user.getWbNo().equals("null")) {
+            user.setWbNo("");
+        }
+        if (user.getWbEmail().equals("null")) {
+            user.setWbEmail("");
+        }
+        if (user.getLocation().equals("null")) {
+            user.setLocation("");
+        }
+
+    }
     /**编辑用户信息 */
     public BasicAttendance editUserInfo(User user) {
         BasicAttendance basicAttendance = new BasicAttendance();
         if(StringUtils.isEmpty(user)){
             basicAttendance.setMsg("用户异常");
         }
+        doNullString(user);
         /**编辑个人信息*/
         String isoftNo = user.getIsoftNo();
         /**如果没有账号,编辑失败*/
